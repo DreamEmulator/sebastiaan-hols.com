@@ -11,7 +11,14 @@
                     </svg>
                 </a>
 
-                    <skills @auth:prod="true"@endauth></skills>
+                <skills @auth:prod="true"@endauth></skills>
+                <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                    <div class="form-group">
+                        <input id="skills_json" type="text" class="form-control" id="json" name="json">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
                 <div class="card-columns">
                     <div class="card mb-4 box-shadow" style="max-width: 22.5rem"

@@ -41,6 +41,8 @@
 		return view('music.managemusic', ['musics' => $musics]);
 	})->middleware('is_admin')->name('manage_music');
 
+	Route::resource('skills', 'SkillsController');
+
 //Global Routes
 	Auth::routes();
 

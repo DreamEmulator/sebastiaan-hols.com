@@ -1819,8 +1819,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod'],
+    computed: {
+        json_string: function json_string() {
+            return JSON.stringify(this.skills);
+        }
+    },
     data: function data() {
         return {
+            changed_skills: false,
             remove_skills: false,
             add_skill: false,
             new_skill_name: "",
@@ -39581,6 +39587,9 @@ var render = function() {
                   attrs: { type: "range", min: "1", max: "100" },
                   domProps: { value: _vm.skills[key] },
                   on: {
+                    click: function($event) {
+                      _vm.changed_skills = true
+                    },
                     __r: function($event) {
                       _vm.$set(_vm.skills, key, $event.target.value)
                     }
@@ -39640,6 +39649,14 @@ var render = function() {
     _vm._v(" "),
     _vm.prod
       ? _c("div", { staticClass: "card-body" }, [
+          _vm.changed_skills == true
+            ? _c(
+                "button",
+                { staticClass: "btn-success", on: { click: _vm.save_json } },
+                [_vm._v("Save changes\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
           _vm.add_skill == false && _vm.remove_skills == false
             ? _c(
                 "button",
@@ -39651,7 +39668,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("New\n            skill\n        ")]
+                [_vm._v("New skill\n        ")]
               )
             : _vm._e(),
           _vm._v(" "),
@@ -39685,7 +39702,7 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn-warning float-right",
+                  staticClass: "btn-warning",
                   on: {
                     click: function($event) {
                       _vm.remove_skills = !_vm.remove_skills
@@ -39707,7 +39724,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n            Cancel\n        ")]
+                [_vm._v("Cancel\n        ")]
               )
             : _vm._e()
         ])
