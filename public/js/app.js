@@ -1816,7 +1816,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod'],
@@ -1856,7 +1855,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         skills.addClass('w-0');
         setTimeout(function () {
             skills.removeClass('w-0');
-        }, 250);
+        }, 500);
     }
 });
 
@@ -8049,7 +8048,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n    height: 1em;\n}\n.w-0 {\n    width: 0 !important;\n}\n", ""]);
+exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n}\n", ""]);
 
 // exports
 
@@ -39542,7 +39541,7 @@ var render = function() {
       "ul",
       { staticClass: "list-group list-group-flush" },
       [
-        _vm._l(_vm.skills, function(value, key) {
+        _vm._l(_vm.skills, function(value, key, index) {
           return _c("li", { staticClass: "list-group-item" }, [
             _c("span", [
               _vm.remove_skills == true
@@ -39564,7 +39563,7 @@ var render = function() {
             _vm.prod != true
               ? _c("div", {
                   staticClass: "skill-slider",
-                  style: { width: value + "%" }
+                  style: { width: value + "%", transitionDelay: index + "s" }
                 })
               : _vm._e(),
             _vm._v(" "),

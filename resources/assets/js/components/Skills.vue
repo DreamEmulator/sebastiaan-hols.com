@@ -1,15 +1,14 @@
-
 <!--TODO-->
 <!--Save json and stage the loading effect-->
 <template>
     <div class="card my-4">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-for="(value, key) in skills">
+            <li class="list-group-item" v-for="(value, key, index) in skills">
                 <span><button v-if="remove_skills==true" v-on:click="remove_skill(key)"><i
                         class="fas fa-trash-alt"></i></button>
                 {{key}}</span>
                 <div class="skill-slider"
-                     :style="{width: value+'%'}"
+                     :style="{width: value+'%', transitionDelay: index + 's' }"
                      v-if="prod!=true"></div>
                 <input type="range" class="form-control-range" min="1" max="100"
                        v-if="prod==true"
@@ -47,8 +46,8 @@
     .skill-slider {
         background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);
         width: 0%;
-        transition: width 1s;
         height: 1em;
+        transition: width 1s;
     }
 
     .w-0 {
@@ -93,9 +92,9 @@
             console.log('Component mounted.');
             let skills = $('.skill-slider');
             skills.addClass('w-0');
-            setTimeout(function(){
+            setTimeout(function () {
                 skills.removeClass('w-0');
-            },250);
+            }, 500);
         }
     }
 </script>
