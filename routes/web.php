@@ -66,9 +66,10 @@
 //    return view('music.mix');
 //})->name('music');
 
-	Route::get('/coding', function ()
+	Route::get('/coding', function (App\skills $skills)
 	{
-		return view('coding.codelibrary');
+	    $skills = $skills::orderBy('created_at', 'desc')->first();
+		return view('coding.codelibrary',['skills' => $skills]);
 	})->name('coding');
 
 	Route::get('/coding/keepy-uppy', function ()

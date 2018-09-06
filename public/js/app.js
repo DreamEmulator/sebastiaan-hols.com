@@ -1816,9 +1816,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['prod'],
+    props: ['prod', 'saved_skills'],
     computed: {
         json_string: function json_string() {
             return JSON.stringify(this.skills);
@@ -1831,18 +1838,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             add_skill: false,
             new_skill_name: "",
             new_skill_level: 0,
-            skills: {
-                HTML: 90,
-                SCSS: 80,
-                JS: 95,
-                PHP: 75,
-                MVC: 90,
-                OOP: 85
-            }
+            skills: ""
         };
     },
     methods: {
-        save_new_skill: function save_new_skill() {
+        load_json: function load_json() {
+            this.skills = this.saved_skills;
+            setTimeout(function () {
+                $('.skill-slider').removeClass('w-0');
+            }, 100);
+        },
+        save_json: function save_json() {
+            document.getElementById('skills_json').value = this.json_string;
+            document.getElementById('submit_skills').click();
+        },
+        add_new_skill: function add_new_skill() {
             this.skills[this.new_skill_name] = this.new_skill_level;
             this.add_skill = false;
             this.new_skill_name = "";
@@ -1856,12 +1866,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        console.log('Component mounted.');
-        var skills = $('.skill-slider');
-        skills.addClass('w-0');
-        setTimeout(function () {
-            skills.removeClass('w-0');
-        }, 500);
+        this.load_json();
     }
 });
 
@@ -8054,7 +8059,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n}\n", ""]);
+exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n    -webkit-transition: 0s !important;\n    transition: 0s !important;\n}\n", ""]);
 
 // exports
 
@@ -39568,7 +39573,7 @@ var render = function() {
             _vm._v(" "),
             _vm.prod != true
               ? _c("div", {
-                  staticClass: "skill-slider",
+                  staticClass: "skill-slider w-0",
                   style: { width: value + "%", transitionDelay: index + "s" }
                 })
               : _vm._e(),
@@ -39649,7 +39654,9 @@ var render = function() {
     _vm._v(" "),
     _vm.prod
       ? _c("div", { staticClass: "card-body" }, [
-          _vm.changed_skills == true
+          _vm.changed_skills == true &&
+          _vm.add_skill == false &&
+          _vm.remove_skills == false
             ? _c(
                 "button",
                 { staticClass: "btn-success", on: { click: _vm.save_json } },
@@ -39657,29 +39664,16 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.add_skill == false && _vm.remove_skills == false
+          _vm.changed_skills == true &&
+          _vm.add_skill == false &&
+          _vm.remove_skills == false
             ? _c(
                 "button",
                 {
-                  staticClass: "btn-success",
-                  on: {
-                    click: function($event) {
-                      _vm.add_skill = !_vm.add_skill
-                    }
-                  }
+                  staticClass: "btn-danger float-right",
+                  on: { click: _vm.load_json }
                 },
-                [_vm._v("New skill\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.add_skill == true && _vm.remove_skills == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-success",
-                  on: { click: _vm.save_new_skill }
-                },
-                [_vm._v("Add\n            skill\n        ")]
+                [_vm._v("Cancel\n        ")]
               )
             : _vm._e(),
           _vm._v(" "),
@@ -39698,11 +39692,13 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.remove_skills == false && _vm.add_skill == false
+          _vm.remove_skills == false &&
+          _vm.add_skill == false &&
+          _vm.changed_skills == false
             ? _c(
                 "button",
                 {
-                  staticClass: "btn-warning",
+                  staticClass: "btn-warning float-right",
                   on: {
                     click: function($event) {
                       _vm.remove_skills = !_vm.remove_skills
@@ -39725,6 +39721,36 @@ var render = function() {
                   }
                 },
                 [_vm._v("Cancel\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.add_skill == false &&
+          _vm.remove_skills == false &&
+          _vm.changed_skills == false
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn-primary float-right mr-2",
+                  on: {
+                    click: function($event) {
+                      _vm.add_skill = !_vm.add_skill
+                    }
+                  }
+                },
+                [_vm._v("New skill\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.add_skill == true &&
+          _vm.remove_skills == false &&
+          _vm.changed_skills == false
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn-primary float-right mr-2",
+                  on: { click: _vm.add_new_skill }
+                },
+                [_vm._v("Add skill\n        ")]
               )
             : _vm._e()
         ])

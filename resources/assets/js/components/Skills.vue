@@ -7,13 +7,13 @@
                 <span><button v-if="remove_skills==true" v-on:click="remove_skill(key)"><i
                         class="fas fa-trash-alt"></i></button>
                 {{key}}</span>
-                <div class="skill-slider"
+                <div class="skill-slider w-0"
                      :style="{width: value+'%', transitionDelay: index + 's' }"
                      v-if="prod!=true"></div>
                 <input type="range" class="form-control-range" min="1" max="100"
                        v-if="prod==true"
                        v-model="skills[key]"
-                       v-on:click="changed_skills=true" >
+                       v-on:click="changed_skills=true">
             </li>
             <li v-if="add_skill==true" class="list-group-item">
                 <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
@@ -22,21 +22,27 @@
             </li>
         </ul>
         <div v-if="prod" class="card-body">
-            <button v-if="changed_skills==true" v-on:click="save_json" class="btn-success">Save changes
+            <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="save_json"
+                    class="btn-success">Save changes
             </button>
-            <button v-if="add_skill==false && remove_skills==false"  v-on:click="add_skill = !add_skill" class="btn-success">New skill
-            </button>
-            <button v-if="add_skill==true && remove_skills==false" v-on:click="save_new_skill" class="btn-success">Add
-                skill
-            </button>
-            <button v-if="add_skill==true && remove_skills==false" v-on:click="add_skill=false"
+            <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="load_json"
                     class="btn-danger float-right">Cancel
             </button>
 
-            <button v-if="remove_skills==false && add_skill==false" v-on:click="remove_skills = !remove_skills"
-                    class="btn-warning">Remove skill
+            <button v-if="add_skill==true && remove_skills==false" v-on:click="add_skill=false"
+                    class="btn-danger float-right">Cancel
+            </button>
+            <button v-if="remove_skills==false && add_skill==false && changed_skills==false"
+                    v-on:click="remove_skills = !remove_skills"
+                    class="btn-warning float-right">Remove skill
             </button>
             <button v-if="remove_skills==true" v-on:click="remove_skills = false" class="btn-danger float-right">Cancel
+            </button>
+            <button v-if="add_skill==false && remove_skills==false && changed_skills==false"
+                    v-on:click="add_skill = !add_skill" class="btn-primary float-right mr-2">New skill
+            </button>
+            <button v-if="add_skill==true && remove_skills==false && changed_skills==false" v-on:click="add_new_skill"
+                    class="btn-primary float-right mr-2">Add skill
             </button>
         </div>
     </div>
@@ -52,12 +58,13 @@
 
     .w-0 {
         width: 0 !important;
+        transition: 0s !important;
     }
 </style>
 
 <script>
     export default {
-        props: ['prod'],
+        props: ['prod', 'saved_skills'],
         computed: {
             json_string: function () {
                 return JSON.stringify(this.skills);
@@ -70,18 +77,21 @@
                 add_skill: false,
                 new_skill_name: "",
                 new_skill_level: 0,
-                skills: {
-                    HTML: 90,
-                    SCSS: 80,
-                    JS: 95,
-                    PHP: 75,
-                    MVC: 90,
-                    OOP: 85,
-                }
+                skills: ""
             }
         },
         methods: {
-            save_new_skill: function () {
+            load_json: function () {
+                this.skills = this.saved_skills;
+                setTimeout(function () {
+                    $('.skill-slider').removeClass('w-0');
+                }, 100);
+            },
+            save_json: function () {
+                document.getElementById('skills_json').value = this.json_string;
+                document.getElementById('submit_skills').click();
+            },
+            add_new_skill: function () {
                 this.skills[this.new_skill_name] = this.new_skill_level;
                 this.add_skill = false;
                 this.new_skill_name = "";
@@ -95,12 +105,7 @@
             }
         },
         mounted() {
-            console.log('Component mounted.');
-            let skills = $('.skill-slider');
-            skills.addClass('w-0');
-            setTimeout(function () {
-                skills.removeClass('w-0');
-            }, 500);
+            this.load_json();
         }
     }
 </script>
