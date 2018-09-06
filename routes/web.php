@@ -62,10 +62,6 @@
 
 	Route::resource('music', 'MusicController');
 
-//Route::get('/music', function () {
-//    return view('music.mix');
-//})->name('music');
-
 	Route::get('/coding', function (App\skills $skills)
 	{
 	    $skills = $skills::orderBy('created_at', 'desc')->first();
