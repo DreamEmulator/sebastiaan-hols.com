@@ -23,32 +23,32 @@
                                         <div class="form-group">
                                             <label for="title">Title:</label>
                                             <input type="text" name="title" class="form-control"
-                                                   value="{{$music->title}}">
+                                                   value="{{$music->title}}" maxlength="240">
                                         </div>
                                         <div class="form-group">
                                             <label for="text">Text:</label>
                                             <textarea type="text" name="text" class="form-control"
-                                                      >{{$music->text}}</textarea>
+                                                       maxlength="240">{{$music->text}}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="img_location">Image url:</label>
                                             <input type="text" name="img_location" class="form-control"
-                                                   value="{{$music->img_location}}">
+                                                   value="{{$music->img_location}}" maxlength="240">
                                         </div>
                                         <div class="form-group">
                                             <label for="spotify">Spotify:</label>
                                             <input type="text" name="spotify" class="form-control"
-                                                   value="{{$music->spotify}}">
+                                                   value="{{$music->spotify}}" maxlength="240">
                                         </div>
                                         <div class="form-group">
                                             <label for="tidal">Tidal:</label>
                                             <input type="text" name="tidal" class="form-control"
-                                                   value="{{$music->tidal}}">
+                                                   value="{{$music->tidal}}" maxlength="240">
                                         </div>
                                         <div class="form-group">
                                             <label for="muziekweb">Muziekweb:</label>
                                             <input type="text" name="muziekweb" class="form-control"
-                                                   value="{{$music->muziekweb}}">
+                                                   value="{{$music->muziekweb}}" maxlength="240">
                                         </div>
                                         <button type="submit" style="display: none"></button>
                                     </form>

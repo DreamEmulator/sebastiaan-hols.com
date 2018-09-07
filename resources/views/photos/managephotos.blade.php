@@ -24,12 +24,12 @@
                                         <div class="form-group">
                                             <label for="title">Title:</label>
                                             <input type="text" name="title" class="form-control"
-                                                   value="{{$photo->title}}">
+                                                   value="{{$photo->title}}" maxlength="240">
                                         </div>
                                         <div class="form-group">
                                             <label for="text">Description:</label>
                                             <input type="text" name="text" class="form-control"
-                                                   value="{{$photo->text}}">
+                                                   value="{{$photo->text}}" maxlength="240">
                                         </div>
                                         <button type="submit" style="display: none"></button>
                                     </form>

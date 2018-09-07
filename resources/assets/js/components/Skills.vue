@@ -16,7 +16,7 @@
                 <input type="range" class="form-control-range" min="1" max="100"
                        v-if="prod==true"
                        v-model="skills[key]"
-                       v-on:click="changed_skills=true">
+                       v-on:change="changed_skills=true">
             </li>
             <li v-if="add_skill==true" class="list-group-item">
                 <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">

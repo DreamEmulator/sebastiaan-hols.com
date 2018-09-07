@@ -91,7 +91,7 @@ class PhotoController extends Controller
         $photo->title=$request->title;
         $photo->text=$request->text;
         $photo->save();
-        return redirect('photos');
+        return redirect('photos/manage');
     }
 
     /**

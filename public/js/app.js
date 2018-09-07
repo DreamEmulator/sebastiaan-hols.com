@@ -39605,7 +39605,7 @@ var render = function() {
                   attrs: { type: "range", min: "1", max: "100" },
                   domProps: { value: _vm.skills[key] },
                   on: {
-                    click: function($event) {
+                    change: function($event) {
                       _vm.changed_skills = true
                     },
                     __r: function($event) {
