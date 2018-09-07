@@ -56,7 +56,7 @@
 
 </head>
 <body class="text-{{session('contrast')}}">
-<nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} navbar-expand-md mb-4 border-0">
+<nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-md mb-4 border-0">
     <div class="container">
         <a class="navbar-brand border-0" href="{{ url('/') }}">
             <i class="fas fa-anchor"></i>
@@ -69,7 +69,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <a class="border-0 nav-link" href="javascript:;"
+                <a class="border-0 nav-link text-{{session('contrast')}}" href="javascript:;"
                    onclick="event.preventDefault();document.getElementById('change_dream_theme').submit();" title="Change the theme">{{$change_theme}} mode</a>
                 <form id="change_dream_theme" action="{{route('change_theme')}}" method="post">
                     @csrf
@@ -78,41 +78,41 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                <li><a class="border-0 nav-link" href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
                 </li>
-                <li><a class="border-0 nav-link" href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
-                <li><a class="border-0 nav-link" href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('coding')}}">{{ __('Coding') }}</a></li>
                 @guest
-                    <li><a class="border-0 nav-link" href="{{route('login')}}">{{ __('Login') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('login')}}">{{ __('Login') }}</a></li>
                 @endguest
                 @auth
                     @if (auth()->user()->isAdmin())
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Photos</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('add_photos')}}">{{ __('Add Photo') }}</a>
-                                <a class="dropdown-item" href="{{route('manage_photos')}}">{{ __('Edit Photo') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('add_photos')}}">{{ __('Add Photo') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage_photos')}}">{{ __('Edit Photo') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Music</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('add_music')}}">{{ __('Add Music') }}</a>
-                                <a class="dropdown-item" href="{{route('manage_music')}}">{{ __('Edit Music') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('add_music')}}">{{ __('Add Music') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage_music')}}">{{ __('Edit Music') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register Users</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('register')}}">{{ __('Register User') }}</a>
-                                <a class="dropdown-item" href="{{route('manage')}}">{{ __('Manage Users') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('register')}}">{{ __('Register User') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage')}}">{{ __('Manage Users') }}</a>
                             </div>
                         </li>
                     @endif
-                    <a class="border-0 nav-link" href="{{ route('logout') }}"
+                    <a class="border-0 nav-link text-{{session('contrast')}}" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
@@ -120,7 +120,7 @@
                         @csrf
                     </form>
                 @endauth
-                <li><a class="border-0 nav-link" href="{{'mailto:info@' . $_SERVER['SERVER_NAME'] . '?Subject=Hello%20there'}}" target="_top"><i class="fas fa-envelope"></i></a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{'mailto:info@' . $_SERVER['SERVER_NAME'] . '?Subject=Hello%20there'}}" target="_top"><i class="fas fa-envelope"></i></a></li>
             </ul>
         </div>
     </div>
