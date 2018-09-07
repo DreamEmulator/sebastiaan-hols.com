@@ -4,6 +4,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
+                {{--Skill.vue + submit form : Add the skills model to the route--}}
+                <skills @auth:prod="true"@endauth :skill_name="'music'" :saved_skills="{{$skills->json}}"></skills>
+                <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <input type="text" style="display: none" class="form-control" id="skills_json" name="skills_json">
+                    </div>
+                    <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
+                </form>
+                {{-- end --}}
+
                 <h3>Live mixes</h3>
                 <p class="w-30">This mix combines my photography with the tracks I felt connected well to the rough and rugged feeling of urban excitement you find everywhere in Rotterdam.</p>
                 <div class="embed-responsive embed-responsive-16by9">

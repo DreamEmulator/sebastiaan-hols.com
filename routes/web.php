@@ -53,9 +53,10 @@
 		return view('welcome');
 	});
 
-	Route::get('/about', function ()
+	Route::get('/about', function (App\skills $skills)
 	{
-		return view('about.about');
+        $skills = $skills::orderBy('created_at', 'desc')->first();
+		return view('about.about',['skills' => $skills]);
 	})->name('about');
 
 	Route::resource('photos', 'PhotoController');

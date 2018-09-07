@@ -82,6 +82,7 @@
                 </li>
                 <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
                 <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('about')}}">{{ __('About') }}</a></li>
                 @guest
                     <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('login')}}">{{ __('Login') }}</a></li>
                 @endguest

@@ -6,6 +6,7 @@
 namespace App\Http\Controllers;
 
 use App\music;
+use App\skills;
 use Illuminate\Http\Request;
 
 class MusicController extends Controller
@@ -19,7 +20,8 @@ class MusicController extends Controller
     {
 	    $dream_theme = $request->session()->get('key', 'dark');
 	    $musics = music::all()->sortBy('title');
-	    return view('music.musiclibrary', ['musics' => $musics, 'dream_theme'=>$dream_theme]);
+        $skills = skills::orderBy('created_at', 'desc')->first();
+	    return view('music.musiclibrary', ['musics' => $musics, 'skills' => $skills, 'dream_theme'=>$dream_theme]);
     }
 
     /**
