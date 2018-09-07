@@ -1,12 +1,15 @@
-<!--TODO-->
-<!--Save json and stage the loading effect-->
 <template>
     <div class="card my-4">
+        <div class="card-body">
+            <div class="card-title">
+                <h5>Skills</h5>
+            </div>
+        </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" v-for="(value, key, index) in skills">
                 <span><button v-if="remove_skills==true" v-on:click="remove_skill(key)"><i
                         class="fas fa-trash-alt"></i></button>
-                {{key}}</span>
+                    <h6>{{key}}</h6></span>
                 <div class="skill-slider w-0"
                      :style="{width: value+'%', transitionDelay: index + 's' }"
                      v-if="prod!=true"></div>
@@ -26,7 +29,7 @@
                     class="btn-success">Save changes
             </button>
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="load_json"
-                    class="btn-danger float-right">Cancel
+                    class="btn-danger float-right">Cancel changes
             </button>
 
             <button v-if="add_skill==true && remove_skills==false" v-on:click="add_skill=false"
@@ -42,7 +45,7 @@
                     v-on:click="add_skill = !add_skill" class="btn-primary float-right mr-2">New skill
             </button>
             <button v-if="add_skill==true && remove_skills==false && changed_skills==false" v-on:click="add_new_skill"
-                    class="btn-primary float-right mr-2">Add skill
+                    class="btn-primary">Add skill
             </button>
         </div>
     </div>
@@ -64,10 +67,11 @@
 
 <script>
     export default {
-        props: ['prod', 'saved_skills'],
+        props: ['prod','skill_name', 'saved_skills'],
         computed: {
             json_string: function () {
-                return JSON.stringify(this.skills);
+                this.saved_skills[this.skill_name] = this.skills;
+                return JSON.stringify(this.saved_skills);
             }
         },
         data: function () {
@@ -77,15 +81,19 @@
                 add_skill: false,
                 new_skill_name: "",
                 new_skill_level: 0,
-                skills: ""
+                skills: {},
             }
         },
         methods: {
             load_json: function () {
-                this.skills = this.saved_skills;
+                this.saved_skills[this.skill_name] !== undefined ? this.skills = this.saved_skills[this.skill_name] : {};
+                this.changed_skills = false;
+                this.remove_skills = false;
+                this.add_skill = false;
                 setTimeout(function () {
                     $('.skill-slider').removeClass('w-0');
                 }, 100);
+                this.$forceUpdate();
             },
             save_json: function () {
                 document.getElementById('skills_json').value = this.json_string;
@@ -96,11 +104,13 @@
                 this.add_skill = false;
                 this.new_skill_name = "";
                 this.new_skill_level = 0;
+                this.changed_skills = true;
                 this.$forceUpdate();
             },
             remove_skill: function (name) {
                 delete this.skills[name];
                 this.remove_skills = false;
+                this.changed_skills = true;
                 this.$forceUpdate();
             }
         },

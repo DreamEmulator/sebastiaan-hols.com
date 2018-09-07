@@ -9,7 +9,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Photo library</h1>
+                <h1>Photography</h1>
+
+                {{--Skill.vue + submit form : Add the skills model to the route--}}
+                <skills @auth:prod="true"@endauth :skill_name="'photography'" :saved_skills="{{$skills->json}}"></skills>
+                <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <input type="text" style="display: none" class="form-control" id="skills_json" name="skills_json">
+                    </div>
+                    <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
+                </form>
+                {{-- end --}}
+
                 <p class="lead text-muted">Click to open</p>
                 <photo-library :photos="{{$photos}}"></photo-library>
             </div>

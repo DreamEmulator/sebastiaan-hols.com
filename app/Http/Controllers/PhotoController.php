@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\photo;
+use App\skills;
 use Illuminate\Http\Request;
 use ImageOptimizer;
 
@@ -17,7 +18,8 @@ class PhotoController extends Controller
     {
         $dream_theme = $request->session()->get('key', 'dark');
         $photos = photo::all();
-        return view('photos.photolibrary', ['photos' => $photos, 'dream_theme'=>$dream_theme]);
+        $skills = skills::orderBy('created_at', 'desc')->first();
+        return view('photos.photolibrary', ['photos' => $photos, 'skills' => $skills, 'dream_theme'=>$dream_theme]);
     }
 
     /**

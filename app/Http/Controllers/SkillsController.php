@@ -39,7 +39,7 @@ class SkillsController extends Controller
         $skills->json = $request->skills_json;
 
         $skills->save();
-        return redirect('coding')->with('success', 'Information has been added');
+        return back()->with('success', 'Information has been added');
     }
 
     /**

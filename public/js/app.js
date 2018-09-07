@@ -1823,12 +1823,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['prod', 'saved_skills'],
+    props: ['prod', 'skill_name', 'saved_skills'],
     computed: {
         json_string: function json_string() {
-            return JSON.stringify(this.skills);
+            this.saved_skills[this.skill_name] = this.skills;
+            return JSON.stringify(this.saved_skills);
         }
     },
     data: function data() {
@@ -1838,15 +1842,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             add_skill: false,
             new_skill_name: "",
             new_skill_level: 0,
-            skills: ""
+            skills: {}
         };
     },
     methods: {
         load_json: function load_json() {
-            this.skills = this.saved_skills;
+            this.saved_skills[this.skill_name] !== undefined ? this.skills = this.saved_skills[this.skill_name] : {};
+            this.changed_skills = false;
+            this.remove_skills = false;
+            this.add_skill = false;
             setTimeout(function () {
                 $('.skill-slider').removeClass('w-0');
             }, 100);
+            this.$forceUpdate();
         },
         save_json: function save_json() {
             document.getElementById('skills_json').value = this.json_string;
@@ -1857,11 +1865,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.add_skill = false;
             this.new_skill_name = "";
             this.new_skill_level = 0;
+            this.changed_skills = true;
             this.$forceUpdate();
         },
         remove_skill: function remove_skill(name) {
             delete this.skills[name];
             this.remove_skills = false;
+            this.changed_skills = true;
             this.$forceUpdate();
         }
     },
@@ -39548,6 +39558,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card my-4" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
       "ul",
       { staticClass: "list-group list-group-flush" },
@@ -39568,7 +39580,8 @@ var render = function() {
                     [_c("i", { staticClass: "fas fa-trash-alt" })]
                   )
                 : _vm._e(),
-              _vm._v("\n            " + _vm._s(key))
+              _vm._v(" "),
+              _c("h6", [_vm._v(_vm._s(key))])
             ]),
             _vm._v(" "),
             _vm.prod != true
@@ -39673,7 +39686,7 @@ var render = function() {
                   staticClass: "btn-danger float-right",
                   on: { click: _vm.load_json }
                 },
-                [_vm._v("Cancel\n        ")]
+                [_vm._v("Cancel changes\n        ")]
               )
             : _vm._e(),
           _vm._v(" "),
@@ -39747,7 +39760,7 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn-primary float-right mr-2",
+                  staticClass: "btn-primary",
                   on: { click: _vm.add_new_skill }
                 },
                 [_vm._v("Add skill\n        ")]
@@ -39757,7 +39770,16 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "card-title" }, [_c("h5", [_vm._v("Skills")])])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
