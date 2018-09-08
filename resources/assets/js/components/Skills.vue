@@ -6,17 +6,22 @@
             </div>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-for="(value, key, index) in skills">
-                <span><button v-if="remove_skills==true" v-on:click="remove_skill(key)"><i
-                        class="fas fa-trash-alt"></i></button>
-                    <h6>{{key}}</h6></span>
-                <div class="skill-slider w-0"
-                     :style="{width: value+'%', transitionDelay: index + 's' }"
-                     v-if="prod!=true"></div>
+            <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')" v-if="key.indexOf('_text') == -1" class="list-group-item">
+                <span>
+                    <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <h6>{{key}}</h6>
+                </span>
+                <div :style="{width: value+'%', transitionDelay: index + 's' }"
+                     v-if="prod!=true" class="skill-slider w-0 mb-4"></div>
                 <input type="range" class="form-control-range" min="1" max="100"
                        v-if="prod==true"
                        v-model="skills[key]"
                        v-on:change="changed_skills=true">
+                <p v-if="prod!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
+                <input v-if="prod==true" v-model="skills[key + '_text']" v-on:change="changed_skills=true"
+                       type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
             </li>
             <li v-if="add_skill==true" class="list-group-item">
                 <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
@@ -67,7 +72,7 @@
 
 <script>
     export default {
-        props: ['prod','skill_name', 'saved_skills'],
+        props: ['prod', 'skill_name', 'saved_skills'],
         computed: {
             json_string: function () {
                 this.saved_skills[this.skill_name] = this.skills;
@@ -81,6 +86,7 @@
                 add_skill: false,
                 new_skill_name: "",
                 new_skill_level: 0,
+                new_skill_text: "",
                 skills: {},
             }
         },
@@ -101,6 +107,7 @@
             },
             add_new_skill: function () {
                 this.skills[this.new_skill_name] = this.new_skill_level;
+                this.skills[this.skill_name + '_text'] = this.new_skill_text;
                 this.add_skill = false;
                 this.new_skill_name = "";
                 this.new_skill_level = 0;
@@ -112,6 +119,9 @@
                 this.remove_skills = false;
                 this.changed_skills = true;
                 this.$forceUpdate();
+            },
+            show_text: function (text) {
+                $('.' + text).toggle();
             }
         },
         mounted() {

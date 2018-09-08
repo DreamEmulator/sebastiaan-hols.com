@@ -1826,6 +1826,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod', 'skill_name', 'saved_skills'],
@@ -1842,6 +1847,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             add_skill: false,
             new_skill_name: "",
             new_skill_level: 0,
+            new_skill_text: "",
             skills: {}
         };
     },
@@ -1862,6 +1868,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         add_new_skill: function add_new_skill() {
             this.skills[this.new_skill_name] = this.new_skill_level;
+            this.skills[this.skill_name + '_text'] = this.new_skill_text;
             this.add_skill = false;
             this.new_skill_name = "";
             this.new_skill_level = 0;
@@ -1873,6 +1880,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.remove_skills = false;
             this.changed_skills = true;
             this.$forceUpdate();
+        },
+        show_text: function show_text(text) {
+            $('.' + text).toggle();
         }
     },
     mounted: function mounted() {
@@ -39565,56 +39575,118 @@ var render = function() {
       { staticClass: "list-group list-group-flush" },
       [
         _vm._l(_vm.skills, function(value, key, index) {
-          return _c("li", { staticClass: "list-group-item" }, [
-            _c("span", [
-              _vm.remove_skills == true
-                ? _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.remove_skill(key)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-trash-alt" })]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("h6", [_vm._v(_vm._s(key))])
-            ]),
-            _vm._v(" "),
-            _vm.prod != true
-              ? _c("div", {
-                  staticClass: "skill-slider w-0",
-                  style: { width: value + "%", transitionDelay: index + "s" }
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.prod == true
-              ? _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.skills[key],
-                      expression: "skills[key]"
-                    }
-                  ],
-                  staticClass: "form-control-range",
-                  attrs: { type: "range", min: "1", max: "100" },
-                  domProps: { value: _vm.skills[key] },
+          return key.indexOf("_text") == -1
+            ? _c(
+                "li",
+                {
+                  staticClass: "list-group-item",
                   on: {
-                    change: function($event) {
-                      _vm.changed_skills = true
-                    },
-                    __r: function($event) {
-                      _vm.$set(_vm.skills, key, $event.target.value)
+                    click: function($event) {
+                      _vm.show_text(key + "_text")
                     }
                   }
-                })
-              : _vm._e()
-          ])
+                },
+                [
+                  _c("span", [
+                    _vm.remove_skills == true
+                      ? _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.remove_skill(key)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("h6", [_vm._v(_vm._s(key))])
+                  ]),
+                  _vm._v(" "),
+                  _vm.prod != true
+                    ? _c("div", {
+                        staticClass: "skill-slider w-0 mb-4",
+                        style: {
+                          width: value + "%",
+                          transitionDelay: index + "s"
+                        }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.prod == true
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.skills[key],
+                            expression: "skills[key]"
+                          }
+                        ],
+                        staticClass: "form-control-range",
+                        attrs: { type: "range", min: "1", max: "100" },
+                        domProps: { value: _vm.skills[key] },
+                        on: {
+                          change: function($event) {
+                            _vm.changed_skills = true
+                          },
+                          __r: function($event) {
+                            _vm.$set(_vm.skills, key, $event.target.value)
+                          }
+                        }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.prod !== true
+                    ? _c(
+                        "p",
+                        {
+                          class: key + "_text",
+                          staticStyle: { display: "none" }
+                        },
+                        [_vm._v(_vm._s(_vm.skills[key + "_text"]))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.prod == true
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.skills[key + "_text"],
+                            expression: "skills[key + '_text']"
+                          }
+                        ],
+                        staticClass: "form-control mb-2",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Describe skill",
+                          maxlength: "240"
+                        },
+                        domProps: { value: _vm.skills[key + "_text"] },
+                        on: {
+                          change: function($event) {
+                            _vm.changed_skills = true
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.skills,
+                              key + "_text",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    : _vm._e()
+                ]
+              )
+            : _vm._e()
         }),
         _vm._v(" "),
         _vm.add_skill == true

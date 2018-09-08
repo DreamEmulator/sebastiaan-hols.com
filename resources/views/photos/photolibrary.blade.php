@@ -22,7 +22,6 @@
                 </form>
                 {{-- end --}}
 
-                <p class="lead text-muted">Click to open</p>
                 <photo-library :photos="{{$photos}}"></photo-library>
             </div>
         </div>

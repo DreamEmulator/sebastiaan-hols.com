@@ -136,7 +136,7 @@
 
 <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    {{--<p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>--}}
+    <p>Custom built with <i class="fas fa-heart"></i> in <i class="fab fa-laravel"></i> + <i class="fab fa-vuejs"></i> - &copy; Sebastiaan Hols {{date("Y")}}</p>
 </footer>
 </body>
 </html>
