@@ -10689,37 +10689,6 @@ body.text-dark {
   background-color: #fbf4ec;
 }
 
-.skills-button {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  position: relative;
-}
-
-.skills-button:before {
-  content: "";
-  position: absolute;
-  height: 1em;
-  width: 1em;
-  left: 50%;
-  bottom: -1.25em;
-  border-left: 2px solid #000;
-  border-top: 2px solid #000;
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-  -webkit-transform: translateX(-50%) rotate(225deg);
-          transform: translateX(-50%) rotate(225deg);
-}
-
-.skills-button.open:before {
-  bottom: -1.75em;
-  -webkit-transform: translateX(-50%) rotate(135deg) scaleY(-1);
-          transform: translateX(-50%) rotate(135deg) scaleY(-1);
-}
-
 .tidal-icon {
   width: 2em;
   height: 2em;

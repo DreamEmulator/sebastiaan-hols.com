@@ -1,8 +1,8 @@
 <template>
     <div class="card my-4">
-        <div class="card-body">
+        <div class="card-body" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
-                <h5 v-on:click="show_list = !show_list; load_json()" :class="[skillsButton, skillsList]">{{dropdown}} Skills</h5>
+                <h5 :class="[skillsButton, skillsList]">{{dropdown}} Skills</h5>
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
             </div>
         </div>
@@ -73,6 +73,54 @@
         transition: 0s !important;
     }
 
+    body.text-dark .skills-button {
+        user-select: none;
+        position: relative;
+    }
+
+    .skills-button:before {
+        content: "";
+        position: absolute;
+        height: 1em;
+        width: 1em;
+        left: 50%;
+        bottom: -1.25em;
+        transition: border 0.25s;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .skills-button.closed:before {
+        border-left: 2px solid rgba(0,0,0,0);
+        border-top: 2px solid rgba(0,0,0,0);
+    }
+
+    .skills-button.open:before{
+        bottom: -1.75em;
+        border-right: 2px solid rgba(0,0,0,0);
+        border-bottom: 2px solid rgba(0,0,0,0);
+    }
+
+    body.text-dark .skills-button.closed:before {
+        border-right: 2px solid rgba(0,0,0,1);
+        border-bottom: 2px solid rgba(0,0,0,1);
+    }
+
+    body.text-dark .skills-button.open:before {
+        border-left: 2px solid rgba(0,0,0,1);
+        border-top: 2px solid rgba(0,0,0,1);
+    }
+
+    body.text-light .skills-button.closed:before {
+        bottom: 0.55em;
+        border-right: 2px solid rgba(255,255,255,1);
+        border-bottom: 2px solid rgba(255,255,255,1);
+    }
+
+    body.text-light .skills-button.open:before {
+        border-left: 2px solid rgba(255,255,255,1);
+        border-top: 2px solid rgba(255,255,255,1);
+    }
+
     .fade-enter {
         opacity: 0;
         max-height: 0px;
@@ -110,7 +158,7 @@
                     this.skillsList = "open";
                     return "Hide";
                 } else {
-                    this.skillsList = "closed mb-3";
+                    this.skillsList = "closed";
                     return "Show";
                 }
             }
