@@ -1659,6 +1659,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -39736,7 +39737,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.auth != true
                             ? _c("div", {
-                                staticClass: "skill-slider w-0 mb-4",
+                                staticClass: "skill-slider w-0 my-4",
                                 style: {
                                   width: value + "%",
                                   transitionDelay: index + "s"
@@ -39754,7 +39755,7 @@ var render = function() {
                                     expression: "skills[key]"
                                   }
                                 ],
-                                staticClass: "form-control-range",
+                                staticClass: "form-control-range mb-3",
                                 attrs: { type: "range", min: "1", max: "100" },
                                 domProps: { value: _vm.skills[key] },
                                 on: {
@@ -40052,33 +40053,39 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._l(_vm.image_data, function(image, imageIndex) {
-        return _c("div", { staticClass: "col-lg-6 mt-2 mb-2" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("img", {
-              staticClass: " card-img-top",
-              attrs: { src: image.location },
-              on: {
-                click: function($event) {
-                  _vm.index = imageIndex
+      _c(
+        "div",
+        { staticClass: "card-columns col-lg-12" },
+        _vm._l(_vm.image_data, function(image, imageIndex) {
+          return _c(
+            "div",
+            { staticClass: "card d-inline-block mt-2 mb-2 w-100" },
+            [
+              _c("img", {
+                staticClass: " card-img-top",
+                attrs: { src: image.location },
+                on: {
+                  click: function($event) {
+                    _vm.index = imageIndex
+                  }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(image.title))
-              ]),
+              }),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(image.text))
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(image.title))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(image.text))
+                ])
               ])
-            ])
-          ])
-        ])
-      })
+            ]
+          )
+        })
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []

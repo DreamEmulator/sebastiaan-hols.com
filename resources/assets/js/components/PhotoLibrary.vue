@@ -2,8 +2,8 @@
     <div class="row">
         <gallery :images="locations" :index="index" @close="index = null"></gallery>
 
-        <div v-for="image, imageIndex in image_data" class="col-lg-6 mt-2 mb-2">
-            <div class="card">
+        <div class="card-columns col-lg-12">
+            <div v-for="image, imageIndex in image_data" class="card d-inline-block mt-2 mb-2 w-100">
                 <img class=" card-img-top"
                      @click="index = imageIndex"
                      :src="image.location"
@@ -14,6 +14,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -26,7 +27,7 @@
             return {
                 image_data: this.photos,
                 locations: _.map(this.photos, 'location'),
-                index:null
+                index: null
             };
         },
         components: {

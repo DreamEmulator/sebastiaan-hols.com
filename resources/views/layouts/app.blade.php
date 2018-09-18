@@ -60,7 +60,7 @@
 
 </head>
 <body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
-<nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-md mb-4 border-0">
+<nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-lg mb-4 border-0">
     <div class="container">
         <a class="navbar-brand border-0" href="{{ url('/') }}">
             <i class="fas fa-anchor"></i>
@@ -102,7 +102,7 @@
                                id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Photos</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="border-0 nav-link text-{{session('contrast')}}"
+                                <a class="dropdown-item text-{{session('contrast')}}"
                                    href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
                                    href="{{route('add_photos')}}">{{ __('Add Photo') }}</a>
@@ -115,7 +115,7 @@
                                id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Music</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="border-0 nav-link text-{{session('contrast')}}"
+                                <a class="dropdown-item text-{{session('contrast')}}"
                                    href="{{action('MusicController@index')}}">{{ __('Music') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
                                    href="{{route('add_music')}}">{{ __('Add Music') }}</a>

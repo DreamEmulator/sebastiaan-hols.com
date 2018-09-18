@@ -17,7 +17,7 @@ class PhotoController extends Controller
     public function index(Request $request)
     {
         $dream_theme = $request->session()->get('key', 'dark');
-        $photos = photo::all();
+        $photos = photo::orderBy('updated_at', 'desc')->get();
         $skills = skills::orderBy('created_at', 'desc')->first();
         return view('photos.photolibrary', ['photos' => $photos, 'skills' => $skills, 'dream_theme'=>$dream_theme]);
     }

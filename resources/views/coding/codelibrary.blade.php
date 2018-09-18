@@ -23,7 +23,7 @@
                 {{-- end --}}
 
                 <div class="card-columns">
-                    <div class="card mb-4 box-shadow" style="max-width: 22.5rem"
+                    <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = '{{route('keepy-uppy')}}'">
                         <img class="card-img-top"
                              src="{{asset('/img/frontend/coding/keepy_uppy.png')}}"
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-4 box-shadow" style="max-width: 22.5rem"
+                    <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = 'https://muziekweb.nl/Intros'">
                         <img class="card-img-top"
                              src="{{asset('/img/frontend/coding/intros.jpg')}}"
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-4 box-shadow" style="max-width: 22.5rem"
+                    <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = 'https://filmbieb.nl'">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe width="560" height="315"
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-4 box-shadow" style="max-width: 22.5rem">
+                    <div class="card mb-4 box-shadow d-inline-block w-100">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/hJA5E5bcpmc?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>

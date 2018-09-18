@@ -17,8 +17,8 @@
                     <h6>{{key}}</h6>
                 </span>
                     <div :style="{width: value+'%', transitionDelay: index + 's' }"
-                         v-if="auth!=true" class="skill-slider w-0 mb-4"></div>
-                    <input type="range" class="form-control-range" min="1" max="100"
+                         v-if="auth!=true" class="skill-slider w-0 my-4"></div>
+                    <input type="range" class="form-control-range mb-3" min="1" max="100"
                            v-if="auth==true"
                            v-model="skills[key]"
                            v-on:change="changed_skills=true">
