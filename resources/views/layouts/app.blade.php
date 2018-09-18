@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -33,7 +33,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119163363-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-119163363-1');
@@ -70,7 +74,8 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <a class="border-0 nav-link text-{{session('contrast')}}" href="javascript:;"
-                   onclick="event.preventDefault();document.getElementById('change_dream_theme').submit();" title="Change the theme">{{$change_theme}} mode</a>
+                   onclick="event.preventDefault();document.getElementById('change_dream_theme').submit();"
+                   title="Change the theme">{{$change_theme}} mode</a>
                 <form id="change_dream_theme" action="{{route('change_theme')}}" method="post">
                     @csrf
                     <input name="dream_theme" type="hidden" value="{{$change_theme}}">
@@ -78,40 +83,61 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
-                </li>
-                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
-                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('coding')}}">{{ __('Coding') }}</a></li>
-                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('about')}}">{{ __('About') }}</a></li>
                 @guest
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{route('login')}}">{{ __('Login') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{route('about')}}">{{ __('About') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{route('login')}}">{{ __('Login') }}</a></li>
                 @endguest
                 @auth
                     @if (auth()->user()->isAdmin())
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#"
+                               id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Photos</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('add_photos')}}">{{ __('Add Photo') }}</a>
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage_photos')}}">{{ __('Edit Photo') }}</a>
+                                <a class="border-0 nav-link text-{{session('contrast')}}"
+                                   href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('add_photos')}}">{{ __('Add Photo') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('manage_photos')}}">{{ __('Edit Photo') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#"
+                               id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Music</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('add_music')}}">{{ __('Add Music') }}</a>
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage_music')}}">{{ __('Edit Music') }}</a>
+                                <a class="border-0 nav-link text-{{session('contrast')}}"
+                                   href="{{action('MusicController@index')}}">{{ __('Music') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('add_music')}}">{{ __('Add Music') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('manage_music')}}">{{ __('Edit Music') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-{{session('contrast')}}" href="#"
+                               id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register Users</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('register')}}">{{ __('Register User') }}</a>
-                                <a class="dropdown-item text-{{session('contrast')}}" href="{{route('manage')}}">{{ __('Manage Users') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('register')}}">{{ __('Register User') }}</a>
+                                <a class="dropdown-item text-{{session('contrast')}}"
+                                   href="{{route('manage')}}">{{ __('Manage Users') }}</a>
                             </div>
                         </li>
+                        <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                               href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                        <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                               href="{{route('about')}}">{{ __('About') }}</a></li>
                     @endif
                     <a class="border-0 nav-link text-{{session('contrast')}}" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -121,7 +147,9 @@
                         @csrf
                     </form>
                 @endauth
-                <li><a class="border-0 nav-link text-{{session('contrast')}}" href="{{'mailto:info@' . $_SERVER['SERVER_NAME'] . '?Subject=Hello%20there'}}" target="_top"><i class="fas fa-envelope"></i></a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                       href="{{'mailto:info@' . $_SERVER['SERVER_NAME'] . '?Subject=Hello%20there'}}" target="_top"><i
+                                class="fas fa-envelope"></i></a></li>
             </ul>
         </div>
     </div>
@@ -136,7 +164,8 @@
 
 <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>Custom built with <i class="fas fa-heart"></i> in <i class="fab fa-laravel"></i> + <i class="fab fa-vuejs"></i> - &copy; Sebastiaan Hols {{date("Y")}}</p>
+    <p>Custom built with <i class="fas fa-heart"></i> in <i class="fab fa-laravel"></i> + <i class="fab fa-vuejs"></i> -
+        &copy; Sebastiaan Hols {{date("Y")}}</p>
 </footer>
 </body>
 </html>

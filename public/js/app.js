@@ -39658,12 +39658,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card my-4" },
+    { staticClass: "card my-5" },
     [
       _c(
         "div",
         {
           staticClass: "card-body",
+          staticStyle: { border: "0.05em solid #b9b9b9" },
           on: {
             click: function($event) {
               _vm.show_list = !_vm.show_list
@@ -39675,23 +39676,7 @@ var render = function() {
           _c("div", { staticClass: "card-title text-center" }, [
             _c("h5", { class: [_vm.skillsButton, _vm.skillsList] }, [
               _vm._v(_vm._s(_vm.dropdown) + " Skills")
-            ]),
-            _vm._v(" "),
-            _vm.prod == true
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn-primary",
-                    on: {
-                      click: function($event) {
-                        _vm.auth = !_vm.auth
-                        _vm.load_json()
-                      }
-                    }
-                  },
-                  [_vm._v("Preview")]
-                )
-              : _vm._e()
+            ])
           ])
         ]
       ),
@@ -39702,6 +39687,22 @@ var render = function() {
               "ul",
               { staticClass: "list-group list-group-flush" },
               [
+                _vm.prod == true
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn-primary",
+                        on: {
+                          click: function($event) {
+                            _vm.auth = !_vm.auth
+                            _vm.load_json()
+                          }
+                        }
+                      },
+                      [_vm._v("Preview")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _vm._l(_vm.skills, function(value, key, index) {
                   return key.indexOf("_text") == -1
                     ? _c(

@@ -1,13 +1,13 @@
 <template>
-    <div class="card my-4">
-        <div class="card-body" v-on:click="show_list = !show_list; load_json()">
+    <div class="card my-5">
+        <div class="card-body" v-on:click="show_list = !show_list; load_json()" style="border: 0.05em solid #b9b9b9;">
             <div class="card-title text-center">
                 <h5 :class="[skillsButton, skillsList]">{{dropdown}} Skills</h5>
-                <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
             </div>
         </div>
         <transition name="fade">
             <ul v-if="show_list" class="list-group list-group-flush">
+                <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
                 <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')"
                     v-if="key.indexOf('_text') == -1" class="list-group-item">
                 <span>

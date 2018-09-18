@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
+@php
+    if (session('dream_theme') !== null){$dream_theme = session('dream_theme');} else {$dream_theme = 'light';}
+@endphp
     <div class="container marketing">
 
         <div class="row justify-content-center">
@@ -24,7 +26,7 @@
         {{-- end --}}
 
         @auth
-            <div class="col-md-12 mb-4 bg-light p-4">
+            <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4">
                 <h2>New Post...</h2>
                 <form class="card-text" action="{{url('posts')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -52,9 +54,7 @@
         @endauth
 
         @foreach($posts as $post)
-            <hr class="featurette-divider m-4">
             <div class="row featurette">
-
                 @if($loop->iteration % 2 == 0)
                     <div class="col-md-7">
                         <h3 class="featurette-heading">{{$post->title}}</h3>
@@ -66,6 +66,7 @@
                              src="{{$post->location}}" alt="{{$post->subtitle}}">
                     </div>
                 @else
+                    <hr class="featurette-divider">
                     <div class="col-md-5">
                         <img class="featurette-image img-fluid mx-auto"
                              src="{{$post->location}}" alt="{{$post->subtitle}}">
