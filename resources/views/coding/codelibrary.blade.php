@@ -61,7 +61,7 @@
                          onclick="location.href = 'https://filmbieb.nl'">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/c93pKlsLtFo?rel=0&amp;showinfo=0" frameborder="0"
+                                    src="https://www.youtube.com/embed/c93pKlsLtFo?rel=0&amp;showinfo=1" frameborder="0"
                                     allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                         <div class="card-body">
@@ -74,6 +74,15 @@
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow" style="max-width: 22.5rem">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/hJA5E5bcpmc?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Xerte Tracking</h4>
+                            <p class="card-text">A tracking plugin I built for an open source education platform. This project got me to get properly to grips woth GET, POST and Ajax. Also introduced me too the great chart.js library.</p>
                         </div>
                     </div>
                 </div>

@@ -55,7 +55,7 @@
     @yield('extra_js')
 
 </head>
-<body class="text-{{session('contrast')}}">
+<body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
 <nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-md mb-4 border-0">
     <div class="container">
         <a class="navbar-brand border-0" href="{{ url('/') }}">

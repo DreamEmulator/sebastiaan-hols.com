@@ -10685,6 +10685,10 @@ legend {
   border-bottom: none;
 }
 
+body.text-dark {
+  background-color: #FBEDEC;
+}
+
 .tidal-icon {
   width: 2em;
   height: 2em;

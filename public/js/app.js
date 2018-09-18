@@ -1831,6 +1831,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod', 'skill_name', 'saved_skills'],
@@ -1842,6 +1843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            auth: false,
             changed_skills: false,
             remove_skills: false,
             add_skill: false,
@@ -1887,6 +1889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.load_json();
+        this.auth = this.prod;
     }
 });
 
@@ -39568,7 +39571,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card my-4" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "card-title" }, [
+        _c("h5", [_vm._v("Skills")]),
+        _vm._v(" "),
+        _vm.prod == true
+          ? _c(
+              "button",
+              {
+                staticClass: "btn-primary",
+                on: {
+                  click: function($event) {
+                    _vm.auth = !_vm.auth
+                    _vm.load_json()
+                  }
+                }
+              },
+              [_vm._v("Preview")]
+            )
+          : _vm._e()
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "ul",
@@ -39605,7 +39628,7 @@ var render = function() {
                     _c("h6", [_vm._v(_vm._s(key))])
                   ]),
                   _vm._v(" "),
-                  _vm.prod != true
+                  _vm.auth != true
                     ? _c("div", {
                         staticClass: "skill-slider w-0 mb-4",
                         style: {
@@ -39615,7 +39638,7 @@ var render = function() {
                       })
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.prod == true
+                  _vm.auth == true
                     ? _c("input", {
                         directives: [
                           {
@@ -39639,7 +39662,7 @@ var render = function() {
                       })
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.prod !== true
+                  _vm.auth !== true
                     ? _c(
                         "p",
                         {
@@ -39650,7 +39673,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.prod == true
+                  _vm.auth == true
                     ? _c("input", {
                         directives: [
                           {
@@ -39668,19 +39691,21 @@ var render = function() {
                         },
                         domProps: { value: _vm.skills[key + "_text"] },
                         on: {
-                          change: function($event) {
-                            _vm.changed_skills = true
-                          },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.skills,
+                                key + "_text",
+                                $event.target.value
+                              )
+                            },
+                            function($event) {
+                              _vm.changed_skills = true
                             }
-                            _vm.$set(
-                              _vm.skills,
-                              key + "_text",
-                              $event.target.value
-                            )
-                          }
+                          ]
                         }
                       })
                     : _vm._e()
@@ -39737,7 +39762,7 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _vm.prod
+    _vm.auth
       ? _c("div", { staticClass: "card-body" }, [
           _vm.changed_skills == true &&
           _vm.add_skill == false &&
@@ -39842,16 +39867,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "card-title" }, [_c("h5", [_vm._v("Skills")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

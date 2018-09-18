@@ -3,6 +3,7 @@
         <div class="card-body">
             <div class="card-title">
                 <h5>Skills</h5>
+                <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
             </div>
         </div>
         <ul class="list-group list-group-flush">
@@ -14,13 +15,13 @@
                     <h6>{{key}}</h6>
                 </span>
                 <div :style="{width: value+'%', transitionDelay: index + 's' }"
-                     v-if="prod!=true" class="skill-slider w-0 mb-4"></div>
+                     v-if="auth!=true" class="skill-slider w-0 mb-4"></div>
                 <input type="range" class="form-control-range" min="1" max="100"
-                       v-if="prod==true"
+                       v-if="auth==true"
                        v-model="skills[key]"
                        v-on:change="changed_skills=true">
-                <p v-if="prod!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
-                <input v-if="prod==true" v-model="skills[key + '_text']" v-on:change="changed_skills=true"
+                <p v-if="auth!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
+                <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
                        type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
             </li>
             <li v-if="add_skill==true" class="list-group-item">
@@ -29,7 +30,7 @@
                        v-model="new_skill_level">
             </li>
         </ul>
-        <div v-if="prod" class="card-body">
+        <div v-if="auth" class="card-body">
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="save_json"
                     class="btn-success">Save changes
             </button>
@@ -81,6 +82,7 @@
         },
         data: function () {
             return {
+                auth: false,
                 changed_skills: false,
                 remove_skills: false,
                 add_skill: false,
@@ -126,6 +128,7 @@
         },
         mounted() {
             this.load_json();
+            this.auth = this.prod;
         }
     }
 </script>
