@@ -1,12 +1,12 @@
 <template>
     <div class="card my-4">
         <div class="card-body">
-            <div class="card-title">
-                <h5>Skills</h5>
+            <div class="card-title text-center">
+                <h5 v-on:click="show_list = !show_list; load_json()" :class="[skillsButton, skillsList]">{{dropdown}} Skills</h5>
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
             </div>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul v-if="show_list" class="list-group list-group-flush">
             <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')" v-if="key.indexOf('_text') == -1" class="list-group-item">
                 <span>
                     <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
@@ -78,11 +78,21 @@
             json_string: function () {
                 this.saved_skills[this.skill_name] = this.skills;
                 return JSON.stringify(this.saved_skills);
+            },
+            dropdown: function(){
+                if (this.show_list){
+                    this.skillsList = "open";
+                    return "Hide";
+                } else {
+                    this.skillsList = "closed";
+                    return "Show";
+                }
             }
         },
         data: function () {
             return {
                 auth: false,
+                show_list: false,
                 changed_skills: false,
                 remove_skills: false,
                 add_skill: false,
@@ -90,6 +100,8 @@
                 new_skill_level: 0,
                 new_skill_text: "",
                 skills: {},
+                skillsList: "open",
+                skillsButton: "skills-button"
             }
         },
         methods: {
