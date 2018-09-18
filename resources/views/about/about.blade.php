@@ -24,7 +24,7 @@
         {{-- end --}}
 
         @auth
-            <div class="col-md-12 mb-4">
+            <div class="col-md-12 mb-4 bg-light p-4">
                 <h2>New Post...</h2>
                 <form class="card-text" action="{{url('posts')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -56,15 +56,15 @@
             <div class="row featurette">
 
                 @if($loop->iteration % 2 == 0)
-                <div class="col-md-7">
-                    <h3 class="featurette-heading">{{$post->title}}</h3>
-                    <span class="text-muted">{{$post->subtitle}}</span>
-                    <p class="lead">{{$post->story}}</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-fluid mx-auto"
-                         src="{{$post->location}}" alt="{{$post->subtitle}}">
-                </div>
+                    <div class="col-md-7">
+                        <h3 class="featurette-heading">{{$post->title}}</h3>
+                        <span class="text-muted">{{$post->subtitle}}</span>
+                        <p class="lead">{{$post->story}}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="featurette-image img-fluid mx-auto"
+                             src="{{$post->location}}" alt="{{$post->subtitle}}">
+                    </div>
                 @else
                     <div class="col-md-5">
                         <img class="featurette-image img-fluid mx-auto"
@@ -76,6 +76,22 @@
                         <p class="lead">{{$post->story}}</p>
                     </div>
                 @endif
+
+                @auth
+
+                    <div class="col-md-12">
+                        <form id="delete_post_{{$post['id']}}"
+                              action="{{action('PostController@destroy', $post['id'])}}"
+                              method="post">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" style="display: none"></button>
+
+
+                            <button class="btn btn-danger mt-2" type="submit">Delete</button>
+                        </form>
+                    </div>
+                @endauth
 
             </div>
         @endforeach
