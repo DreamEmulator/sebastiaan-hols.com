@@ -6,30 +6,33 @@
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
             </div>
         </div>
-        <ul v-if="show_list" class="list-group list-group-flush">
-            <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')" v-if="key.indexOf('_text') == -1" class="list-group-item">
+        <transition name="fade">
+            <ul v-if="show_list" class="list-group list-group-flush">
+                <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')"
+                    v-if="key.indexOf('_text') == -1" class="list-group-item">
                 <span>
                     <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                     <h6>{{key}}</h6>
                 </span>
-                <div :style="{width: value+'%', transitionDelay: index + 's' }"
-                     v-if="auth!=true" class="skill-slider w-0 mb-4"></div>
-                <input type="range" class="form-control-range" min="1" max="100"
-                       v-if="auth==true"
-                       v-model="skills[key]"
-                       v-on:change="changed_skills=true">
-                <p v-if="auth!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
-                <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
-                       type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
-            </li>
-            <li v-if="add_skill==true" class="list-group-item">
-                <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
-                <input type="range" class="form-control-range" min="1" max="100"
-                       v-model="new_skill_level">
-            </li>
-        </ul>
+                    <div :style="{width: value+'%', transitionDelay: index + 's' }"
+                         v-if="auth!=true" class="skill-slider w-0 mb-4"></div>
+                    <input type="range" class="form-control-range" min="1" max="100"
+                           v-if="auth==true"
+                           v-model="skills[key]"
+                           v-on:change="changed_skills=true">
+                    <p v-if="auth!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
+                    <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
+                           type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
+                </li>
+                <li v-if="add_skill==true" class="list-group-item">
+                    <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
+                    <input type="range" class="form-control-range" min="1" max="100"
+                           v-model="new_skill_level">
+                </li>
+            </ul>
+        </transition>
         <div v-if="auth" class="card-body">
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="save_json"
                     class="btn-success">Save changes
@@ -69,6 +72,29 @@
         width: 0 !important;
         transition: 0s !important;
     }
+
+    .fade-enter {
+        opacity: 0;
+        max-height: 0px;
+    }
+
+    .fade-enter-to {
+        max-height: 1000px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s, max-height 1s;
+    }
+
+    .fade-leave {
+        max-height: 1000px;
+    }
+
+    .fade-leave-to {
+        opacity: 0;
+        max-height: 0px;
+    }
+
 </style>
 
 <script>
@@ -79,12 +105,12 @@
                 this.saved_skills[this.skill_name] = this.skills;
                 return JSON.stringify(this.saved_skills);
             },
-            dropdown: function(){
-                if (this.show_list){
+            dropdown: function () {
+                if (this.show_list) {
                     this.skillsList = "open";
                     return "Hide";
                 } else {
-                    this.skillsList = "closed";
+                    this.skillsList = "closed mb-3";
                     return "Show";
                 }
             }

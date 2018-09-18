@@ -1832,6 +1832,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod', 'skill_name', 'saved_skills'],
@@ -1845,7 +1871,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.skillsList = "open";
                 return "Hide";
             } else {
-                this.skillsList = "closed";
+                this.skillsList = "closed mb-3";
                 return "Show";
             }
         }
@@ -8094,7 +8120,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n    -webkit-transition: 0s !important;\n    transition: 0s !important;\n}\n", ""]);
+exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n    -webkit-transition: 0s !important;\n    transition: 0s !important;\n}\n.fade-enter {\n    opacity: 0;\n    max-height: 0px;\n}\n.fade-enter-to {\n    max-height: 1000px;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s, max-height 1s;\n    transition: opacity .5s, max-height 1s;\n}\n.fade-leave {\n    max-height: 1000px;\n}\n.fade-leave-to {\n    opacity: 0;\n    max-height: 0px;\n}\n\n", ""]);
 
 // exports
 
@@ -39582,316 +39608,327 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card my-4" }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "card-title text-center" }, [
-        _c(
-          "h5",
-          {
-            class: [_vm.skillsButton, _vm.skillsList],
-            on: {
-              click: function($event) {
-                _vm.show_list = !_vm.show_list
-                _vm.load_json()
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.dropdown) + " Skills")]
-        ),
-        _vm._v(" "),
-        _vm.prod == true
-          ? _c(
-              "button",
-              {
-                staticClass: "btn-primary",
-                on: {
-                  click: function($event) {
-                    _vm.auth = !_vm.auth
-                    _vm.load_json()
-                  }
+  return _c(
+    "div",
+    { staticClass: "card my-4" },
+    [
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "card-title text-center" }, [
+          _c(
+            "h5",
+            {
+              class: [_vm.skillsButton, _vm.skillsList],
+              on: {
+                click: function($event) {
+                  _vm.show_list = !_vm.show_list
+                  _vm.load_json()
                 }
-              },
-              [_vm._v("Preview")]
-            )
-          : _vm._e()
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.show_list
-      ? _c(
-          "ul",
-          { staticClass: "list-group list-group-flush" },
-          [
-            _vm._l(_vm.skills, function(value, key, index) {
-              return key.indexOf("_text") == -1
-                ? _c(
-                    "li",
-                    {
-                      staticClass: "list-group-item",
-                      on: {
-                        click: function($event) {
-                          _vm.show_text(key + "_text")
-                        }
-                      }
-                    },
-                    [
-                      _c("span", [
-                        _vm.remove_skills == true
-                          ? _c(
-                              "button",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    _vm.remove_skill(key)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-trash-alt" })]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("h6", [_vm._v(_vm._s(key))])
-                      ]),
-                      _vm._v(" "),
-                      _vm.auth != true
-                        ? _c("div", {
-                            staticClass: "skill-slider w-0 mb-4",
-                            style: {
-                              width: value + "%",
-                              transitionDelay: index + "s"
-                            }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.auth == true
-                        ? _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.skills[key],
-                                expression: "skills[key]"
-                              }
-                            ],
-                            staticClass: "form-control-range",
-                            attrs: { type: "range", min: "1", max: "100" },
-                            domProps: { value: _vm.skills[key] },
-                            on: {
-                              change: function($event) {
-                                _vm.changed_skills = true
-                              },
-                              __r: function($event) {
-                                _vm.$set(_vm.skills, key, $event.target.value)
-                              }
-                            }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.auth !== true
-                        ? _c(
-                            "p",
-                            {
-                              class: key + "_text",
-                              staticStyle: { display: "none" }
-                            },
-                            [_vm._v(_vm._s(_vm.skills[key + "_text"]))]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.auth == true
-                        ? _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.skills[key + "_text"],
-                                expression: "skills[key + '_text']"
-                              }
-                            ],
-                            staticClass: "form-control mb-2",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Describe skill",
-                              maxlength: "240"
-                            },
-                            domProps: { value: _vm.skills[key + "_text"] },
-                            on: {
-                              input: [
-                                function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.skills,
-                                    key + "_text",
-                                    $event.target.value
-                                  )
-                                },
-                                function($event) {
-                                  _vm.changed_skills = true
-                                }
-                              ]
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  )
-                : _vm._e()
-            }),
-            _vm._v(" "),
-            _vm.add_skill == true
-              ? _c("li", { staticClass: "list-group-item" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.new_skill_name,
-                        expression: "new_skill_name"
-                      }
-                    ],
-                    staticClass: "form-control mb-2",
-                    attrs: { type: "text", placeholder: "New skill" },
-                    domProps: { value: _vm.new_skill_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.new_skill_name = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.new_skill_level,
-                        expression: "new_skill_level"
-                      }
-                    ],
-                    staticClass: "form-control-range",
-                    attrs: { type: "range", min: "1", max: "100" },
-                    domProps: { value: _vm.new_skill_level },
-                    on: {
-                      __r: function($event) {
-                        _vm.new_skill_level = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e()
-          ],
-          2
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.auth
-      ? _c("div", { staticClass: "card-body" }, [
-          _vm.changed_skills == true &&
-          _vm.add_skill == false &&
-          _vm.remove_skills == false
-            ? _c(
-                "button",
-                { staticClass: "btn-success", on: { click: _vm.save_json } },
-                [_vm._v("Save changes\n        ")]
-              )
-            : _vm._e(),
+              }
+            },
+            [_vm._v(_vm._s(_vm.dropdown) + " Skills")]
+          ),
           _vm._v(" "),
-          _vm.changed_skills == true &&
-          _vm.add_skill == false &&
-          _vm.remove_skills == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-danger float-right",
-                  on: { click: _vm.load_json }
-                },
-                [_vm._v("Cancel changes\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.add_skill == true && _vm.remove_skills == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-danger float-right",
-                  on: {
-                    click: function($event) {
-                      _vm.add_skill = false
-                    }
-                  }
-                },
-                [_vm._v("Cancel\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.remove_skills == false &&
-          _vm.add_skill == false &&
-          _vm.changed_skills == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-warning float-right",
-                  on: {
-                    click: function($event) {
-                      _vm.remove_skills = !_vm.remove_skills
-                    }
-                  }
-                },
-                [_vm._v("Remove skill\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.remove_skills == true
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-danger float-right",
-                  on: {
-                    click: function($event) {
-                      _vm.remove_skills = false
-                    }
-                  }
-                },
-                [_vm._v("Cancel\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.add_skill == false &&
-          _vm.remove_skills == false &&
-          _vm.changed_skills == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn-primary float-right mr-2",
-                  on: {
-                    click: function($event) {
-                      _vm.add_skill = !_vm.add_skill
-                    }
-                  }
-                },
-                [_vm._v("New skill\n        ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.add_skill == true &&
-          _vm.remove_skills == false &&
-          _vm.changed_skills == false
+          _vm.prod == true
             ? _c(
                 "button",
                 {
                   staticClass: "btn-primary",
-                  on: { click: _vm.add_new_skill }
+                  on: {
+                    click: function($event) {
+                      _vm.auth = !_vm.auth
+                      _vm.load_json()
+                    }
+                  }
                 },
-                [_vm._v("Add skill\n        ")]
+                [_vm._v("Preview")]
               )
             : _vm._e()
         ])
-      : _vm._e()
-  ])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.show_list
+          ? _c(
+              "ul",
+              { staticClass: "list-group list-group-flush" },
+              [
+                _vm._l(_vm.skills, function(value, key, index) {
+                  return key.indexOf("_text") == -1
+                    ? _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item",
+                          on: {
+                            click: function($event) {
+                              _vm.show_text(key + "_text")
+                            }
+                          }
+                        },
+                        [
+                          _c("span", [
+                            _vm.remove_skills == true
+                              ? _c(
+                                  "button",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        _vm.remove_skill(key)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-trash-alt" })]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("h6", [_vm._v(_vm._s(key))])
+                          ]),
+                          _vm._v(" "),
+                          _vm.auth != true
+                            ? _c("div", {
+                                staticClass: "skill-slider w-0 mb-4",
+                                style: {
+                                  width: value + "%",
+                                  transitionDelay: index + "s"
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.auth == true
+                            ? _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.skills[key],
+                                    expression: "skills[key]"
+                                  }
+                                ],
+                                staticClass: "form-control-range",
+                                attrs: { type: "range", min: "1", max: "100" },
+                                domProps: { value: _vm.skills[key] },
+                                on: {
+                                  change: function($event) {
+                                    _vm.changed_skills = true
+                                  },
+                                  __r: function($event) {
+                                    _vm.$set(
+                                      _vm.skills,
+                                      key,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.auth !== true
+                            ? _c(
+                                "p",
+                                {
+                                  class: key + "_text",
+                                  staticStyle: { display: "none" }
+                                },
+                                [_vm._v(_vm._s(_vm.skills[key + "_text"]))]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.auth == true
+                            ? _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.skills[key + "_text"],
+                                    expression: "skills[key + '_text']"
+                                  }
+                                ],
+                                staticClass: "form-control mb-2",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Describe skill",
+                                  maxlength: "240"
+                                },
+                                domProps: { value: _vm.skills[key + "_text"] },
+                                on: {
+                                  input: [
+                                    function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.skills,
+                                        key + "_text",
+                                        $event.target.value
+                                      )
+                                    },
+                                    function($event) {
+                                      _vm.changed_skills = true
+                                    }
+                                  ]
+                                }
+                              })
+                            : _vm._e()
+                        ]
+                      )
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm.add_skill == true
+                  ? _c("li", { staticClass: "list-group-item" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_skill_name,
+                            expression: "new_skill_name"
+                          }
+                        ],
+                        staticClass: "form-control mb-2",
+                        attrs: { type: "text", placeholder: "New skill" },
+                        domProps: { value: _vm.new_skill_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.new_skill_name = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_skill_level,
+                            expression: "new_skill_level"
+                          }
+                        ],
+                        staticClass: "form-control-range",
+                        attrs: { type: "range", min: "1", max: "100" },
+                        domProps: { value: _vm.new_skill_level },
+                        on: {
+                          __r: function($event) {
+                            _vm.new_skill_level = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ],
+              2
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.auth
+        ? _c("div", { staticClass: "card-body" }, [
+            _vm.changed_skills == true &&
+            _vm.add_skill == false &&
+            _vm.remove_skills == false
+              ? _c(
+                  "button",
+                  { staticClass: "btn-success", on: { click: _vm.save_json } },
+                  [_vm._v("Save changes\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.changed_skills == true &&
+            _vm.add_skill == false &&
+            _vm.remove_skills == false
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-danger float-right",
+                    on: { click: _vm.load_json }
+                  },
+                  [_vm._v("Cancel changes\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.add_skill == true && _vm.remove_skills == false
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-danger float-right",
+                    on: {
+                      click: function($event) {
+                        _vm.add_skill = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.remove_skills == false &&
+            _vm.add_skill == false &&
+            _vm.changed_skills == false
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-warning float-right",
+                    on: {
+                      click: function($event) {
+                        _vm.remove_skills = !_vm.remove_skills
+                      }
+                    }
+                  },
+                  [_vm._v("Remove skill\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.remove_skills == true
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-danger float-right",
+                    on: {
+                      click: function($event) {
+                        _vm.remove_skills = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.add_skill == false &&
+            _vm.remove_skills == false &&
+            _vm.changed_skills == false
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-primary float-right mr-2",
+                    on: {
+                      click: function($event) {
+                        _vm.add_skill = !_vm.add_skill
+                      }
+                    }
+                  },
+                  [_vm._v("New skill\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.add_skill == true &&
+            _vm.remove_skills == false &&
+            _vm.changed_skills == false
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn-primary",
+                    on: { click: _vm.add_new_skill }
+                  },
+                  [_vm._v("Add skill\n        ")]
+                )
+              : _vm._e()
+          ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

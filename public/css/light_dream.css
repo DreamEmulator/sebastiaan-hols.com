@@ -10633,17 +10633,14 @@ body.text-dark {
   transition: -webkit-transform 1s;
   transition: transform 1s;
   transition: transform 1s, -webkit-transform 1s;
-}
-
-.skills-button.closed:before {
   -webkit-transform: translateX(-50%) rotate(225deg);
           transform: translateX(-50%) rotate(225deg);
 }
 
 .skills-button.open:before {
   bottom: -1.75em;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-          transform: translateX(-50%) rotate(45deg);
+  -webkit-transform: translateX(-50%) rotate(135deg) scaleY(-1);
+          transform: translateX(-50%) rotate(135deg) scaleY(-1);
 }
 
 .tidal-icon {
