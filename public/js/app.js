@@ -1906,7 +1906,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod', 'skill_name', 'saved_skills'],
@@ -39875,7 +39874,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _vm.auth
+      _vm.auth && _vm.show_list
         ? _c("div", { staticClass: "card-body" }, [
             _vm.changed_skills == true &&
             _vm.add_skill == false &&

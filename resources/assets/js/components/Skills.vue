@@ -33,14 +33,13 @@
                 </li>
             </ul>
         </transition>
-        <div v-if="auth" class="card-body">
+        <div v-if="auth && show_list" class="card-body">
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="save_json"
                     class="btn-success">Save changes
             </button>
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="load_json"
                     class="btn-danger float-right">Cancel changes
             </button>
-
             <button v-if="add_skill==true && remove_skills==false" v-on:click="add_skill=false"
                     class="btn-danger float-right">Cancel
             </button>
