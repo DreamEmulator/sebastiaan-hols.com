@@ -53,15 +53,18 @@
 		return view('welcome');
 	});
 
-	Route::get('/about', function (App\skills $skills)
+	Route::get('/about', function (App\skills $skills, App\post $post)
 	{
+	    $posts = $post::all();
         $skills = $skills::orderBy('created_at', 'desc')->first();
-		return view('about.about',['skills' => $skills]);
+		return view('about.about',['skills' => $skills,'posts' => $posts]);
 	})->name('about');
 
 	Route::resource('photos', 'PhotoController');
 
 	Route::resource('music', 'MusicController');
+
+	Route::resource('posts', 'PostController');
 
 	Route::get('/coding', function (App\skills $skills)
 	{

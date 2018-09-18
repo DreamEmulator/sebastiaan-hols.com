@@ -13,7 +13,7 @@
         </div>
 
         {{--Skill.vue + submit form : Add the skills model to the route--}}
-        <skills @auth:prod="true"@endauth :skill_name="'personal'" :saved_skills="{{$skills->json}}"></skills>
+        <skills @auth :prod="true" @endauth :skill_name="'personal'" :saved_skills="{{$skills->json}}"></skills>
         <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
@@ -23,35 +23,62 @@
         </form>
         {{-- end --}}
 
-        <hr class="featurette-divider m-4">
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h3 class="featurette-heading">Designer</h3>
-                <span class="text-muted">Photo's, Video's, Publications</span>
-                <p class="lead">From a young age there has always been a passion for creating and designing, new and
-                    interesting visual concepts.</p>
-                <p class="lead">Good design balances between information and looks. I enjoy working on projects that
-                    combine all facets of digital media from photography to video, desktops to dev-servers.</p>
+        @auth
+            <div class="col-md-12 mb-4">
+                <h2>New Post...</h2>
+                <form class="card-text" action="{{url('posts')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title"
+                               placeholder="Think of a cool title...">
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="post_pic">
+                    </div>
+                    <div class="form-group">
+                        <label for="subtitle">Subtitle</label>
+                        <input type="text" class="form-control" id="subtitle" name="subtitle"
+                               placeholder="Gotta have a sub...">
+                    </div>
+                    <div class="form-group">
+                        <label for="story">Post</label>
+                        <textarea class="form-control" id="story" name="story" placeholder="Spill the beans!"
+                                  maxlength="2500"></textarea>
+                    </div>
+                    <button id="submit_post" type="submit" class="btn btn-primary">Post</button>
+                </form>
             </div>
-            <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto"
-                     src="{{asset('/img/frontend/about/age_of_innocence.jpg')}}" alt="Age of innocence">
-            </div>
-        </div>
+        @endauth
 
-        <hr class="featurette-divider">
+        @foreach($posts as $post)
+            <hr class="featurette-divider m-4">
+            <div class="row featurette">
 
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h3 class="featurette-heading">Developer</h3>
-                <span class="text-muted">HTML, SCSS, JS, PHP</span>
-                <p class="lead">Nowadays I love to combine developing web applications with media design. Using frameworks such as Laravel and Vue allows me too quickly and easily leverage the power of the web to connect the creativity.</p>
+                @if($loop->iteration % 2 == 0)
+                <div class="col-md-7">
+                    <h3 class="featurette-heading">{{$post->title}}</h3>
+                    <span class="text-muted">{{$post->subtitle}}</span>
+                    <p class="lead">{{$post->story}}</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto"
+                         src="{{$post->location}}" alt="{{$post->subtitle}}">
+                </div>
+                @else
+                    <div class="col-md-5">
+                        <img class="featurette-image img-fluid mx-auto"
+                             src="{{$post->location}}" alt="{{$post->subtitle}}">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="featurette-heading">{{$post->title}}</h3>
+                        <span class="text-muted">{{$post->subtitle}}</span>
+                        <p class="lead">{{$post->story}}</p>
+                    </div>
+                @endif
+
             </div>
-            <div class="col-md-5 order-md-1">
-                <img class="featurette-image img-fluid mx-auto" src="{{asset('/img/frontend/about/reality.jpg')}}"
-                     alt="Age of Discovery">
-            </div>
-        </div>
+        @endforeach
     </div>
 
 

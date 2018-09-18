@@ -21,7 +21,7 @@
                     <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
                 </form>
                 {{-- end --}}
-
+                
                 <photo-library :photos="{{$photos}}"></photo-library>
             </div>
         </div>
