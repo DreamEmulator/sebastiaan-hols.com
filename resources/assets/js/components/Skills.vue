@@ -1,12 +1,12 @@
 <template>
     <div class="card my-5">
-        <div class="card-body" v-on:click="show_list = !show_list; load_json()" style="border: 0.05em solid #b9b9b9;">
+        <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
-                <h5 :class="[skillsButton, skillsList]">{{dropdown}} Skills</h5>
+                <h5 class="skills-button-title my-4">{{dropdown}} Skills</h5>
             </div>
         </div>
         <transition name="fade">
-            <ul v-if="show_list" class="list-group list-group-flush">
+            <ul v-if="show_list" class="list-group list-group-flush list-border">
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
                 <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')"
                     v-if="key.indexOf('_text') == -1" class="list-group-item">
@@ -72,12 +72,27 @@
         transition: 0s !important;
     }
 
-    body.text-dark .skills-button {
+    .skills-button {
+        border: 0.05em solid #b9b9b9;
+        transition: border 0.5s 1s;
+    }
+
+    .skills-button.open {
+        transition: border 0s;
+        border-bottom: none;
+    }
+
+    .list-border {
+        border: 0.05em solid #b9b9b9;
+        border-top: none;
+    }
+
+    .skills-button-title {
         user-select: none;
         position: relative;
     }
 
-    .skills-button:before {
+    .skills-button-title:before {
         content: "";
         position: absolute;
         height: 1em;
@@ -88,49 +103,56 @@
         transform: translateX(-50%) rotate(45deg);
     }
 
-    .skills-button.closed:before {
-        border-left: 2px solid rgba(0,0,0,0);
-        border-top: 2px solid rgba(0,0,0,0);
+    .skills-button.closed .skills-button-title:before {
+        border-left: 2px solid rgba(0, 0, 0, 0);
+        border-top: 2px solid rgba(0, 0, 0, 0);
     }
 
-    .skills-button.open:before{
+    .skills-button.open .skills-button-title:before {
         bottom: -1.75em;
-        border-right: 2px solid rgba(0,0,0,0);
-        border-bottom: 2px solid rgba(0,0,0,0);
+        border-right: 2px solid rgba(0, 0, 0, 0);
+        border-bottom: 2px solid rgba(0, 0, 0, 0);
     }
 
-    body.text-dark .skills-button.closed:before {
-        border-right: 2px solid rgba(0,0,0,1);
-        border-bottom: 2px solid rgba(0,0,0,1);
+    body.text-dark .skills-button.closed .skills-button-title:before {
+        border-right: 2px solid rgba(0, 0, 0, 1);
+        border-bottom: 2px solid rgba(0, 0, 0, 1);
     }
 
-    body.text-dark .skills-button.open:before {
-        border-left: 2px solid rgba(0,0,0,1);
-        border-top: 2px solid rgba(0,0,0,1);
+    body.text-dark .skills-button.open .skills-button-title:before {
+        border-left: 2px solid rgba(0, 0, 0, 1);
+        border-top: 2px solid rgba(0, 0, 0, 1);
     }
 
-    body.text-light .skills-button.closed:before {
+    body.text-light .skills-button.closed .skills-button-title:before {
         bottom: 0.55em;
-        border-right: 2px solid rgba(255,255,255,1);
-        border-bottom: 2px solid rgba(255,255,255,1);
+        border-right: 2px solid rgba(255, 255, 255, 1);
+        border-bottom: 2px solid rgba(255, 255, 255, 1);
     }
 
-    body.text-light .skills-button.open:before {
-        border-left: 2px solid rgba(255,255,255,1);
-        border-top: 2px solid rgba(255,255,255,1);
+    body.text-light .skills-button.open .skills-button-title:before {
+        border-left: 2px solid rgba(255, 255, 255, 1);
+        border-top: 2px solid rgba(255, 255, 255, 1);
     }
 
     .fade-enter {
-        opacity: 0;
         max-height: 0px;
     }
-
+    .fade-enter li {
+        opacity: 0;
+    }
     .fade-enter-to {
         max-height: 1000px;
     }
 
     .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s, max-height 1s;
+        border: 0.05em solid #b9b9b9;
+        border-top: none;
+        transition: max-height 1s;
+    }
+
+    .fade-enter-active li, .fade-leave-active li {
+        transition: opacity .5s;
     }
 
     .fade-leave {
@@ -138,8 +160,11 @@
     }
 
     .fade-leave-to {
-        opacity: 0;
         max-height: 0px;
+    }
+
+    .fade-leave-to li {
+        opacity: 0;
     }
 
 </style>
@@ -160,6 +185,13 @@
                     this.skillsList = "closed";
                     return "Show";
                 }
+            },
+            skillsButton: function () {
+                if (this.show_list) {
+                    return "card skills-button open";
+                } else {
+                    return "card skills-button closed";
+                }
             }
         },
         data: function () {
@@ -174,7 +206,6 @@
                 new_skill_text: "",
                 skills: {},
                 skillsList: "open",
-                skillsButton: "skills-button"
             }
         },
         methods: {

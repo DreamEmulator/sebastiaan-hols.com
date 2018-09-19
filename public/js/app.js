@@ -1906,6 +1906,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prod', 'skill_name', 'saved_skills'],
@@ -1922,6 +1947,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.skillsList = "closed";
                 return "Show";
             }
+        },
+        skillsButton: function skillsButton() {
+            if (this.show_list) {
+                return "card skills-button open";
+            } else {
+                return "card skills-button closed";
+            }
         }
     },
     data: function data() {
@@ -1935,8 +1967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             new_skill_level: 0,
             new_skill_text: "",
             skills: {},
-            skillsList: "open",
-            skillsButton: "skills-button"
+            skillsList: "open"
         };
     },
     methods: {
@@ -8168,7 +8199,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n    -webkit-transition: 0s !important;\n    transition: 0s !important;\n}\nbody.text-dark .skills-button {\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    position: relative;\n}\n.skills-button:before {\n    content: \"\";\n    position: absolute;\n    height: 1em;\n    width: 1em;\n    left: 50%;\n    bottom: -1.25em;\n    -webkit-transition: border 0.25s;\n    transition: border 0.25s;\n    -webkit-transform: translateX(-50%) rotate(45deg);\n            transform: translateX(-50%) rotate(45deg);\n}\n.skills-button.closed:before {\n    border-left: 2px solid rgba(0,0,0,0);\n    border-top: 2px solid rgba(0,0,0,0);\n}\n.skills-button.open:before{\n    bottom: -1.75em;\n    border-right: 2px solid rgba(0,0,0,0);\n    border-bottom: 2px solid rgba(0,0,0,0);\n}\nbody.text-dark .skills-button.closed:before {\n    border-right: 2px solid rgba(0,0,0,1);\n    border-bottom: 2px solid rgba(0,0,0,1);\n}\nbody.text-dark .skills-button.open:before {\n    border-left: 2px solid rgba(0,0,0,1);\n    border-top: 2px solid rgba(0,0,0,1);\n}\nbody.text-light .skills-button.closed:before {\n    bottom: 0.55em;\n    border-right: 2px solid rgba(255,255,255,1);\n    border-bottom: 2px solid rgba(255,255,255,1);\n}\nbody.text-light .skills-button.open:before {\n    border-left: 2px solid rgba(255,255,255,1);\n    border-top: 2px solid rgba(255,255,255,1);\n}\n.fade-enter {\n    opacity: 0;\n    max-height: 0px;\n}\n.fade-enter-to {\n    max-height: 1000px;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s, max-height 1s;\n    transition: opacity .5s, max-height 1s;\n}\n.fade-leave {\n    max-height: 1000px;\n}\n.fade-leave-to {\n    opacity: 0;\n    max-height: 0px;\n}\n\n", ""]);
+exports.push([module.i, "\n.skill-slider {\n    background: -webkit-gradient(linear, left top, right top, from(#b7deed), color-stop(50%, #21b4e2), to(#b7deed));\n    background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);\n    width: 0%;\n    height: 1em;\n    -webkit-transition: width 1s;\n    transition: width 1s;\n}\n.w-0 {\n    width: 0 !important;\n    -webkit-transition: 0s !important;\n    transition: 0s !important;\n}\n.skills-button {\n    border: 0.05em solid #b9b9b9;\n    -webkit-transition: border 0.5s 1s;\n    transition: border 0.5s 1s;\n}\n.skills-button.open {\n    -webkit-transition: border 0s;\n    transition: border 0s;\n    border-bottom: none;\n}\n.list-border {\n    border: 0.05em solid #b9b9b9;\n    border-top: none;\n}\n.skills-button-title {\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    position: relative;\n}\n.skills-button-title:before {\n    content: \"\";\n    position: absolute;\n    height: 1em;\n    width: 1em;\n    left: 50%;\n    bottom: -1.25em;\n    -webkit-transition: border 0.25s;\n    transition: border 0.25s;\n    -webkit-transform: translateX(-50%) rotate(45deg);\n            transform: translateX(-50%) rotate(45deg);\n}\n.skills-button.closed .skills-button-title:before {\n    border-left: 2px solid rgba(0, 0, 0, 0);\n    border-top: 2px solid rgba(0, 0, 0, 0);\n}\n.skills-button.open .skills-button-title:before {\n    bottom: -1.75em;\n    border-right: 2px solid rgba(0, 0, 0, 0);\n    border-bottom: 2px solid rgba(0, 0, 0, 0);\n}\nbody.text-dark .skills-button.closed .skills-button-title:before {\n    border-right: 2px solid rgba(0, 0, 0, 1);\n    border-bottom: 2px solid rgba(0, 0, 0, 1);\n}\nbody.text-dark .skills-button.open .skills-button-title:before {\n    border-left: 2px solid rgba(0, 0, 0, 1);\n    border-top: 2px solid rgba(0, 0, 0, 1);\n}\nbody.text-light .skills-button.closed .skills-button-title:before {\n    bottom: 0.55em;\n    border-right: 2px solid rgba(255, 255, 255, 1);\n    border-bottom: 2px solid rgba(255, 255, 255, 1);\n}\nbody.text-light .skills-button.open .skills-button-title:before {\n    border-left: 2px solid rgba(255, 255, 255, 1);\n    border-top: 2px solid rgba(255, 255, 255, 1);\n}\n.fade-enter {\n    max-height: 0px;\n}\n.fade-enter li {\n    opacity: 0;\n}\n.fade-enter-to {\n    max-height: 1000px;\n}\n.fade-enter-active, .fade-leave-active {\n    border: 0.05em solid #b9b9b9;\n    border-top: none;\n    -webkit-transition: max-height 1s;\n    transition: max-height 1s;\n}\n.fade-enter-active li, .fade-leave-active li {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s;\n}\n.fade-leave {\n    max-height: 1000px;\n}\n.fade-leave-to {\n    max-height: 0px;\n}\n.fade-leave-to li {\n    opacity: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -39663,8 +39694,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "card-body",
-          staticStyle: { border: "0.05em solid #b9b9b9" },
+          class: [_vm.skillsButton],
           on: {
             click: function($event) {
               _vm.show_list = !_vm.show_list
@@ -39674,7 +39704,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "card-title text-center" }, [
-            _c("h5", { class: [_vm.skillsButton, _vm.skillsList] }, [
+            _c("h5", { staticClass: "skills-button-title my-4" }, [
               _vm._v(_vm._s(_vm.dropdown) + " Skills")
             ])
           ])
@@ -39685,7 +39715,7 @@ var render = function() {
         _vm.show_list
           ? _c(
               "ul",
-              { staticClass: "list-group list-group-flush" },
+              { staticClass: "list-group list-group-flush list-border" },
               [
                 _vm.prod == true
                   ? _c(
