@@ -13,7 +13,7 @@
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
 
                 <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text', $event)"
-                    v-if="key.indexOf('_text') == -1" class="list-group-item skill">
+                    v-if="key.indexOf('_text') == -1" :class="skill">
 
                 <span>
                     <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
@@ -82,11 +82,11 @@
         pointer-events: none;
     }
 
-    .skill > * {
+    .skill.visit  > * {
         user-select: none;
     }
 
-    .skill:before {
+    .skill.visit:before {
         content: "";
         position: absolute;
         top: 0;
@@ -113,7 +113,7 @@
         opacity: 1;
     }
 
-    .skill.open .show-skill-description  {
+    .skill.open .show-skill-description {
         margin: 1em 0 0 0;
         opacity: 1;
         transition: margin 0.5s 0s;
@@ -132,8 +132,7 @@
         transition: max-height 0.5s, opacity 0.25s 0.25s;
     }
 
-
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 1024px) {
         .skill .show-skill-description {
             opacity: 1;
         }
@@ -205,9 +204,11 @@
     .fade-enter {
         max-height: 0px;
     }
+
     .fade-enter li {
         opacity: 0;
     }
+
     .fade-enter-to {
         max-height: 1000px;
     }
@@ -240,6 +241,14 @@
     export default {
         props: ['prod', 'skill_name', 'saved_skills'],
         computed: {
+            skill: function () {
+                    if (this.prod !== true) {
+                        return "list-group-item skill visit";
+                    } else {
+                        return "list-group-item skill";
+                    }
+                }
+            ,
             json_string: function () {
                 this.saved_skills[this.skill_name] = this.skills;
                 return JSON.stringify(this.saved_skills);
