@@ -17,15 +17,9 @@
 		return view('auth.manageprofiles');
 	})->middleware('is_admin')->name('manage');
 
-
-	Route::get('/photos/add', function (App\photo $photos)
-	{
-		return view('photos.addphoto');
-	})->middleware('is_admin')->name('add_photos');
-
 	Route::get('/photos/manage', function (App\photo $photos)
 	{
-		$photos = $photos::all();
+		$photos = $photos::orderBy('created_at','desc')->get();
 
 		return view('photos.managephotos', ['photos' => $photos]);
 	})->middleware('is_admin')->name('manage_photos');

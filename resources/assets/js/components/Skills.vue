@@ -1,38 +1,52 @@
 <template>
     <div class="card my-5">
+
         <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
                 <h5 class="skills-button-title my-4">{{dropdown}} Skills</h5>
             </div>
         </div>
+
         <transition name="fade">
             <ul v-if="show_list" class="list-group list-group-flush list-border">
+
                 <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
-                <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text')"
-                    v-if="key.indexOf('_text') == -1" class="list-group-item">
+
+                <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text', $event)"
+                    v-if="key.indexOf('_text') == -1" class="list-group-item skill">
+
                 <span>
                     <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                     <h6>{{key}}</h6>
                 </span>
+
                     <div :style="{width: value+'%', transitionDelay: index + 's' }"
-                         v-if="auth!=true" class="skill-slider w-0 my-4"></div>
+                         v-if="auth!=true" class="skill-slider w-0 my-4">
+                    </div>
+
                     <input type="range" class="form-control-range mb-3" min="1" max="100"
                            v-if="auth==true"
                            v-model="skills[key]"
                            v-on:change="changed_skills=true">
-                    <p v-if="auth!==true" :class="key + '_text'" style="display: none">{{skills[key + '_text']}}</p>
+
+                    <p v-if="auth!==true" class="skill-description">{{skills[key + '_text']}}</p>
+                    <p v-if="auth!==true && skills[key + '_text']" class="show-skill-description">show</p>
+
                     <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
                            type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
                 </li>
+
                 <li v-if="add_skill==true" class="list-group-item">
                     <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
                     <input type="range" class="form-control-range" min="1" max="100"
                            v-model="new_skill_level">
                 </li>
+
             </ul>
         </transition>
+
         <div v-if="auth && show_list" class="card-body">
             <button v-if="changed_skills==true && add_skill==false && remove_skills==false" v-on:click="save_json"
                     class="btn-success">Save changes
@@ -65,11 +79,64 @@
         width: 0%;
         height: 1em;
         transition: width 1s;
+        pointer-events: none;
+    }
+
+    .skill > * {
+        user-select: none;
+    }
+
+    .skill:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .w-0 {
         width: 0 !important;
         transition: 0s !important;
+    }
+
+    .skill .show-skill-description {
+        float: right;
+        opacity: 0;
+        font-size: 1em;
+        color: #a6a6a6;
+        margin: -2em 0 0 0;
+        transition: margin 0.5s 0.5s, opacity 0.5s;
+    }
+
+    .skill:hover .show-skill-description {
+        opacity: 1;
+    }
+
+    .skill.open .show-skill-description  {
+        margin: 1em 0 0 0;
+        opacity: 1;
+        transition: margin 0.5s 0s;
+    }
+
+    .skill-description {
+        margin: 0;
+        opacity: 0;
+        max-height: 0px;
+        transition: max-height 0.25s 0.25s, opacity 0.5s;
+    }
+
+    .skill.open .skill-description {
+        opacity: 1;
+        max-height: 1000px;
+        transition: max-height 0.5s, opacity 0.25s 0.25s;
+    }
+
+
+    @media screen and (max-width: 767px) {
+        .skill .show-skill-description {
+            opacity: 1;
+        }
     }
 
     .skills-button {
@@ -125,7 +192,7 @@
     }
 
     body.text-light .skills-button.closed .skills-button-title:before {
-        bottom: 0.55em;
+        bottom: -0.9em;
         border-right: 2px solid rgba(255, 255, 255, 1);
         border-bottom: 2px solid rgba(255, 255, 255, 1);
     }
@@ -238,8 +305,10 @@
                 this.changed_skills = true;
                 this.$forceUpdate();
             },
-            show_text: function (text) {
-                $('.' + text).toggle();
+            show_text: function (text, event) {
+                $($('.skill')[$(event.target).index()]).toggleClass('open');
+                $('.skill .show-skill-description').text('show');
+                $('.skill.open .show-skill-description').text('hide');
             }
         },
         mounted() {
