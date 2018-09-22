@@ -8,12 +8,14 @@
         </div>
 
         <transition name="fade">
-            <ul v-if="show_list" class="list-group list-group-flush list-border">
+            <div class="list-wrapper">
+                <button v-if="prod == true && show_list == true" v-on:click="auth = !auth; previewing = !previewing; load_json()"
+                        class="btn-primary w-100">Preview
+                </button>
+                <ul v-if="show_list" class="list-group list-group-flush list-border">
 
-                <button v-if="prod == true" v-on:click="auth = !auth; load_json()" class="btn-primary">Preview</button>
-
-                <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text', $event)"
-                    v-if="key.indexOf('_text') == -1" :class="skill">
+                    <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text', $event)"
+                        v-if="key.indexOf('_text') == -1" :class="skill">
 
                 <span>
                     <button v-if="remove_skills==true" v-on:click="remove_skill(key)">
@@ -22,29 +24,30 @@
                     <h6>{{key}}</h6>
                 </span>
 
-                    <div :style="{width: value+'%', transitionDelay: index + 's' }"
-                         v-if="auth!=true" class="skill-slider w-0 my-4">
-                    </div>
+                        <div :style="{width: value+'%', transitionDelay: index + 's' }"
+                             v-if="auth!=true" class="skill-slider w-0 my-4">
+                        </div>
 
-                    <input type="range" class="form-control-range mb-3" min="1" max="100"
-                           v-if="auth==true"
-                           v-model="skills[key]"
-                           v-on:change="changed_skills=true">
+                        <input type="range" class="form-control-range mb-3" min="1" max="100"
+                               v-if="auth==true"
+                               v-model="skills[key]"
+                               v-on:change="changed_skills=true">
 
-                    <p v-if="auth!==true" class="skill-description">{{skills[key + '_text']}}</p>
-                    <p v-if="auth!==true && skills[key + '_text']" class="show-skill-description">show</p>
+                        <p v-if="auth!==true" class="skill-description">{{skills[key + '_text']}}</p>
+                        <p v-if="auth!==true && skills[key + '_text']" class="show-skill-description">show</p>
 
-                    <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
-                           type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
-                </li>
+                        <input v-if="auth==true" v-model="skills[key + '_text']" v-on:input="changed_skills=true"
+                               type="text" class="form-control mb-2" placeholder="Describe skill" maxlength="240"/>
+                    </li>
 
-                <li v-if="add_skill==true" class="list-group-item">
-                    <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
-                    <input type="range" class="form-control-range" min="1" max="100"
-                           v-model="new_skill_level">
-                </li>
+                    <li v-if="add_skill==true" class="list-group-item">
+                        <input class="form-control mb-2" type="text" placeholder="New skill" v-model="new_skill_name">
+                        <input type="range" class="form-control-range" min="1" max="100"
+                               v-model="new_skill_level">
+                    </li>
 
-            </ul>
+                </ul>
+            </div>
         </transition>
 
         <div v-if="auth && show_list" class="card-body">
@@ -82,7 +85,7 @@
         pointer-events: none;
     }
 
-    .skill.visit  > * {
+    .skill.visit > * {
         user-select: none;
     }
 
@@ -93,6 +96,7 @@
         left: 0;
         height: 100%;
         width: 100%;
+        z-index: 1;
     }
 
     .w-0 {
@@ -242,12 +246,12 @@
         props: ['prod', 'skill_name', 'saved_skills'],
         computed: {
             skill: function () {
-                    if (this.prod !== true) {
-                        return "list-group-item skill visit";
-                    } else {
-                        return "list-group-item skill";
-                    }
+                if (this.prod !== true || this.previewing == true) {
+                    return "list-group-item skill visit";
+                } else {
+                    return "list-group-item skill";
                 }
+            }
             ,
             json_string: function () {
                 this.saved_skills[this.skill_name] = this.skills;
@@ -282,6 +286,7 @@
                 new_skill_text: "",
                 skills: {},
                 skillsList: "open",
+                previewing: false,
             }
         },
         methods: {
