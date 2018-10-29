@@ -73,7 +73,6 @@
 		return $highscore;
 	});
 
-
     Route::resource('photos', 'PhotoController');
 
     Route::resource('music', 'MusicController');
@@ -81,3 +80,5 @@
     Route::resource('posts', 'PostController');
 
     Route::resource('blog', 'BlogController');
+
+    Route::resource('paintings', 'PaintingsController');

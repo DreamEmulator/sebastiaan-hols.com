@@ -10709,3 +10709,11 @@ body.text-dark {
   cursor: pointer !important;
 }
 
+p.lead {
+  white-space: pre-wrap;
+}
+
+textarea {
+  min-height: 200px;
+}
+

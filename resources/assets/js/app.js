@@ -14,10 +14,10 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 Vue.component('skills', require('./components/Skills.vue'));
 Vue.component('popmotion-ball-score', require('./components/PopmotionBallScore.vue'));
 Vue.component('photo-library', require('./components/PhotoLibrary.vue'));
+Vue.component('vue-magnifier', require('./components/VueMagnifier.vue'));
 
 const app = new Vue({
     el: '#app'
