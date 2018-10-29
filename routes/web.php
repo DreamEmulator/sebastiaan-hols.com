@@ -42,6 +42,7 @@
 
 	Route::post('/dream_theme', 'ThemeController@changeTheme')->name('change_theme');
 
+
 	Route::get('/', function ()
 	{
 		return view('welcome');
@@ -53,12 +54,6 @@
         $skills = $skills::orderBy('created_at', 'desc')->first();
 		return view('about.about',['skills' => $skills,'posts' => $posts]);
 	})->name('about');
-
-	Route::resource('photos', 'PhotoController');
-
-	Route::resource('music', 'MusicController');
-
-	Route::resource('posts', 'PostController');
 
 	Route::get('/coding', function (App\skills $skills)
 	{
@@ -77,3 +72,12 @@
 
 		return $highscore;
 	});
+
+
+    Route::resource('photos', 'PhotoController');
+
+    Route::resource('music', 'MusicController');
+
+    Route::resource('posts', 'PostController');
+
+    Route::resource('blog', 'BlogController');
