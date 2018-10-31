@@ -4,6 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-12 text-center">
+                        <h3>Music</h3>
+                        <h5>Stuff that sounds good</h5>
+                    </div>
+                </div>
+                <div class="card my-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Music</h4>
+                        <p class="card-text">Here you can find a DJ mix set I made and a bunch of my favorite albums. I used to spend I considerable amount of time Dj'ing, but that has been superseded for an interest in coding. What I do still do and which always still amazes me, is organising the sound setup. This can be for a symposium or a club night (if you need speakers in Rotterdam send me a mail), either way the tangle of cables and connections is something I know my way around. Free tip: if you are talking to a large audience with a remote mic and it keeps screaching. Turn your volume way down and tell the sound guy to turn his way up.</p>
+                        <p>Below you will also find recommendations of albums I particularly enjoy along with some feeble attempts at being a reviewer for Pitchfork. These albums are from all sorts of artists and genre's, but each really has it's merit. The links below will not only get you straight to Tidal and Spotify, but also Muziekweb. This is a truly great resource for music, collected and maintained by a lot of dedicated experts (and my ex-colleagues) in Rotterdam. Their collection has been built up and meticulously maintained since 1963 and there is a big chance they will have what you are looking for if you can't find it anywhere else...</p>
+                    </div>
+                </div>
 
                 {{--Skill.vue + submit form : Add the skills model to the route--}}
                 <skills @auth:prod="true"@endauth :skill_name="'music'" :saved_skills="{{$skills->json}}"></skills>
@@ -16,7 +29,7 @@
                 </form>
                 {{-- end --}}
 
-                <h3>Live mixes</h3>
+                <h3>Rezi</h3>
                 <p class="w-30">This mix combines my photography with the tracks I felt connected well to the rough and rugged feeling of urban excitement you find everywhere in Rotterdam.</p>
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe width="560" height="315"

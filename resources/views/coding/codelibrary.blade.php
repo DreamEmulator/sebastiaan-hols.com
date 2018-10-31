@@ -3,6 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
                 <a href="https://github.com/DreamEmulator" target="_blank">
                     <svg class="bg-light rounded-circle git-logo" height="40" width="40"
                          class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
@@ -11,12 +12,46 @@
                     </svg>
                 </a>
 
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-12 text-center">
+                        <h3>Coding</h3>
+                        <h5>Exciting examples and interesting insights</h5>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Coding</h4>
+                        <p class="card-text">This website is my digital portfolio and at the same time an example of my
+                            skills as a developer. It has been built in Laravel specifically to be able to define API's
+                            for passing JSON to Vue JS. This combined with the proper authentication techniques deployed
+                            by
+                            Laravel makes it easy for me to change and update the pages through a CMS structure that can
+                            work on a single page depending on your authencation status. The skills below for instance
+                            can be clicked and openend to reveal extra info to a user, but
+                            after being logged in the can accomodate an interactive preview layer that allows you to
+                            drag and update the content.</p>
+                        <p>As I have become more adept at deploying MVC setups in various languages, I have greatly come
+                            to appreciate the modularity and cleanliness of the code it yields. At first it may seem
+                            daunting to code a CMS like the one I built for this page, but as you delve deeper and
+                            deeper and devlope more code you really start to realize the brilliance and clairvoyance of
+                            the people that make these frameworks. From Ruby on Rails to Spring to Laravel to Django,
+                            simply browsing their file and folder structure on GitHub can give you great insights into
+                            the solutions that experts have solved for us.</p>
+                        <p>Besides from this site itself you can also click below to see a few examples of projects I
+                            have developed or contributed to, some of them are not accesible to the public so a
+                            screencapture has had to suffice. Also above there is a link to GitHub to see a few things I am
+                            currently working on, along with the code for the application you are in right now...</p>
+                    </div>
+                </div>
+
                 {{--Skill.vue + submit form : Add the skills model to the route--}}
-                <skills @auth:prod="true"@endauth :skill_name="'coding'" :saved_skills="{{$skills->json}}"></skills>
+                <skills @auth:prod="true" @endauth :skill_name="'coding'" :saved_skills="{{$skills->json}}"></skills>
                 <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <div class="form-group">
-                        <input type="text" style="display: none" class="form-control" id="skills_json" name="skills_json">
+                        <input type="text" style="display: none" class="form-control" id="skills_json"
+                               name="skills_json">
                     </div>
                     <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
                 </form>
@@ -78,11 +113,15 @@
                     </div>
                     <div class="card mb-4 box-shadow d-inline-block w-100">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/hJA5E5bcpmc?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/hJA5E5bcpmc?rel=0&amp;controls=1&amp;showinfo=0"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Xerte Tracking</h4>
-                            <p class="card-text">A tracking plugin I built for an open source education platform. This project got me to get properly to grips woth GET, POST and Ajax. Also introduced me too the great chart.js library.</p>
+                            <p class="card-text">A tracking plugin I built for an open source education platform. This
+                                project got me to get properly to grips woth GET, POST and Ajax. Also introduced me too
+                                the great chart.js library.</p>
                         </div>
                     </div>
                 </div>

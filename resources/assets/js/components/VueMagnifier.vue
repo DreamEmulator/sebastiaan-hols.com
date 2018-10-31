@@ -3,11 +3,27 @@
 <template>
     <div class="vue-magnifier-container">
         <slot></slot>
-        <span ref="magnificationElement" class="preview"
-              v-bind:style="{height: height, backgroundImage:'url(' + src + ')'}">
+
+        <div class="loading-container" v-bind:style="{animationDelay: animation}" v-if="loading">
+            <div class="dot dot-1" v-bind:style="{animationDelay: animation}"></div>
+            <div class="dot dot-2" v-bind:style="{animationDelay: animation}"></div>
+            <div class="dot dot-3" v-bind:style="{animationDelay: animation}"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+
+        <span ref="magnificationElement" class="preview" v-on:click="moveMagnifier"
+              v-bind:style="{height: height + 'px', width: width, backgroundImage:'url(' + src + ')'}">
           <span ref="glass" class="magnifying-glass"
-                v-bind:style="{backgroundImage: 'url(' + srcLarge + ')', backgroundPosition: backgroundPos, left: cursorX + 'px', top: cursorY + 'px'}"></span>
+                v-bind:style="{backgroundColor: backgroundColor, backgroundImage: 'url(' + srcLarge + ')', backgroundPosition: backgroundPos, left: cursorX + 'px', top: cursorY + 'px'}"></span>
       </span>
+
     </div>
 </template>
 
@@ -15,35 +31,84 @@
     export default {
         props: {
             src: String,
-            srcLarge: String
+            srcLarge: String,
+            index: String,
+        },
+        computed: {
+            animation: function () {
+                return `${this.index * 0.3}s`;
+            }
         },
         methods: {
             setHeight: function () {
-                var image = new Image(), container = document.querySelectorAll('.preview')[0];
+                var image = new Image();
                 image.src = this.src;
                 var height = image.naturalHeight, width = image.naturalWidth;
-                this.height = (height / width) * document.querySelectorAll('.preview')[0].offsetWidth + 'px';
+                var ratio = (height / width);
+                var maxWidth = 500;
+                this.width = this.$refs.magnificationElement.offsetWidth;
+                this.height = ratio * this.width;
+
+                if (height > width && window.innerWidth > maxWidth) {
+                    this.width = maxWidth + 'px';
+                    this.height = ratio * maxWidth;
+                }
+
+                $('.preview').addClass('show');
+                setTimeout(() => {
+                    this.loading = false
+                }, 2000);
             },
             getCursorPos: function (e) {
-                var x = window.Event
-                    ? e.pageX
-                    : e.clientX +
-                    (document.documentElement.scrollLeft
-                        ? document.documentElement.scrollLeft
-                        : document.body.scrollLeft);
-                var y = window.Event
-                    ? e.pageY
-                    : e.clientY +
-                    (document.documentElement.scrollTop
-                        ? document.documentElement.scrollTop
-                        : document.body.scrollTop);
 
-                this.cursorX = x - this.thumbPos.x;
+                var x = 0;
+                var y = 0;
+
+                if (e.type == "touchmove" || e.type == "touchstart") {
+
+                    $(`.touch:not(n${this.index})`).removeClass('touch');
+
+                    this.$refs.magnificationElement.classList.add('touch');
+                    this.$refs.magnificationElement.classList.add(`n${this.index}`);
+
+                    x = e.touches["0"].clientX +
+                        (document.documentElement.scrollLeft
+                            ? document.documentElement.scrollLeft
+                            : document.body.scrollLeft);
+                    y = e.touches["0"].clientY +
+                        (document.documentElement.scrollTop
+                            ? document.documentElement.scrollTop
+                            : document.body.scrollTop);
+                } else {
+
+                    x = window.Event
+                        ? e.pageX
+                        : e.clientX +
+                        (document.documentElement.scrollLeft
+                            ? document.documentElement.scrollLeft
+                            : document.body.scrollLeft);
+
+
+                    y = window.Event
+                        ? e.pageY
+                        : e.clientY +
+                        (document.documentElement.scrollTop
+                            ? document.documentElement.scrollTop
+                            : document.body.scrollTop);
+
+                }
+
+                this.cursorX = x - this.thumbPos.x - window.pageXOffset;
                 this.cursorY = y - this.thumbPos.y - window.pageYOffset;
+
+                if (this.cursorX < 0 || this.cursorY < 0 || this.cursorY > this.height || this.cursorX > this.width) {
+                    this.$refs.magnificationElement.classList.remove('touch');
+                    this.$forceUpdate()
+                }
+
             },
             getBounds: function () {
                 var el = this.$refs.magnificationElement;
-
                 this.bounds = el.getBoundingClientRect();
 
                 var xPos = 0;
@@ -88,6 +153,7 @@
                     "% " +
                     (this.cursorY * 100) / this.bounds.height +
                     "%";
+
             },
             getTransform: function (el) {
                 var transform = window
@@ -129,36 +195,35 @@
         },
         mounted: function () {
 
-            window.addEventListener('scroll', () => {
-                this.$forceUpdate();
-                console.log('updated');
+            window.addEventListener('load', () => {
+                this.setHeight();
             }),
 
-                window.addEventListener('load', () => {
-                    this.setHeight();
-                }),
+            window.addEventListener('resize', () => {
+                this.setHeight();
+            }),
 
-                window.addEventListener('resize', () => {
-                    this.setHeight();
-                }),
+            this.$nextTick(function () {
+                this.$refs.magnificationElement.addEventListener("mousemove", this.moveMagnifier);
+                this.$refs.magnificationElement.addEventListener("touchstart", this.moveMagnifier);
+                this.$refs.magnificationElement.addEventListener("touchmove", this.moveMagnifier);
+            });
 
-                this.$nextTick(function () {
-                    this.$refs.magnificationElement.addEventListener("mousemove", this.moveMagnifier);
-                    this.$refs.magnificationElement.addEventListener("touchstart", this.moveMagnifier);
-                    this.$refs.magnificationElement.addEventListener("touchmove", this.moveMagnifier);
-                });
+           this.backgroundColor =  $('body').css('background-color');
 
         },
         data: function () {
             return {
-                touch: false,
+                loading: true,
                 height: null,
+                width: 'auto',
                 scrollTop: null,
                 bounds: null,
                 cursorX: 0,
                 cursorY: 0,
                 thumbPos: {x: 0, y: 0},
-                backgroundPos: "0 0"
+                backgroundPos: "0 0",
+                backgroundColor: null,
             };
         }
     };
@@ -166,25 +231,40 @@
 
 <style lang="scss">
     // Magnifying glass options
-    $border-size: 5px; // Modify the border width of the magnifying glass component
-    $border-color: #666666; // Modify the border color of the magnifying glass component
-    $magnifier-width: 150px; // Modify the width of the magnifying glass component
-    $magnifier-height: 150px; // Modify the height of the magnifying glass component
+    $border-size: 4px; // Modify the border width of the magnifying glass component
+    $border-color: #202020;
+    $magnifier-width: 200px; // Modify the width of the magnifying glass component
+    $magnifier-height: 200px; // Modify the height of the magnifying glass component
 
     .vue-magnifier-container {
         position: relative;
         z-index: 1;
+        min-height: 250px;
+
+        &.scale {
+            max-height: 200px;
+        }
         .preview {
             position: relative;
             background: {
                 repeat: no-repeat;
-                size: contain;
+                size: cover;
                 position: 50% 50%;
             }
+            border-top: 2px solid #d2d2d2;
+            border-left: 2px solid #b9b9b9;
+            border-bottom: 2px solid #4e4d4d;
+            border-right: 2px solid #8a8a8a;
             display: block;
             clear: both;
             margin: 0 auto;
             cursor: none;
+            opacity: 0;
+
+            &.show {
+                opacity: 1;
+                transition: opacity 0.5s 1s;
+            }
 
             .magnifying-glass {
                 position: absolute;
@@ -197,10 +277,17 @@
                                         (-1 * $magnifier-width/2),
                                         (-1 * $magnifier-width/2)
                 );
-                background: #fff no-repeat;
+                background: no-repeat;
                 opacity: 0;
                 transition: opacity 0.5s;
                 pointer-events: none;
+
+            }
+
+            &.touch {
+                .magnifying-glass {
+                    opacity: 1;
+                }
             }
 
             &:hover {
@@ -209,6 +296,124 @@
                 }
             }
 
+        }
+    }
+
+    .loading-container {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+        filter: url('#goo');
+        animation: rotate-move 2s ease-in-out infinite;
+    }
+
+    .dot {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .dot-3 {
+        background-color: #f74d75;
+        animation: dot-3-move 2s ease infinite, index 6s ease infinite;
+    }
+
+    .dot-2 {
+        background-color: #10beae;
+        animation: dot-2-move 2s ease infinite, index 6s -4s ease infinite;
+    }
+
+    .dot-1 {
+        background-color: #ffe386;
+        animation: dot-1-move 2s ease infinite, index 6s -2s ease infinite;
+    }
+
+    @keyframes dot-3-move {
+        20% {
+            transform: scale(1)
+        }
+        45% {
+            transform: translateY(-18px) scale(.45)
+        }
+        60% {
+            transform: translateY(-90px) scale(.45)
+        }
+        80% {
+            transform: translateY(-90px) scale(.45)
+        }
+        100% {
+            transform: translateY(0px) scale(1)
+        }
+    }
+
+    @keyframes dot-2-move {
+        20% {
+            transform: scale(1)
+        }
+        45% {
+            transform: translate(-16px, 12px) scale(.45)
+        }
+        60% {
+            transform: translate(-80px, 60px) scale(.45)
+        }
+        80% {
+            transform: translate(-80px, 60px) scale(.45)
+        }
+        100% {
+            transform: translateY(0px) scale(1)
+        }
+    }
+
+    @keyframes dot-1-move {
+        20% {
+            transform: scale(1)
+        }
+        45% {
+            transform: translate(16px, 12px) scale(.45)
+        }
+        60% {
+            transform: translate(80px, 60px) scale(.45)
+        }
+        80% {
+            transform: translate(80px, 60px) scale(.45)
+        }
+        100% {
+            transform: translateY(0px) scale(1)
+        }
+    }
+
+    @keyframes rotate-move {
+        55% {
+            transform: translate(-50%, -50%) rotate(0deg)
+        }
+        80% {
+            transform: translate(-50%, -50%) rotate(360deg)
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg)
+        }
+    }
+
+    @keyframes index {
+        0%, 100% {
+            z-index: 3
+        }
+        33.3% {
+            z-index: 2
+        }
+        66.6% {
+            z-index: 1
         }
     }
 </style>

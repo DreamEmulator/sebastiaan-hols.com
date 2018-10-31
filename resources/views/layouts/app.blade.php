@@ -85,7 +85,11 @@
                 <!-- Authentication Links -->
                 @guest
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('BlogController@index')}}">{{ __('Dev Blog') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
                            href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('PaintingsController@index')}}">{{ __('Art Collection') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
                            href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
