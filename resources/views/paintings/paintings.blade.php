@@ -23,7 +23,7 @@
         <div class="card my-4">
             <div class="card-body">
                 <h4 class="card-title">Art collection</h4>
-                <p class="card-text">Here we have a collection of public domain art works that I find particularly beautiful. Aside from simply wanting to share them with you, I also greatly enjoyed coding the maginfying function. This JS trick is an example you find in the W3 basics, but there was still considerable work to be done to fit their basic JS example into the modularity of Vue and the responsiveness of Bootstrap.</p><p>
+                <p class="card-text">Here we have a collection of public domain art works that I find particularly beautiful. Aside from simply wanting to share them with you, I also greatly enjoyed coding the magnifying function. This JS trick is an example you find in the W3 basics, but there was still considerable work to be done to fit their basic JS example into the modularity of Vue and the responsiveness of Bootstrap.</p><p>
                     I really enjoy opening this page up on my phone when I'm stuck in traffic and pouring over the immaculate details of these pieces. It's truly astonishing to see how fine and meticulous these paintings are built up and to realize that (much like code) every artwork is the end result of endless iterations and updates, tweaks and alterations. I find these things truly inspiring and I hope you do too.
                 </p>
             </div>

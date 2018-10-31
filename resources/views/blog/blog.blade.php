@@ -19,13 +19,13 @@
 
         <div class="card my-4">
             <div class="card-body">
-                <h4 class="card-title">What's up?</h4>
+                <h4 class="card-title">Dev Blog</h4>
                 <p class="card-text">This blog is meant as kind of running insight into the things I learn and create as
                     a developer. This way I you can find out if my interests in coding are aligned with yours and if it
-                    might interesting to collaborate or useful te ask for input. My focus as a is primarily on frontend
-                    and reacitve programming frameworks (Vue, React, Angular), but I am also focussing on creating a
+                    might interesting to collaborate or useful te ask for input. My focus is primarily on frontend
+                    and reactive programming frameworks (Vue, React, Angular), but I am also focusing on creating a
                     strong foundation in more server side object oriented programming through a Java & App developer
-                    Certification from the Open University. I also have a lot of experience in UX design and cusotmizing
+                    Certification from the Open University. I also have a lot of experience in UX design and customizing
                     interfaces of existing projects or frameworks in order to enhance the user's efficiency and
                     experience. These questions are often strongly geared towards JS and SCSS, but I find good use of
                     basic HTML is often overlooked.</p>

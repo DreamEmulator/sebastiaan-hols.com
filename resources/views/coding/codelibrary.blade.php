@@ -27,19 +27,19 @@
                             for passing JSON to Vue JS. This combined with the proper authentication techniques deployed
                             by
                             Laravel makes it easy for me to change and update the pages through a CMS structure that can
-                            work on a single page depending on your authencation status. The skills below for instance
-                            can be clicked and openend to reveal extra info to a user, but
-                            after being logged in the can accomodate an interactive preview layer that allows you to
+                            work on a single page depending on your authentication status. The skills below for instance
+                            can be clicked and opened to reveal extra info to a user, but
+                            after being logged in the can accommodate an interactive preview layer that allows you to
                             drag and update the content.</p>
                         <p>As I have become more adept at deploying MVC setups in various languages, I have greatly come
                             to appreciate the modularity and cleanliness of the code it yields. At first it may seem
                             daunting to code a CMS like the one I built for this page, but as you delve deeper and
-                            deeper and devlope more code you really start to realize the brilliance and clairvoyance of
+                            deeper and develop more code you really start to realize the brilliance and clairvoyance of
                             the people that make these frameworks. From Ruby on Rails to Spring to Laravel to Django,
                             simply browsing their file and folder structure on GitHub can give you great insights into
                             the solutions that experts have solved for us.</p>
                         <p>Besides from this site itself you can also click below to see a few examples of projects I
-                            have developed or contributed to, some of them are not accesible to the public so a
+                            have developed or contributed to, some of them are not accessible to the public so a
                             screencapture has had to suffice. Also above there is a link to GitHub to see a few things I am
                             currently working on, along with the code for the application you are in right now...</p>
                     </div>
