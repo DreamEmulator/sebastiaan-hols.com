@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <div class="card my-4">
+                <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Coding</h4>
                         <p class="card-text">This website is my digital portfolio and at the same time an example of my

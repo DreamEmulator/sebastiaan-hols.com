@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="card my-4">
+        <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Dev Blog</h4>
                 <p class="card-text">This blog is meant as kind of running insight into the things I learn and create as
