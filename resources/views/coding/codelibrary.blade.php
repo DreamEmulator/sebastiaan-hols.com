@@ -21,7 +21,7 @@
 
                 <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
-                        <h4 class="card-title">Coding</h4>
+                        <h4 class="card-title">Intro</h4>
                         <p class="card-text">This website is my digital portfolio and at the same time an example of my
                             skills as a developer. It has been built in Laravel specifically to be able to define API's
                             for passing JSON to Vue JS. This combined with the proper authentication techniques deployed

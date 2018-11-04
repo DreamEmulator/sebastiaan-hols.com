@@ -18,7 +18,7 @@
 
                 <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
-                        <h4 class="card-title">Photography</h4>
+                        <h4 class="card-title">Intro</h4>
                         <p class="card-text">This is a showcase of my photography. Most of the pictures here are
                             artistic or architectural in nature. I also do a lot of portrait work, but I have chosen
                             specifically not to feature that here.</p>

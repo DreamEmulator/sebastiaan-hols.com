@@ -1,14 +1,16 @@
 @extends ('layouts.app')
-
+@section('extra_js')
+    <script src="{{ asset('js/extra.js') }}">console.log('Bonjour')</script>
+@endsection
 @section('content')
     <main role="main">
         <div class="album py-5">
             <div class="container">
                 <div class="row">
                     <div class="row justify-content-center">
-                        <div class="col-lg-12 text-center">
-                            <h3>My digital portfolio</h3>
-                            <h5>Click to discover</h5>
+                        <div class="col-lg-12 text-center mb-4">
+                            <h3>Digital portfolio</h3>
+                            <h5 id="click-discover">Click to discover</h5>
                             <h6 class="text-muted">An online overview of my skills and interests - built from scratch and constantly updated</h6>
                         </div>
 

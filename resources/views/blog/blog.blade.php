@@ -19,7 +19,7 @@
 
         <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
             <div class="card-body">
-                <h4 class="card-title">Dev Blog</h4>
+                <h4 class="card-title">Intro</h4>
                 <p class="card-text">This blog is meant as kind of running insight into the things I learn and create as
                     a developer. This way I you can find out if my interests in coding are aligned with yours and if it
                     might interesting to collaborate or useful te ask for input. My focus is primarily on frontend

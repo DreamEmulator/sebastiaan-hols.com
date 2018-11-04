@@ -12,7 +12,7 @@
                 </div>
                 <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
-                        <h4 class="card-title">Music</h4>
+                        <h4 class="card-title">Intro</h4>
                         <p class="card-text">Here you can find a DJ mix set I made and a bunch of my favorite albums. I used to spend I considerable amount of time Dj'ing, but that has been superseded for an interest in coding. What I do still do and which always still amazes me, is organising the sound setup. This can be for a symposium or a club night (if you need speakers in Rotterdam send me a mail), either way the tangle of cables and connections is something I know my way around. Free tip: if you are talking to a large audience with a remote mic and it keeps searching. Turn your volume way down and tell the sound guy to turn his way up.</p>
                         <p>Below you will also find recommendations of albums I particularly enjoy along with some feeble attempts at being a reviewer for Pitchfork. These albums are from all sorts of artists and genre's, but each really has it's merit. The links below will not only get you straight to Tidal and Spotify, but also Muziekweb. This is a truly great resource for music, collected and maintained by a lot of dedicated experts (and my ex-colleagues) in Rotterdam. Their collection has been built up and meticulously maintained since 1963 and there is a big chance they will have what you are looking for if you can't find it anywhere else...</p>
                     </div>

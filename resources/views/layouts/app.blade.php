@@ -56,7 +56,6 @@
     <link id="dream_theme" href="{{ asset('css/' . $dream_theme .'_dream.css') }}" rel="stylesheet">
 
     @yield('extra_style')
-    @yield('extra_js')
 
 </head>
 <body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
@@ -166,8 +165,8 @@
 
 <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>Custom built with <i class="fas fa-heart"></i> in <i class="fab fa-laravel"></i> + <i class="fab fa-vuejs"></i> -
-        &copy; Sebastiaan Hols {{date("Y")}}</p>
+    <p>Built from scratch with <i class="fas fa-heart"></i> in <i class="fab fa-laravel"></i> + <i class="fab fa-vuejs"></i> by Sebastiaan Hols {{date("Y")}}</p>
 </footer>
+@yield('extra_js')
 </body>
 </html>

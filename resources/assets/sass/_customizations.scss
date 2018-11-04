@@ -21,6 +21,25 @@ body.text-dark {
   cursor: pointer !important;
 }
 
+@keyframes emphasize {
+  0% {
+    transform: scale(1);
+    filter: blur(3px);
+  }
+  30% {
+    transform: scale(1.025);
+    filter: blur(0px);
+  }
+  60% {
+    transform: scale(1.005);
+    filter: blur(0px);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);;
+  }
+}
+
 p.lead {
   white-space: pre-wrap;
 }
@@ -29,9 +48,24 @@ textarea {
   min-height: 200px;
 }
 
+#click-discover{
+  cursor: pointer;
+}
+
+
 .intro-text {
   max-height: 2000px;
   transition: max-height 1s;
+
+  .text-dark &.hidden:after {
+    color: #000;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1) 25%);
+  }
+
+  .text-light &.hidden:after {
+    color: #FFF;
+    background: linear-gradient(to bottom, rgba(40,40,40,0), rgba(40,40,40,1) 25%);
+  }
 
   &.hidden {
     max-height: 200px;
@@ -40,7 +74,7 @@ textarea {
   }
 
   &.hidden:after {
-    content:"read more";
+    content:"- read more -";
     position: absolute;
     text-align: center;
     height: 50px;
@@ -49,7 +83,6 @@ textarea {
     width: 100%;
     left: 0;
     bottom: 0;
-    color: #000;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1) 25%);
+
   }
 }
