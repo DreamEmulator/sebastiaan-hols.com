@@ -17,7 +17,7 @@
                     <div class="col-lg-6">
                         <div class="card mb-4 box-shadow" onclick="location.href = '{{route('coding')}}'">
                             <img class="card-img-top"
-                                 src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4f74cfb527b697dc1c2f173034ae9be9&auto=format&fit=crop&w=1349&q=80"
+                                 src="{{asset('img/frontend/thumbs/coding_thumb.jpg')}}"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Coding</h4>
