@@ -135,6 +135,7 @@
         height: 1%;
         background-color: #0d0d0d;
         transform-origin: 0 0;
+        border-radius: 0.2vmin;
     }
 
     #minute:before {
@@ -142,9 +143,10 @@
         content: "";
         right: -25%;
         top: 50%;
-        height: 30%;
+        height: 40%;
         width: 25%;
         transform: translateY(-50%);
+        transform-origin: initial;
         background-color: #0d0d0d;
     }
 
@@ -156,6 +158,7 @@
         height: 1%;
         background-color: #0d0d0d;
         transform-origin: 0 0;
+        border-radius: 0.2vmin;
     }
 
     #hour:before {
@@ -163,9 +166,10 @@
         content: "";
         right: -40%;
         top: 50%;
-        height: 30%;
+        height: 40%;
         width: 40%;
         transform: translateY(-50%);
+        transform-origin: initial;
         background-color: #0d0d0d;
     }
 
