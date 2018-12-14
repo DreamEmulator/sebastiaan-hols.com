@@ -10,7 +10,7 @@
                         <h5>Stuff that sounds good</h5>
                     </div>
                 </div>
-                <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
+                <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">Here you can find a DJ mix set I made and a bunch of my favorite albums. I used to spend I considerable amount of time Dj'ing, but that has been superseded for an interest in coding. What I do still do and which always still amazes me, is organising the sound setup. This can be for a symposium or a club night (if you need speakers in Rotterdam send me a mail), either way the tangle of cables and connections is something I know my way around. Free tip: if you are talking to a large audience with a remote mic and it keeps searching. Turn your volume way down and tell the sound guy to turn his way up.</p>

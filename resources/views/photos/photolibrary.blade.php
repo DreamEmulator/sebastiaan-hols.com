@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
+                <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">This is a showcase of my photography. Most of the pictures here are

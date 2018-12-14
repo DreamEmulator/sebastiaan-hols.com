@@ -69,7 +69,7 @@
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
                             <span class="text-muted">{{$blog->subtitle}}</span>
-                            <p class="lead">{{$blog->story}}</p>
+                            <p class="lead body hide-text hidden" onclick="this.classList.remove('hidden')">{{$blog->story}}</p>
                             <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                         <div class="col-md-5">
@@ -85,7 +85,7 @@
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
                             <span class="text-muted">{{$blog->subtitle}}</span>
-                            <p class="lead">{{$blog->story}}</p>
+                            <p class="lead body hide-text hidden" onclick="this.classList.remove('hidden')">{{$blog->story}}</p>
                             <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                     @endif

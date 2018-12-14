@@ -20,7 +20,7 @@
                 <h6 class="text-muted">A collection of public domain artworks in hi-res with a magnifying glass</h6>
             </div>
         </div>
-        <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
+        <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Intro</h4>
                 <p class="card-text">Here we have a collection of public domain art works that I find particularly beautiful. Aside from simply wanting to share them with you, I also greatly enjoyed coding the magnifying function. This JS trick is an example you find in the W3 basics, but there was still considerable work to be done to fit their basic JS example into the modularity of Vue and the responsiveness of Bootstrap.</p><p>
