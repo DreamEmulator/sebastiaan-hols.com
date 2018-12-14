@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header" v-on:click="setTime()">DUW 4101 - 21600 bph - {{hour}}:{{minute}}:{{second}}:{{millisecond}}</div>
+                    <div class="card-header" v-on:click="hackSeconds()">DUW 4101 - 21600 bph - {{hour}}:{{minute}}:{{second}}:{{millisecond}}</div>
 
                     <div class="card-body clock-container">
 
@@ -37,12 +37,17 @@
                 hour: 0,
                 hour_rotation: '',
                 day: 0,
-                power: 100
+                power: 100,
+                interval: null,
             }
         },
         methods: {
+            hackSeconds: function (){
+                console.log('clearing');
+                clearInterval(this.interval);
+            },
             startClock: function () {
-                setInterval(() => {
+                this.interval = setInterval(() => {
                     this.setTime()
                 }, 1000 / 6);
             },
@@ -119,17 +124,49 @@
         width: 45%;
         height: 0.15vmin;
         background-color: #ab4245;
-        transform-origin: 0 50%;
+        transform-origin: 0 0;
     }
 
     #minute {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 35%;
-        height: 0.15vmin;
+        width: 37.5%;
+        height: 1%;
         background-color: #0d0d0d;
-        transform-origin: 0 50%;
+        transform-origin: 0 0;
+    }
+
+    #minute:before {
+        position: absolute;
+        content: "";
+        right: -25%;
+        top: 50%;
+        height: 30%;
+        width: 25%;
+        transform: translateY(-50%);
+        background-color: #0d0d0d;
+    }
+
+    #hour {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30%;
+        height: 1%;
+        background-color: #0d0d0d;
+        transform-origin: 0 0;
+    }
+
+    #hour:before {
+        position: absolute;
+        content: "";
+        right: -40%;
+        top: 50%;
+        height: 30%;
+        width: 40%;
+        transform: translateY(-50%);
+        background-color: #0d0d0d;
     }
 
     .base{
@@ -140,16 +177,6 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    }
-
-    #hour {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20%;
-        height: 1%;
-        background-color: #0d0d0d;
-        transform-origin: 0 50%;
     }
 
     #day {
