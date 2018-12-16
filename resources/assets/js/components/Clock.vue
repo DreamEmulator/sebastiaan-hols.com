@@ -8,6 +8,7 @@
                     <div class="card-body clock-container">
 
                         <div id="clock">
+                            <div id="day-window"></div>
                             <div id="day">{{day}}</div>
                             <div class="second-container">
                                 <div id="second" v-bind:style="{transform: second_rotation}"></div>
@@ -125,7 +126,7 @@
         height: 25%;
         border-radius: 100%;
         border: 0.15vmin #dedddb solid;
-        background-color: #fff;
+        background-color: #f7f7f7;
         background-image: url("/img/frontend/coding/nomos_metro_gangreserve_seconds.svg");
         background-position: center;
         background-repeat: no-repeat;
@@ -228,11 +229,21 @@
         position: absolute;
         bottom: 5%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) scale(1.5,2.5);
         color: #111;
-        padding: 3.5% 1%;
-        font-size: 190%;
-        background-color: #f0efed;
-        line-height: 50%;
+        padding: 0.5vw 0.75vw;
+        font-size: 1.25vw;
+    }
+
+    #day-window {
+        position: absolute;
+        left: 50%;
+        bottom: 4%;
+        transform: translateX(-50%);
+        border-bottom: 4.5vw solid #f0efed;
+        border-left: 0.5vw solid transparent;
+        border-right: 0.5vw solid transparent;
+        height: 0;
+        width: 5vw;
     }
 </style>
