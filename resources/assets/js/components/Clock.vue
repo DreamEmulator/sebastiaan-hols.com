@@ -51,6 +51,7 @@
                 hacking_seconds: false,
                 gangreserve_degrees: 32,
                 gangreserve_rotation: '',
+                GMT: 0,
             }
         },
         methods: {
@@ -59,10 +60,12 @@
                 clearInterval(this.interval);
             },
             startClock: function () {
-                this.hacking_seconds = !this.hacking_seconds;
-                this.interval = setInterval(() => {
-                    this.setTime()
-                }, 1000 / 6);
+                if (!this.hacking_seconds){
+                    this.hacking_seconds = !this.hacking_seconds;
+                    this.interval = setInterval(() => {
+                        this.setTime()
+                    }, 1000 / 6);
+                }
             },
             setTime: function () {
                 //21600 bph = 360bpm = 6bps
@@ -103,7 +106,7 @@
             this.startClock();
             $('document').ready(() => {
                 this.setSize()
-                setTimeout(()=>{$('#second.load-transition').removeClass('load-transition');},1000);
+                setTimeout(()=>{$('#second.load-transition').removeClass('load-transition');},3000);
                 setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             });
 
@@ -143,7 +146,7 @@
         content: "";
         position: absolute;
         top: 50%;
-        right: -4.75%;
+        right: -4%;
         height: 10%;
         width: 3%;
         border-radius: 0.5vw;
@@ -308,5 +311,6 @@
 
     .load-transition {
         transition: 1s;
+        transition-timing-function: linear;
     }
 </style>
