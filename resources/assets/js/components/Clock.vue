@@ -57,10 +57,12 @@
         methods: {
             hackSeconds: function (){
                 this.hacking_seconds = !this.hacking_seconds;
+                $("#hour,#minute,#second").addClass('load-transition');
                 clearInterval(this.interval);
             },
             startClock: function () {
                 if (!this.hacking_seconds){
+                    setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
                     this.hacking_seconds = !this.hacking_seconds;
                     this.interval = setInterval(() => {
                         this.setTime()
@@ -106,13 +108,10 @@
             this.startClock();
             $('document').ready(() => {
                 this.setSize()
-                setTimeout(()=>{$('#second.load-transition').removeClass('load-transition');},3000);
-                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             });
 
             $(window).on('resize', () => {
                 this.setSize()
-                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             });
 
             $(window).on('load', () => {
