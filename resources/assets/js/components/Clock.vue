@@ -112,9 +112,9 @@
         border: 1vmin solid #dedede;
         box-sizing: border-box;
         background-image: url("/img/frontend/coding/nomos_metro_gangreserve.svg");
-        background-position: 27% 31%;
+        background-position: center;
         background-repeat: no-repeat;
-        background-size: 98%;
+        background-size: 96%;
     }
 
     .second-container {
@@ -137,7 +137,7 @@
         top: 50%;
         left: 50%;
         width: 45%;
-        height: 0.15vmin;
+        height: 1%;
         background-color: #ab4245;
         transform-origin: 0 0;
     }
@@ -147,7 +147,7 @@
         content: "";
         left: -25%;
         top: 50%;
-        height: 100%;
+        height: 105%;
         width: 25%;
         transform: translateY(-80%);
         transform-origin: 0 0;
@@ -226,11 +226,13 @@
 
     #day {
         position: absolute;
-        bottom: 1vmin;
+        bottom: 5%;
         left: 50%;
         transform: translateX(-50%);
         color: #111;
-        padding: 2px 4px;
-        background-color: #e0e0f1;
+        padding: 3.5% 1%;
+        font-size: 190%;
+        background-color: #f0efed;
+        line-height: 50%;
     }
 </style>
