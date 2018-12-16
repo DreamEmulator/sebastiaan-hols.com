@@ -8,6 +8,7 @@
                     <div class="card-body clock-container">
 
                         <div id="clock">
+                            <div id="gangreserve-backdial"></div>
                             <div id="gangreserve"></div>
                             <div id="day-window"></div>
                             <div id="day">{{day}}</div>
@@ -151,9 +152,9 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 45%;
+        width: 47%;
         height: 1%;
-        background-color: #ab4245;
+        background-color: #f7594a;
         transform-origin: 0 0;
     }
 
@@ -166,7 +167,7 @@
         width: 25%;
         transform: translateY(-80%);
         transform-origin: 0 0;
-        background-color: #ab4245;
+        background-color: #f7594a;
     }
 
     #minute {
@@ -231,7 +232,7 @@
         position: absolute;
         background-color: #c6c6c6;
         border-radius: 100%;
-        border: 0.05px solid #ab4245;
+        border: 0.05px solid #f7594a;
         width: 1%;
         height: 1%;
         top: 50%;
@@ -239,16 +240,28 @@
         transform: translate(-50%, -50%);
     }
 
+    #gangreserve-backdial {
+        position: absolute;
+        top: 28%;
+        left: 52.95%;
+        width: 8%;
+        height: 8%;
+        border-radius: 100%;
+        background-image: url(/img/frontend/coding/gangreserve_backdial.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 95%;
+    }
+
     #gangreserve {
         position: absolute;
-        top: 20%;
-        left: 60%;
-        width: 10%;
-        height: 10%;
+        top: 27%;
+        left: 50%;
+        width: 12%;
+        height: 12%;
         border-radius: 100%;
         border: 0.15vmin #dedddb solid;
-        background-color: #f7f7f7;
-        background-image: url("/img/frontend/coding/gangreserve.svg");
+        background-image: url(/img/frontend/coding/gangreserve.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 95%;
