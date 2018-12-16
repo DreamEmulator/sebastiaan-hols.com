@@ -8,8 +8,9 @@
                     <div class="card-body clock-container">
 
                         <div id="clock">
-                            <div id="gangreserve-backdial"></div>
-                            <div id="gangreserve"></div>
+                            <div id="gangreserve-backdial" v-bind:style="{transform: gangreserve_rotation}">
+                                <div id="gangreserve" v-bind:style="{transform: gangreserve_rotation}"></div>
+                            </div>
                             <div id="day-window"></div>
                             <div id="day">{{day}}</div>
                             <div class="second-container">
@@ -48,6 +49,8 @@
                 interval: null,
                 date: null,
                 hacking_seconds: false,
+                gangreserve_degrees: 32,
+                gangreserve_rotation: '',
             }
         },
         methods: {
@@ -74,6 +77,9 @@
 
                 this.hour = this.date.getHours();
                 this.hour_rotation = "rotate(" + (((this.hour + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) / 60))* 30) - 90)  + "deg) translateY(-50%)";
+
+                this.gangreserve_degrees = this.gangreserve_degrees + (360/(42*60*60*60*6));
+                this.gangreserve_rotation = "rotate(" + this.gangreserve_degrees + "deg)";
 
                 this.day = this.date.getDate();
             },
@@ -131,6 +137,18 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: 96%;
+    }
+
+    #clock:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -4.75%;
+        height: 10%;
+        width: 3%;
+        border-radius: 0.5vw;
+        background-color: #dedede;
+        transform: translateY(-50%);
     }
 
     .second-container {
@@ -240,31 +258,30 @@
         transform: translate(-50%, -50%);
     }
 
-    #gangreserve-backdial {
-        position: absolute;
-        top: 28%;
-        left: 52.95%;
-        width: 8%;
-        height: 8%;
-        border-radius: 100%;
-        background-image: url(/img/frontend/coding/gangreserve_backdial.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 95%;
-    }
-
     #gangreserve {
         position: absolute;
-        top: 27%;
-        left: 50%;
-        width: 12%;
-        height: 12%;
+        width: 103%;
+        height: 103%;
         border-radius: 100%;
-        border: 0.15vmin #dedddb solid;
         background-image: url(/img/frontend/coding/gangreserve.svg);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 95%;
+        background-size: 100%;
+        transform-origin: center;
+    }
+
+    #gangreserve-backdial {
+        position: absolute;
+        top: 27%;
+        left: 52%;
+        width: 10%;
+        height: 10%;
+        border-radius: 100%;
+        background-image: url(/img/frontend/coding/nomos_gangreserve_backdial.svg);
+        background-position: 0% 100%;
+        background-repeat: no-repeat;
+        transform: rotate(101deg);
+        transform-origin: center;
     }
 
     #day {
