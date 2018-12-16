@@ -3,22 +3,26 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header" v-on:click="hackSeconds()">DUW 4101 - 21600 bph - {{hour}}:{{minute}}:{{second}}:{{millisecond}}</div>
+                    <div class="card-header">DUW 4101 - 21600 bph - {{hour}}:{{minute}}:{{second}}:{{millisecond}}</div>
 
                     <div class="card-body clock-container">
 
                         <div id="clock">
+                            <div id="gangreserve"></div>
                             <div id="day-window"></div>
                             <div id="day">{{day}}</div>
                             <div class="second-container">
-                                <div id="second" v-bind:style="{transform: second_rotation}"></div>
+                                <div id="second" class="load-transition" v-bind:style="{transform: second_rotation}"></div>
                                 <div class="base"></div>
                             </div>
-                            <div id="minute" v-bind:style="{transform: minute_rotation}"></div>
-                            <div id="hour" v-bind:style="{transform: hour_rotation}"></div>
+                            <div id="minute" class="load-transition" v-bind:style="{transform: minute_rotation}"></div>
+                            <div id="hour" class="load-transition" v-bind:style="{transform: hour_rotation}"></div>
                             <div class="base"></div>
                         </div>
-
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button v-on:click="startClock()" v-bind:class="{'text-muted': hacking_seconds}" class="btn btn-light">Start clock</button>
+                        <button v-on:click="hackSeconds()"v-bind:class="{'text-muted': !hacking_seconds}" class="btn btn-light">Hack seconds</button>
                     </div>
                 </div>
             </div>
@@ -41,34 +45,36 @@
                 day: 0,
                 power: 100,
                 interval: null,
+                date: null,
+                hacking_seconds: false,
             }
         },
         methods: {
             hackSeconds: function (){
-                console.log('clearing');
+                this.hacking_seconds = !this.hacking_seconds;
                 clearInterval(this.interval);
             },
             startClock: function () {
+                this.hacking_seconds = !this.hacking_seconds;
                 this.interval = setInterval(() => {
                     this.setTime()
                 }, 1000 / 6);
             },
             setTime: function () {
-                console.log('Setting time');
                 //21600 bph = 360bpm = 6bps
-                let date = new Date;
+                this.date = new Date;
 
-                this.second = date.getSeconds();
-                this.millisecond = date.getMilliseconds();
+                this.second = this.date.getSeconds();
+                this.millisecond = this.date.getMilliseconds();
                 this.second_rotation = "rotate(" + ((this.second + (this.millisecond / 1000)) * 6 - 90) + "deg) translateY(-50%)";
 
-                this.minute = date.getMinutes();
+                this.minute = this.date.getMinutes();
                 this.minute_rotation = "rotate(" + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) * 6 - 90)+ "deg) translateY(-50%)";
 
-                this.hour = date.getHours();
+                this.hour = this.date.getHours();
                 this.hour_rotation = "rotate(" + (((this.hour + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) / 60))* 30) - 90)  + "deg) translateY(-50%)";
 
-                this.day = date.getDate();
+                this.day = this.date.getDate();
             },
             setSize: function () {
                 this.clock_diameter = $("#clock").width();
@@ -90,10 +96,18 @@
             this.startClock();
             $('document').ready(() => {
                 this.setSize()
+                setTimeout(()=>{$('#second.load-transition').removeClass('load-transition');},1000);
+                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             });
+
             $(window).on('resize', () => {
                 this.setSize()
-            })
+                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
+            });
+
+            $(window).on('load', () => {
+                this.setSize()
+            });
         }
     }
 </script>
@@ -225,6 +239,21 @@
         transform: translate(-50%, -50%);
     }
 
+    #gangreserve {
+        position: absolute;
+        top: 20%;
+        left: 60%;
+        width: 10%;
+        height: 10%;
+        border-radius: 100%;
+        border: 0.15vmin #dedddb solid;
+        background-color: #f7f7f7;
+        background-image: url("/img/frontend/coding/gangreserve.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 95%;
+    }
+
     #day {
         position: absolute;
         bottom: 5%;
@@ -245,5 +274,9 @@
         border-right: 0.5vw solid transparent;
         height: 0;
         width: 5vw;
+    }
+
+    .load-transition {
+        transition: 1s;
     }
 </style>
