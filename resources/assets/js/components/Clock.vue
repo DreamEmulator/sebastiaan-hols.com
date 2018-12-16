@@ -11,6 +11,7 @@
                             <div id="day">{{day}}</div>
                             <div class="second-container">
                                 <div id="second" v-bind:style="{transform: second_rotation}"></div>
+                                <div class="base"></div>
                             </div>
                             <div id="minute" v-bind:style="{transform: minute_rotation}"></div>
                             <div id="hour" v-bind:style="{transform: hour_rotation}"></div>
@@ -75,6 +76,11 @@
                     "width":this.clock_diameter*0.05 + "px",
                     "height":this.clock_diameter*0.05 + "px",
                     "border-width":this.clock_diameter*0.015 + "px",
+                });
+                $("#clock .second-container .base").css({
+                    "width":this.clock_diameter*0.015 + "px",
+                    "height":this.clock_diameter*0.015 + "px",
+                    "border-width":this.clock_diameter*0.005 + "px",
                 })
             }
         },
@@ -102,19 +108,28 @@
         position: relative;
         width: 100%;
         border-radius: 100%;
-        background-color: #f5f5f5;
+        background-color: #f9f8f6;
         border: 1vmin solid #dedede;
         box-sizing: border-box;
+        background-image: url("/img/frontend/coding/nomos_metro_gangreserve.svg");
+        background-position: 27% 31%;
+        background-repeat: no-repeat;
+        background-size: 98%;
     }
 
     .second-container {
         position: absolute;
         top: 60%;
-        left: 35%;
-        width: 30%;
-        height: 30%;
+        left: 37.5%;
+        width: 25%;
+        height: 25%;
         border-radius: 100%;
+        border: 0.15vmin #dedddb solid;
         background-color: #fff;
+        background-image: url("/img/frontend/coding/nomos_metro_gangreserve_seconds.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 95%;
     }
 
     #second {
@@ -127,11 +142,23 @@
         transform-origin: 0 0;
     }
 
+    #second:after {
+        position: absolute;
+        content: "";
+        left: -25%;
+        top: 50%;
+        height: 100%;
+        width: 25%;
+        transform: translateY(-80%);
+        transform-origin: 0 0;
+        background-color: #ab4245;
+    }
+
     #minute {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 37.5%;
+        width: 39.75%;
         height: 1%;
         background-color: #0d0d0d;
         transform-origin: 0 0;
@@ -141,10 +168,11 @@
     #minute:before {
         position: absolute;
         content: "";
-        right: -25%;
+        right: -20%;
         top: 50%;
         height: 40%;
         width: 25%;
+        border-radius: 2px;
         transform: translateY(-50%);
         transform-origin: initial;
         background-color: #0d0d0d;
@@ -154,7 +182,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 30%;
+        width: 28%;
         height: 1%;
         background-color: #0d0d0d;
         transform-origin: 0 0;
@@ -164,20 +192,33 @@
     #hour:before {
         position: absolute;
         content: "";
-        right: -40%;
+        right: -35%;
         top: 50%;
         height: 40%;
         width: 40%;
+        border-radius: 2px;
         transform: translateY(-50%);
         transform-origin: initial;
         background-color: #0d0d0d;
     }
 
-    .base{
+    #clock .base{
         position: absolute;
         background-color: #c6c6c6;
         border-radius: 100%;
         border: 1px solid #000;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #clock .second-container .base {
+        position: absolute;
+        background-color: #c6c6c6;
+        border-radius: 100%;
+        border: 0.05px solid #ab4245;
+        width: 1%;
+        height: 1%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
