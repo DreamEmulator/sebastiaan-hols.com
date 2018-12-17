@@ -23,8 +23,10 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <button v-on:click="startClock()" v-bind:class="{'text-muted': hacking_seconds}" class="btn btn-light">Start clock</button>
-                        <button v-on:click="hackSeconds()"v-bind:class="{'text-muted': !hacking_seconds}" class="btn btn-light">Hack seconds</button>
+                        <!--<button v-on:click="startClock()" v-bind:class="{'text-muted': hacking_seconds}" class="btn btn-light">Start clock</button>-->
+                        <!--<button v-on:click="hackSeconds()"v-bind:class="{'text-muted': !hacking_seconds}" class="btn btn-light">Hack seconds</button>-->
+                        <button v-if="!shanghai_time" v-on:click="setShanghaiTime()"v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Shanghai time</button>
+                        <button v-if="shanghai_time" v-on:click="setShanghaiTime()"v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Local time</button>
                     </div>
                 </div>
             </div>
@@ -49,9 +51,10 @@
                 interval: null,
                 date: null,
                 hacking_seconds: false,
-                gangreserve_degrees: 32,
+                gangreserve_degrees: 60,
                 gangreserve_rotation: '',
-                GMT: 0,
+                shanghai_time: false,
+                transition_timeout: null,
             }
         },
         methods: {
@@ -62,17 +65,22 @@
             },
             startClock: function () {
                 if (!this.hacking_seconds){
-                    setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
+                    this.transition_timeout = setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
                     this.hacking_seconds = !this.hacking_seconds;
                     this.interval = setInterval(() => {
                         this.setTime()
                     }, 1000 / 6);
                 }
             },
-            setTime: function () {
+            setShanghaiTime: function(){
+                clearInterval(this.transition_timeout);
+                this.shanghai_time = !this.shanghai_time;
+                $("#hour,#minute,#second").addClass('load-transition');
+                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
+            },
+            setTime: function (local) {
                 //21600 bph = 360bpm = 6bps
-                this.date = new Date;
-
+                this.date = this.shanghai_time ? new Date (new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' })) : new Date;
                 this.second = this.date.getSeconds();
                 this.millisecond = this.date.getMilliseconds();
                 this.second_rotation = "rotate(" + ((this.second + (this.millisecond / 1000)) * 6 - 90) + "deg) translateY(-50%)";
@@ -268,7 +276,6 @@
         background-image: url(/img/frontend/coding/gangreserve.svg);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 100%;
         transform-origin: center;
     }
 
@@ -278,9 +285,9 @@
         left: 52%;
         width: 10%;
         height: 10%;
-        border-radius: 100%;
+        background-position: 80% 99%;
+        background-size: 80%;
         background-image: url(/img/frontend/coding/nomos_gangreserve_backdial.svg);
-        background-position: 0% 100%;
         background-repeat: no-repeat;
         transform: rotate(101deg);
         transform-origin: center;
