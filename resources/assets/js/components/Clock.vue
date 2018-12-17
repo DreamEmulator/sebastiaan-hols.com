@@ -11,10 +11,12 @@
                             <div id="gangreserve-backdial" v-bind:style="{transform: gangreserve_rotation}">
                                 <div id="gangreserve" v-bind:style="{transform: gangreserve_rotation}"></div>
                             </div>
+                            <div v-if="hacking_seconds" v-on:click="hackSeconds()" id="crown-in"></div>
+                            <div v-if="!hacking_seconds" v-on:click="startClock()" id="crown-out"></div>
                             <div id="day-window"></div>
                             <div id="day">{{day}}</div>
                             <div class="second-container">
-                                <div id="second" class="load-transition" v-bind:style="{transform: second_rotation}"></div>
+                                <div id="second" v-bind:style="{transform: second_rotation}"></div>
                                 <div class="base"></div>
                             </div>
                             <div id="minute" class="load-transition" v-bind:style="{transform: minute_rotation}"></div>
@@ -23,8 +25,6 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <!--<button v-on:click="startClock()" v-bind:class="{'text-muted': hacking_seconds}" class="btn btn-light">Start clock</button>-->
-                        <!--<button v-on:click="hackSeconds()"v-bind:class="{'text-muted': !hacking_seconds}" class="btn btn-light">Hack seconds</button>-->
                         <button v-if="!shanghai_time" v-on:click="setShanghaiTime()"v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Shanghai time</button>
                         <button v-if="shanghai_time" v-on:click="setShanghaiTime()"v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Local time</button>
                     </div>
@@ -55,17 +55,18 @@
                 gangreserve_rotation: '',
                 shanghai_time: false,
                 transition_timeout: null,
+                GMT: null,
             }
         },
         methods: {
             hackSeconds: function (){
                 this.hacking_seconds = !this.hacking_seconds;
-                $("#hour,#minute,#second").addClass('load-transition');
                 clearInterval(this.interval);
             },
             startClock: function () {
+                var time = new Date;
+                this.GMT = time.getTimezoneOffset()/60;
                 if (!this.hacking_seconds){
-                    this.transition_timeout = setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
                     this.hacking_seconds = !this.hacking_seconds;
                     this.interval = setInterval(() => {
                         this.setTime()
@@ -75,21 +76,24 @@
             setShanghaiTime: function(){
                 clearInterval(this.transition_timeout);
                 this.shanghai_time = !this.shanghai_time;
-                $("#hour").addClass('load-transition');
-                setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             },
             setTime: function (local) {
                 //21600 bph = 360bpm = 6bps
-                this.date = this.shanghai_time ? new Date (new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' })) : new Date;
+                this.date = new Date;
                 this.second = this.date.getSeconds();
                 this.millisecond = this.date.getMilliseconds();
                 this.second_rotation = "rotate(" + ((this.second + (this.millisecond / 1000)) * 6 - 90) + "deg) translateY(-50%)";
+                this.second.toString().length === 1 ? this.second = '0' + this.second :null;
 
                 this.minute = this.date.getMinutes();
                 this.minute_rotation = "rotate(" + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) * 6 - 90)+ "deg) translateY(-50%)";
+                this.minute.toString().length === 1 ? this.minute = '0' + this.minute :null;
 
                 this.hour = this.date.getHours();
+                this.shanghai_time ? this.hour = this.hour + (8 + this.GMT) : null;
+                this.hour > 24 ? this.hour = this.hour - 24 : null;
                 this.hour_rotation = "rotate(" + (((this.hour + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) / 60))* 30) - 90)  + "deg) translateY(-50%)";
+                this.hour.toString().length === 1 ? this.hour = '0' + this.hour :null;
 
                 this.gangreserve_degrees = this.gangreserve_degrees + (360/(42*60*60*60*6));
                 this.gangreserve_rotation = "rotate(" + this.gangreserve_degrees + "deg)";
@@ -149,7 +153,7 @@
         background-size: 96%;
     }
 
-    #clock:after {
+    #crown-in {
         content: "";
         position: absolute;
         top: 50%;
@@ -159,6 +163,20 @@
         border-radius: 0.5vw;
         background-color: #dedede;
         transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    #crown-out {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -5%;
+        height: 10%;
+        width: 3%;
+        border-radius: 0.5vw;
+        background-color: #dedede;
+        transform: translateY(-50%);
+        cursor: pointer;
     }
 
     .second-container {
@@ -299,8 +317,8 @@
         left: 50%;
         transform: translateX(-50%) scale(1.5,2.5);
         color: #111;
-        padding: 0.5vw 0.75vw;
-        font-size: 1.25vw;
+        padding: 0.5vmax 0.75vmax;
+        font-size: 1.25vmax;
     }
 
     #day-window {
@@ -308,15 +326,15 @@
         left: 50%;
         bottom: 4%;
         transform: translateX(-50%);
-        border-bottom: 4.5vw solid #f0efed;
-        border-left: 0.5vw solid transparent;
-        border-right: 0.5vw solid transparent;
+        border-bottom: 4.5vmax solid #f0efed;
+        border-left: 0.5vmax solid transparent;
+        border-right: 0.5vmax solid transparent;
         height: 0;
-        width: 5vw;
+        width: 5vmax;
     }
 
     .load-transition {
         transition: 1s;
-        transition-timing-function: linear;
+        transition-timing-function: ease-out;
     }
 </style>
