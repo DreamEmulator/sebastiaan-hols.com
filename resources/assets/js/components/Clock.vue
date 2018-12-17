@@ -75,7 +75,7 @@
             setShanghaiTime: function(){
                 clearInterval(this.transition_timeout);
                 this.shanghai_time = !this.shanghai_time;
-                $("#hour,#minute,#second").addClass('load-transition');
+                $("#hour").addClass('load-transition');
                 setTimeout(()=>{$('.load-transition').removeClass('load-transition');},10000);
             },
             setTime: function (local) {
