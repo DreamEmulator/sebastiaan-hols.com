@@ -96,8 +96,8 @@
 
                 this.hour = this.date.getHours();
                 this.shanghai_time ? this.hour = this.hour + (8 + this.GMT) : null;
-                this.hour > 24 ? this.hour = this.hour - 24 && this.day ++ : null;
                 this.hour_rotation = "rotate(" + (((this.hour + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) / 60)) * 30) - 90) + "deg) translateY(-50%)";
+                this.hour > 24 ? this.hour = this.hour - 24 && this.day ++ : null;
 
                 this.gangreserve_degrees = this.gangreserve_degrees + (360 / (42 * 60 * 60 * 60 * 6));
                 this.gangreserve_rotation = "rotate(" + this.gangreserve_degrees + "deg)";
@@ -342,8 +342,8 @@
         position: absolute;
         top: 27%;
         left: 52%;
-        width: 10%;
-        height: 10%;
+        width: 12%;
+        height: 12%;
         background-position: 80% 99%;
         background-size: 80%;
         background-image: url(/img/frontend/coding/nomos_gangreserve_backdial.svg);
