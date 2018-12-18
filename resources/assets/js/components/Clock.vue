@@ -81,6 +81,7 @@
             setTimeZone: function () {
                 clearInterval(this.transition_timeout);
                 this.shanghai_time = !this.shanghai_time;
+                this.shanghai_time ? this.gangreserve_degrees = this.gangreserve_degrees + 8.571428571428573 : this.gangreserve_degrees = this.gangreserve_degrees - 8.571428571428573;
             },
             setTime: function (local) {
                 //21600 bph = 360bpm = 6bps
@@ -236,7 +237,7 @@
         top: 50%;
         left: 50%;
         width: 47%;
-        height: 1%;
+        height: 2%;
         background-color: #f7594a;
         transform-origin: 0 0;
     }
@@ -248,7 +249,7 @@
         top: 50%;
         height: 105%;
         width: 25%;
-        transform: translateY(-80%);
+        transform: translateY(-50%);
         transform-origin: 0 0;
         background-color: #f7594a;
     }
@@ -336,6 +337,7 @@
         background-position: center;
         background-repeat: no-repeat;
         transform-origin: center;
+        transition: 1s;
     }
 
     #gangreserve-backdial {
@@ -350,6 +352,7 @@
         background-repeat: no-repeat;
         transform: rotate(101deg);
         transform-origin: center;
+        transition: 1s;
     }
 
     #day {
