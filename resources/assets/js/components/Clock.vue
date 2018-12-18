@@ -25,12 +25,11 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <button v-if="!shanghai_time" v-on:click="setShanghaiTime()"
-                                v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Shanghai
-                            time
-                        </button>
-                        <button v-if="shanghai_time" v-on:click="setShanghaiTime()"
+                        <button v-if="!shanghai_time && hacking_seconds" v-on:click="setTimeZone()"
                                 v-bind:class="{'text-muted': !hacking_seconds}" class="w-100 btn btn-light">Local time
+                        </button>
+                        <button v-if="shanghai_time && hacking_seconds" v-on:click="setTimeZone()"
+                                v-bind:class="{'text-muted': hacking_seconds}" class="w-100 btn btn-light">Shanghai time
                         </button>
                     </div>
                 </div>
@@ -79,7 +78,7 @@
                     }, 1000 / 6);
                 }
             },
-            setShanghaiTime: function () {
+            setTimeZone: function () {
                 clearInterval(this.transition_timeout);
                 this.shanghai_time = !this.shanghai_time;
             },
@@ -93,16 +92,16 @@
                 this.minute = this.date.getMinutes();
                 this.minute_rotation = "rotate(" + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) * 6 - 90) + "deg) translateY(-50%)";
 
+                this.day = this.date.getDate();
+
                 this.hour = this.date.getHours();
                 this.shanghai_time ? this.hour = this.hour + (8 + this.GMT) : null;
-                this.hour > 24 ? this.hour = this.hour - 24 : null;
+                this.hour > 24 ? this.hour = this.hour - 24 && this.day ++ : null;
                 this.hour_rotation = "rotate(" + (((this.hour + ((this.minute + ((this.second + (this.millisecond / 1000)) / 60)) / 60)) * 30) - 90) + "deg) translateY(-50%)";
 
                 this.gangreserve_degrees = this.gangreserve_degrees + (360 / (42 * 60 * 60 * 60 * 6));
                 this.gangreserve_rotation = "rotate(" + this.gangreserve_degrees + "deg)";
                 this.gangreserve_backdial_rotation = "rotate(-" + this.gangreserve_degrees + "deg)";
-
-                this.day = this.date.getDate();
 
                 this.second.toString().length === 1 ? this.second = '0' + this.second : null;
                 this.minute.toString().length === 1 ? this.minute = '0' + this.minute : null;
