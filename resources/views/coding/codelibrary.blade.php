@@ -124,6 +124,22 @@
                                 the great chart.js library.</p>
                         </div>
                     </div>
+                    <div class="card mb-4 box-shadow d-inline-block w-100"
+                         onclick="location.href = 'https://sebastiaan-hols.com/clock'">
+                        <img class="card-img-top"
+                             src="{{asset('/img/frontend/coding/nomos_metro.jpg')}}"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">Vue Clock</h4>
+                            <p class="card-text">An interesting exercise in making radial patterns in Illustrator and juggling time with the Date object in JS.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Got the time?
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
