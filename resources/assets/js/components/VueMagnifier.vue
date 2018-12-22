@@ -2,25 +2,14 @@
 
 <template>
     <div class="vue-magnifier-container">
+        <hr class="w-100">
         <slot></slot>
-
-        <div class="loading-container" v-bind:style="{animationDelay: animation}" v-if="loading">
-            <div class="dot dot-1" v-bind:style="{animationDelay: animation}"></div>
-            <div class="dot dot-2" v-bind:style="{animationDelay: animation}"></div>
-            <div class="dot dot-3" v-bind:style="{animationDelay: animation}"></div>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
-                    </filter>
-                </defs>
-            </svg>
-        </div>
-
+        <h3> {{title}}</h3>
+        <h4> {{painter}}</h4>
+        <div class="loading" v-if="loading"></div>
         <span ref="magnificationElement" class="preview" v-on:click="moveMagnifier"
               v-bind:style="{height: height + 'px', width: width, backgroundImage:'url(' + src + ')'}">
-          <span ref="glass" class="magnifying-glass"
+            <span ref="glass" class="magnifying-glass"
                 v-bind:style="{backgroundColor: backgroundColor, backgroundImage: 'url(' + srcLarge + ')', backgroundPosition: backgroundPos, left: cursorX + 'px', top: cursorY + 'px'}"></span>
       </span>
 
@@ -32,32 +21,40 @@
         props: {
             src: String,
             srcLarge: String,
-            index: String,
+            index: Number,
+            title: String,
+            painter: String,
         },
         computed: {
             animation: function () {
                 return `${this.index * 0.3}s`;
-            }
+            },
         },
         methods: {
             setHeight: function () {
+                var self = this;
                 var image = new Image();
                 image.src = this.src;
-                var height = image.naturalHeight, width = image.naturalWidth;
-                var ratio = (height / width);
-                var maxWidth = 500;
-                this.width = this.$refs.magnificationElement.offsetWidth;
-                this.height = ratio * this.width;
+                var loaded = setInterval(()=>{
+                    if (image.complete){
+                        clearInterval(loaded);
+                        var height = image.naturalHeight, width = image.naturalWidth;
+                        var ratio = (height / width);
+                        var maxWidth = 500;
+                        this.width = this.$refs.magnificationElement.offsetWidth;
+                        this.height = ratio * this.width;
 
-                if (height > width && window.innerWidth > maxWidth) {
-                    this.width = maxWidth + 'px';
-                    this.height = ratio * maxWidth;
-                }
-
-                $('.preview').addClass('show');
-                setTimeout(() => {
-                    this.loading = false
-                }, 2000);
+                        if (height > width && window.innerWidth > maxWidth) {
+                            this.width = maxWidth + 'px';
+                            this.height = ratio * maxWidth;
+                        }
+                        $('.preview').addClass('show');
+                        setTimeout(() => {
+                            this.loading = false
+                            $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+                        }, 1000);
+                    }
+                },100);
             },
             getCursorPos: function (e) {
 
@@ -195,9 +192,7 @@
         },
         mounted: function () {
 
-            window.addEventListener('load', () => {
-                this.setHeight();
-            }),
+            this.setHeight();
 
             window.addEventListener('resize', () => {
                 this.setHeight();
@@ -209,11 +204,13 @@
                 this.$refs.magnificationElement.addEventListener("touchmove", this.moveMagnifier);
             });
 
-           this.backgroundColor =  $('body').css('background-color');
+            this.backgroundColor = $('body').css('background-color');
 
         },
         data: function () {
             return {
+                paintings: null,
+                show: false,
                 loading: true,
                 height: null,
                 width: 'auto',
@@ -239,11 +236,25 @@
     .vue-magnifier-container {
         position: relative;
         z-index: 1;
-        min-height: 250px;
+        min-height: 300px;
+        max-height: 400px;
 
         &.scale {
             max-height: 200px;
         }
+
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 30%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("/img/frontend/paintings/loading.gif");
+        }
+
         .preview {
             position: relative;
             background: {
@@ -264,6 +275,7 @@
             &.show {
                 opacity: 1;
                 transition: opacity 0.5s 1s;
+                max-height: none;
             }
 
             .magnifying-glass {
@@ -299,121 +311,4 @@
         }
     }
 
-    .loading-container {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: auto;
-        filter: url('#goo');
-        animation: rotate-move 2s ease-in-out infinite;
-    }
-
-    .dot {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background-color: #000;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-    }
-
-    .dot-3 {
-        background-color: #f74d75;
-        animation: dot-3-move 2s ease infinite, index 6s ease infinite;
-    }
-
-    .dot-2 {
-        background-color: #10beae;
-        animation: dot-2-move 2s ease infinite, index 6s -4s ease infinite;
-    }
-
-    .dot-1 {
-        background-color: #ffe386;
-        animation: dot-1-move 2s ease infinite, index 6s -2s ease infinite;
-    }
-
-    @keyframes dot-3-move {
-        20% {
-            transform: scale(1)
-        }
-        45% {
-            transform: translateY(-18px) scale(.45)
-        }
-        60% {
-            transform: translateY(-90px) scale(.45)
-        }
-        80% {
-            transform: translateY(-90px) scale(.45)
-        }
-        100% {
-            transform: translateY(0px) scale(1)
-        }
-    }
-
-    @keyframes dot-2-move {
-        20% {
-            transform: scale(1)
-        }
-        45% {
-            transform: translate(-16px, 12px) scale(.45)
-        }
-        60% {
-            transform: translate(-80px, 60px) scale(.45)
-        }
-        80% {
-            transform: translate(-80px, 60px) scale(.45)
-        }
-        100% {
-            transform: translateY(0px) scale(1)
-        }
-    }
-
-    @keyframes dot-1-move {
-        20% {
-            transform: scale(1)
-        }
-        45% {
-            transform: translate(16px, 12px) scale(.45)
-        }
-        60% {
-            transform: translate(80px, 60px) scale(.45)
-        }
-        80% {
-            transform: translate(80px, 60px) scale(.45)
-        }
-        100% {
-            transform: translateY(0px) scale(1)
-        }
-    }
-
-    @keyframes rotate-move {
-        55% {
-            transform: translate(-50%, -50%) rotate(0deg)
-        }
-        80% {
-            transform: translate(-50%, -50%) rotate(360deg)
-        }
-        100% {
-            transform: translate(-50%, -50%) rotate(360deg)
-        }
-    }
-
-    @keyframes index {
-        0%, 100% {
-            z-index: 3
-        }
-        33.3% {
-            z-index: 2
-        }
-        66.6% {
-            z-index: 1
-        }
-    }
 </style>

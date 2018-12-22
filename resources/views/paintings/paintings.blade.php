@@ -23,8 +23,17 @@
         <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Intro</h4>
-                <p class="card-text">Here we have a collection of public domain art works that I find particularly beautiful. Aside from simply wanting to share them with you, I also greatly enjoyed coding the magnifying function. This JS trick is an example you find in the W3 basics, but there was still considerable work to be done to fit their basic JS example into the modularity of Vue and the responsiveness of Bootstrap.</p><p>
-                    I really enjoy opening this page up on my phone when I'm stuck in traffic and pouring over the immaculate details of these pieces. It's truly astonishing to see how fine and meticulous these paintings are built up and to realize that (much like code) every artwork is the end result of endless iterations and updates, tweaks and alterations. I find these things truly inspiring and I hope you do too.
+                <p class="card-text">Here we have a collection of public domain art works that I find particularly
+                    beautiful. Aside from simply wanting to share them with you, I also greatly enjoyed coding the
+                    magnifying function. This JS trick is an example you find in the W3 basics, but there was still
+                    considerable work to be done to fit their basic JS example into the modularity of Vue and the
+                    responsiveness of Bootstrap.</p>
+                <p>
+                    I really enjoy opening this page up on my phone when I'm stuck in traffic and pouring over the
+                    immaculate details of these pieces. It's truly astonishing to see how fine and meticulous these
+                    paintings are built up and to realize that (much like code) every artwork is the end result of
+                    endless iterations and updates, tweaks and alterations. I find these things truly inspiring and I
+                    hope you do too.
                 </p>
             </div>
         </div>
@@ -42,7 +51,7 @@
                         <input type="file" name="painting_pic">
                     </div>
                     <div class="form-group">
-                        <label for="subtitle">Subtitle</label>
+                        <label for="subtitle">Artist</label>
                         <input type="text" class="form-control" id="subtitle" name="subtitle"
                                placeholder="Gotta have a sub...">
                     </div>
@@ -56,22 +65,14 @@
             </div>
         @endauth
 
-        @foreach($paintings as $painting)
-            <hr class="w-100">
-            <div class="row featurette mt-4">
-                @guest
-                        <div class="col-lg-12">
-                            <h3 class="featurette-heading">{{$painting->title}}</h3>
-                            <h4 class="text-muted">{{$painting->subtitle}}</h4>
-                            {{--<p class="lead">{{$painting->story}}</p>--}}
-                        </div>
-                        <div class="col-lg-12">
-                            <vue-magnifier src="{{$painting->location}}" src-large="{{$painting->location}}" index="{{$loop->iteration}}"></vue-magnifier>
-                        </div>
-                @endguest
-            </div>
+        @guest
+        <vue-loader></vue-loader>
+        @endguest
 
-            @auth
+
+    @auth
+        @foreach($paintings as $painting)
+            <div class="row featurette mt-4">
                 <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4">
                     <h2>Edit painting...</h2>
                     <form class="card-text" action="{{action('PaintingsController@update', $painting['id'])}}"
@@ -87,17 +88,13 @@
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{$painting->title}}">
+                            <input type="text" class="form-control" id="title" name="title"
+                                   value="{{$painting->title}}">
                         </div>
                         <div class="form-group">
                             <label for="subtitle">Artist</label>
                             <input type="text" class="form-control" id="subtitle" name="subtitle"
                                    value="{{$painting->subtitle}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="story">Story</label>
-                            <textarea class="form-control" id="story" name="story"
-                                      maxlength="2500">{{$painting->story}}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
@@ -109,13 +106,19 @@
                         <button class="btn btn-danger mt-2" type="submit">Delete</button>
                     </form>
                 </div>
-            @endauth
-
-        @endforeach
+            </div>
+                @endforeach
     </div>
-
+            @endauth
 @endsection
 
 @section('non-vue')
 
 @endsection
+<script>
+    import VueLoader from "../../assets/js/components/VueLoader";
+
+    export default {
+        components: {VueLoader}
+    }
+</script>

@@ -57,7 +57,7 @@
                 </form>
                 {{-- end --}}
 
-                <div class="card-columns">
+                <div class="card-columns" style="columns:2">
                     <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = '{{route('keepy-uppy')}}'">
                         <img class="card-img-top"

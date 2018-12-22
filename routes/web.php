@@ -78,3 +78,8 @@ Route::resource('posts', 'PostController');
 Route::resource('blog', 'BlogController');
 
 Route::resource('paintings', 'PaintingsController');
+
+Route::get('/load_paintings', function(Request $request, App\painting $painting){
+    $paintings = $painting::orderBy('created_at', 'desc')->get();
+    return json_encode($paintings);
+});

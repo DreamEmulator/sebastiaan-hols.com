@@ -19,6 +19,7 @@ Vue.component('popmotion-ball-score', require('./components/PopmotionBallScore.v
 Vue.component('photo-library', require('./components/PhotoLibrary.vue'));
 Vue.component('vue-magnifier', require('./components/VueMagnifier.vue'));
 Vue.component('clock', require('./components/Clock.vue'));
+Vue.component('vue-loader', require('./components/VueLoader.vue'));
 
 const app = new Vue({
     el: '#app'
