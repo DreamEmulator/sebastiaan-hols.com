@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="story">blog</label>
                         <textarea class="form-control" id="story" name="story" placeholder="Spill the beans!"
-                                  maxlength="2500"></textarea>
+                                  maxlength="10000"></textarea>
                     </div>
                     <button id="submit_blog" type="submit" class="btn btn-primary">blog</button>
                 </form>
@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <label for="story">Blog</label>
                             <textarea class="form-control" id="story" name="story"
-                                      maxlength="2500">{{$blog->story}}</textarea>
+                                      maxlength="10000">{{$blog->story}}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

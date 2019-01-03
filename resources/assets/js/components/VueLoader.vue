@@ -15,7 +15,7 @@
         },
         data: function(){
             return {
-                paintings: null,
+                paintings: 0,
                 load: 1,
                 allowLoad: true,
             }
@@ -23,7 +23,7 @@
         methods: {
             load_extra: function(){
                 this.load++;
-                $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+                $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow")
             }
         },
         mounted: function() {

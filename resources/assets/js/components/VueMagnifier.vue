@@ -1,7 +1,7 @@
 <!--Thanks to: https://github.com/zeknoss/vue-magnifier-->
 
 <template>
-    <div class="vue-magnifier-container">
+    <div ref="magnificationContainer" class="vue-magnifier-container">
         <hr class="w-100">
         <slot></slot>
         <h3> {{title}}</h3>
@@ -25,36 +25,39 @@
             title: String,
             painter: String,
         },
-        computed: {
-            animation: function () {
-                return `${this.index * 0.3}s`;
-            },
-        },
         methods: {
-            setHeight: function () {
-                var self = this;
-                var image = new Image();
-                image.src = this.src;
-                var loaded = setInterval(()=>{
-                    if (image.complete){
-                        clearInterval(loaded);
-                        var height = image.naturalHeight, width = image.naturalWidth;
-                        var ratio = (height / width);
-                        var maxWidth = 500;
-                        this.width = this.$refs.magnificationElement.offsetWidth;
-                        this.height = ratio * this.width;
+            setHeight: function (resize) {
+                this.image = new Image();
+                this.image.src = this.src;
+                var measure = () => {
+                    let height = this.image.naturalHeight, width = this.image.naturalWidth;
+                    let ratio = (height / width);
+                    let maxWidth = 500;
+                    this.width = this.$refs.magnificationContainer.offsetWidth;
+                    this.height = ratio * this.width;
 
-                        if (height > width && window.innerWidth > maxWidth) {
-                            this.width = maxWidth + 'px';
-                            this.height = ratio * maxWidth;
-                        }
-                        $('.preview').addClass('show');
-                        setTimeout(() => {
-                            this.loading = false
-                            $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
-                        }, 1000);
+                    if (height > width && window.innerWidth > maxWidth) {
+                        this.width = maxWidth + 'px';
+                        this.height = ratio * maxWidth;
                     }
-                },100);
+                }
+
+                if (resize == true){
+                    measure();
+                 } else {
+                    console.log('loading: ' + this.src );
+                    var loaded = setInterval(()=>{
+                        if (this.image.complete){
+                            clearInterval(loaded);
+                            measure();
+                            $('.preview').addClass('show');
+                            setTimeout(() => {
+                                this.loading = false
+                                $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+                            }, 1000);
+                        }
+                    },100);
+                }
             },
             getCursorPos: function (e) {
 
@@ -195,7 +198,8 @@
             this.setHeight();
 
             window.addEventListener('resize', () => {
-                this.setHeight();
+                const resize = true;
+                this.setHeight(resize);
             }),
 
             this.$nextTick(function () {
@@ -209,7 +213,8 @@
         },
         data: function () {
             return {
-                paintings: null,
+                image: null,
+                paintings: 0,
                 show: false,
                 loading: true,
                 height: null,
@@ -236,8 +241,7 @@
     .vue-magnifier-container {
         position: relative;
         z-index: 1;
-        min-height: 300px;
-        max-height: 400px;
+        min-height: 200px;
 
         &.scale {
             max-height: 200px;
@@ -250,7 +254,7 @@
             width: 100%;
             height: 100%;
             background-size: 30%;
-            background-position: center;
+            background-position: 50% 80%;
             background-repeat: no-repeat;
             background-image: url("/img/frontend/paintings/loading.gif");
         }

@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title"
-                               placeholder="Think of a cool title...">
+                               placeholder="Title">
                     </div>
                     <div class="form-group">
                         <input type="file" name="painting_pic">
@@ -53,12 +53,7 @@
                     <div class="form-group">
                         <label for="subtitle">Artist</label>
                         <input type="text" class="form-control" id="subtitle" name="subtitle"
-                               placeholder="Gotta have a sub...">
-                    </div>
-                    <div class="form-group">
-                        <label for="story">painting</label>
-                        <textarea class="form-control" id="story" name="story" placeholder="Spill the beans!"
-                                  maxlength="2500"></textarea>
+                               placeholder="Artist">
                     </div>
                     <button id="submit_painting" type="submit" class="btn btn-primary">Paint</button>
                 </form>
