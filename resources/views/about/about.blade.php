@@ -13,32 +13,34 @@
                 <h5>Designer + Developer</h5>
             </div>
         </div>
-
+        <div class="col-lg-12 mt-4">
+            <h4>Education</h4>
+        </div>
         <div class="card-columns col-lg-12">
-            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px">
                 <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
-                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
-                <div class="card-body"><h4 class="card-title">Certified Java & App Developer</h4>
+                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
+                <div class="card-body"><h4 class="card-title">Java & App Development Certification</h4>
                     <p class="card-text">Open University</p>
                 </div>
             </div>
-            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
-                     class="card-img-top" style="max-height: 150px; max-width: 150px">
+                     class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
                 <div class="card-body"><h4 class="card-title">Master of Arts</h4>
                     <p class="card-text">Erasmus University</p>
                 </div>
             </div>
-            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
-                     class="card-img-top" style="max-height: 150px; max-width: 150px">
-                <div class="card-body"><h4 class="card-title">Graphic Design & Web Development</h4>
+                     class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
+                <div class="card-body"><h4 class="card-title">Graphic & Web Design Certification</h4>
                     <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                 </div>
             </div>
-            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
-                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
+                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px;">
                 <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
                     <p class="card-text">University College Utrecht</p>
                 </div>
@@ -55,7 +57,10 @@
         {{--<button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>--}}
         {{--</form>--}}
         {{-- end --}}
-
+        <hr class="w-100">
+        <div class="col-lg-12">
+            <h4>Experience</h4>
+        </div>
         @auth
             <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4">
                 <h2>New Post...</h2>
