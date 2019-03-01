@@ -8,7 +8,7 @@
                 <h5>Stuff that sounds good</h5>
             </div>
 
-            <div class="col-lg-8 card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+            <div class="col-lg-8 card rounded-card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                 <div class="card-body">
                     <h4 class="card-title">Intro</h4>
                     <p class="card-text">Here you can find a DJ mix set I made and a bunch of my favorite albums. I

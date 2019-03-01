@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{show_list: show_list, hide_list: !show_list}" class="card my-2 rounded">
+    <div v-bind:class="{show_list: show_list, hide_list: !show_list}" class="card my-2 rounded-card">
 
         <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
@@ -293,9 +293,9 @@
             },
             skillsButton: function () {
                 if (this.show_list) {
-                    return "card skills-button open rounded";
+                    return "skills-button open";
                 } else {
-                    return "card skills-button closed rounded";
+                    return "skills-button closed";
                 }
             }
         },

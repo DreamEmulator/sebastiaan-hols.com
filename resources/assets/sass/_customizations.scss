@@ -17,6 +17,11 @@ body.text-dark {
   background: radial-gradient(ellipse at center, #ffffff 0%, #ffffff 60%, #000000 60%, #000000 100%);
 }
 
+.rounded-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
 .treehouse-logo {
   transform: translateX(-35%);
   z-index: -1;

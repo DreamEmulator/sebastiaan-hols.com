@@ -16,11 +16,11 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow"
+                            <div class="card rounded-card mb-4 box-shadow"
                                  onclick="location.href = '{{action('BlogController@index')}}'">
                                 <img class="card-img-top"
                                      src="https://images.unsplash.com/photo-1478641300939-0ec5188d3802?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6abd9d9eb30d2edda1d5bd076bba0a78&auto=format&fit=crop&w=2552&q=80"
-                                     alt="Card image cap">
+                                     alt="Card rounded-card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Dev Blog</h4>
                                     <div class="d-flex justify-content-between align-items-center">
@@ -34,11 +34,11 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow"
+                            <div class="card rounded-card mb-4 box-shadow"
                                  onclick="location.href = '{{action('PhotoController@index')}}'">
                                 <img class="card-img-top"
                                      src="{{asset('img/frontend/thumbs/das_boot_thumb.png')}}"
-                                     alt="Card image cap">
+                                     alt="Card rounded-card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Photography</h4>
                                     <div class="d-flex justify-content-between align-items-center">
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow" onclick="location.href = '{{route('coding')}}'">
+                            <div class="card rounded-card mb-4 box-shadow" onclick="location.href = '{{route('coding')}}'">
                                 <img class="card-img-top"
                                      src="{{asset('img/frontend/thumbs/coding_thumb.jpg')}}"
                                      alt="Card image cap">
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow"
+                            <div class="card rounded-card mb-4 box-shadow"
                                  onclick="location.href = '{{action('PaintingsController@index')}}'">
                                 <img class="card-img-top"
                                      src="https://sebastiaan-hols.com/images/1540805956IMG_3178.jpg"
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow"
+                            <div class="card rounded-card mb-4 box-shadow"
                                  onclick="location.href = '{{action('MusicController@index')}}'"
                                  style="cursor: pointer">
                                 <img class="card-img-top"
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="card mb-4 box-shadow" onclick="location.href = '{{route('about')}}'"
+                            <div class="card rounded-card mb-4 box-shadow" onclick="location.href = '{{route('about')}}'"
                                  style="cursor: pointer">
                                 <img class="card-img-top"
                                      src="{{asset('img/frontend/thumbs/about_thumb.jpg')}}"

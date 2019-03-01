@@ -21,7 +21,8 @@
                 <h5>Exciting examples and interesting insights</h5>
             </div>
 
-            <div class="col-lg-8 card my-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+            <div class="col-lg-8 card rounded-card my-2 intro hide-text hidden"
+                 onclick="this.classList.toggle('hidden')">
                 <div class="card-body">
                     <h4 class="card-title">Intro</h4>
                     <p class="card-text">This website is my digital portfolio and at the same time an example of my
@@ -61,79 +62,8 @@
             {{-- end --}}
 
             <div class="card-columns" style="columns:2">
-                <div class="card mb-4 box-shadow d-inline-block w-100"
-                     onclick="location.href = '{{route('keepy-uppy')}}'">
-                    <img class="card-img-top"
-                         src="{{asset('/img/frontend/coding/keepy_uppy.png')}}"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Keepy Uppy</h4>
-                        <p class="card-text">A small interactive game I came up with to illustrate the possibility
-                            of combining the VueJS framework with the PopMotion.io animation library.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 box-shadow d-inline-block w-100"
-                     onclick="location.href = 'https://muziekweb.nl/Intros'">
-                    <img class="card-img-top"
-                         src="{{asset('/img/frontend/coding/intros.jpg')}}"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Muziekweb Intro's</h4>
-                        <p class="card-text">Discovering new music whilst learning about the rich history the
-                            collection of Muziekweb houses is the key of the Muziekweb Intro's.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Discover New Music
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @auth
-                    <div class="card mb-4 box-shadow d-inline-block w-100"
-                         onclick="location.href = 'https://sebastiaan-hols.com/clock'">
-                        <img class="card-img-top"
-                             src="{{asset('/img/frontend/coding/nomos_metro.jpg')}}"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Vue Clock</h4>
-                            <p class="card-text">An interesting exercise in making radial patterns in Illustrator and
-                                juggling time with the Date object in JS.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Got the time?
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endauth
-                <div class="card mb-4 box-shadow d-inline-block w-100"
-                     onclick="location.href = 'https://filmbieb.nl'">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/c93pKlsLtFo?rel=0&amp;showinfo=1" frameborder="0"
-                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Filmbieb Touchbrowser</h4>
-                        <p class="card-text">The Filmbieb touchbrowser is a touch focussed interface I built with
-                            the team at Muziekweb to allow visitors in the library to easily discorver video's.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Discover Movies
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 box-shadow d-inline-block w-100">
+
+                <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe width="560" height="315"
                                 src="https://www.youtube.com/embed/hJA5E5bcpmc?rel=0&amp;controls=1&amp;showinfo=0"
@@ -146,6 +76,83 @@
                             the great chart.js library.</p>
                     </div>
                 </div>
+                <a href="{{route('keepy-uppy')}}" target="_blank">
+                    <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                        <img class="card-img-top"
+                             src="{{asset('/img/frontend/coding/keepy_uppy.png')}}"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">Keepy Uppy</h4>
+                            <p class="card-text">A small interactive game I came up with to illustrate the possibility
+                                of combining the VueJS framework with the PopMotion.io animation library.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://muziekweb.nl/Intros" target="_blank">
+                    <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                        <img class="card-img-top"
+                             src="{{asset('/img/frontend/coding/intros.jpg')}}"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">Muziekweb Intro's</h4>
+                            <p class="card-text">Discovering new music whilst learning about the rich history the
+                                collection of Muziekweb houses is the key of the Muziekweb Intro's.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Discover New Music
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                @auth
+                    <a href="/clock">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/nomos_metro.jpg')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Vue Clock</h4>
+                                <p class="card-text">An interesting exercise in making radial patterns in Illustrator
+                                    and
+                                    juggling time with the Date object in JS.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Got the time?
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                @endauth
+                <a href="https://filmbieb.nl" target="_blank">
+                    <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/c93pKlsLtFo?rel=0&amp;showinfo=1" frameborder="0"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Filmbieb Touchbrowser</h4>
+                            <p class="card-text">The Filmbieb touchbrowser is a touch focussed interface I built with
+                                the team at Muziekweb to allow visitors in the library to easily discorver video's.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Discover Movies
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

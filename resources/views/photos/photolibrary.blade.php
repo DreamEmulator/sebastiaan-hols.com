@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+                <div class="col-lg-8 card rounded-card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">This is a showcase of my photography. Most of the pictures here are
