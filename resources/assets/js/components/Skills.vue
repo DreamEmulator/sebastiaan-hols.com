@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{show_list: show_list, hide_list: !show_list}" class="card my-4 rounded">
+    <div v-bind:class="{show_list: show_list, hide_list: !show_list}" class="card my-2 rounded">
 
         <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">

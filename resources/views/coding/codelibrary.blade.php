@@ -21,7 +21,7 @@
                 <h5>Exciting examples and interesting insights</h5>
             </div>
 
-            <div class="col-lg-8 card my-4 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+            <div class="col-lg-8 card my-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                 <div class="card-body">
                     <h4 class="card-title">Intro</h4>
                     <p class="card-text">This website is my digital portfolio and at the same time an example of my
