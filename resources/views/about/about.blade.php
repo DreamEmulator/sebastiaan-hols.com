@@ -14,35 +14,33 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="card-columns col-lg-12">
-                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
-                    <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
-                         class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
-                    <div class="card-body"><h4 class="card-title">Certified Java & App Developer</h4>
-                        <p class="card-text">Open University</p>
-                    </div>
+        <div class="card-columns col-lg-12">
+            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+                <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
+                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
+                <div class="card-body"><h4 class="card-title">Certified Java & App Developer</h4>
+                    <p class="card-text">Open University</p>
                 </div>
-                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
-                    <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
-                         class="card-img-top" style="max-height: 150px; max-width: 150px">
-                    <div class="card-body"><h4 class="card-title">Master of Arts</h4>
-                        <p class="card-text">Erasmus University</p>
-                    </div>
+            </div>
+            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+                <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
+                     class="card-img-top" style="max-height: 150px; max-width: 150px">
+                <div class="card-body"><h4 class="card-title">Master of Arts</h4>
+                    <p class="card-text">Erasmus University</p>
                 </div>
-                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
-                    <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
-                         class="card-img-top" style="max-height: 150px; max-width: 150px">
-                    <div class="card-body"><h4 class="card-title">Graphic Design & Web Development</h4>
-                        <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
-                    </div>
+            </div>
+            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+                <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
+                     class="card-img-top" style="max-height: 150px; max-width: 150px">
+                <div class="card-body"><h4 class="card-title">Graphic Design & Web Development</h4>
+                    <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                 </div>
-                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
-                    <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
-                         class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
-                    <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
-                        <p class="card-text">University College Utrecht</p>
-                    </div>
+            </div>
+            <div class="card d-inline-block mt-4 pt-2 w-100 text-center" style="border-radius: 15px">
+                <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
+                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
+                <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
+                    <p class="card-text">University College Utrecht</p>
                 </div>
             </div>
         </div>
@@ -50,11 +48,11 @@
         {{--Skill.vue + submit form : Add the skills model to the route--}}
         {{--<skills @auth :prod="true" @endauth :skill_name="'personal'" :saved_skills="{{$skills->json}}"></skills>--}}
         {{--<form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">--}}
-            {{--{{ csrf_field() }}--}}
-            {{--<div class="form-group">--}}
-                {{--<input type="text" style="display: none" class="form-control" id="skills_json" name="skills_json">--}}
-            {{--</div>--}}
-            {{--<button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>--}}
+        {{--{{ csrf_field() }}--}}
+        {{--<div class="form-group">--}}
+        {{--<input type="text" style="display: none" class="form-control" id="skills_json" name="skills_json">--}}
+        {{--</div>--}}
+        {{--<button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>--}}
         {{--</form>--}}
         {{-- end --}}
 
