@@ -8,8 +8,7 @@
     @endif
     <div class="container">
         <div class="row">
-            <div class="row col-lg-12">
-                <div class="row col-lg-12 justify-content-center">
+                <div class="col-lg-12 justify-content-center">
                     <div class="col-lg-12 text-center">
                         <h3>Photography</h3>
                         <h5>A selection of my favorite photographs</h5>
@@ -78,7 +77,7 @@
                 @endauth
 
                 <photo-library :photos="{{$photos}}"></photo-library>
-            </div>
+
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{show_list: show_list, hide_list: !show_list}"class="card my-4 rounded">
+    <div v-bind:class="{show_list: show_list, hide_list: !show_list}" class="card my-4 rounded">
 
         <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
@@ -9,7 +9,8 @@
 
         <transition name="fade">
             <div class="list-wrapper">
-                <button v-if="prod == true && show_list == true" v-on:click="auth = !auth; previewing = !previewing; load_json()"
+                <button v-if="prod == true && show_list == true"
+                        v-on:click="auth = !auth; previewing = !previewing; load_json()"
                         class="btn-primary w-100">Preview
                 </button>
                 <ul class="list-group list-group-flush list-border">
@@ -83,25 +84,29 @@
         overflow: hidden;
     }
 
-    .text-dark  .hide_list:after {
-                    color: #000;
-                    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1) 25%);
-                }
+    body.text-dark .hide_list:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255) 100%);
+    }
 
-    .text-light .hide_list:after {
-                     color: #FFF;
-                     background: linear-gradient(to bottom, rgba(40,40,40,0), rgba(40,40,40,1) 25%);
-                 }
+    body.text-light .list-group-item {
+        background-color: initial;
+    }
 
-    .text-dark .hide_list:after {
-                    color: #000;
-                    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(250,244,237,1) 25%);
-                }
-
-    .text-light .hide_list:after {
-                     color: #FFF;
-                     background: linear-gradient(to bottom, rgba(40,40,40,0), rgba(0,0,0,1) 25%);
-                 }
+    body.text-light .hide_list:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom, rgba(40, 40, 40, 0), rgb(40, 40, 40) 100%);
+    }
 
     .show_list {
         max-height: none;
@@ -340,7 +345,10 @@
                 this.$forceUpdate();
             },
             show_text: function (text, event) {
-                if (!this.show_list){this.show_list = !this.show_list};
+                if (!this.show_list) {
+                    this.show_list = !this.show_list
+                }
+                ;
                 $($('.skill')[$(event.target).index()]).toggleClass('open');
                 $('.skill .show-skill-description').text('show');
                 $('.skill.open .show-skill-description').text('hide');
