@@ -49,7 +49,7 @@ Route::get('/clock', function () {
 });
 
 Route::get('/about', function (App\skills $skills, App\post $post) {
-    $posts = $post::all();
+    $posts = $post::orderBy('created_at', 'desc')->get();
     $skills = $skills::orderBy('created_at', 'desc')->first();
     return view('about.about', ['skills' => $skills, 'posts' => $posts]);
 })->name('about');

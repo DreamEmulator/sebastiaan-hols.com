@@ -177,10 +177,6 @@
         display: inline-block;
     }
 
-    .skills-button.open {
-
-    }
-
     .skills-button-title {
         user-select: none;
         position: relative;
@@ -189,8 +185,8 @@
     .skills-button-title:before {
         content: "";
         position: absolute;
-        height: 1em;
-        width: 1em;
+        height: 0.5em;
+        width: 0.5em;
         left: 50%;
         bottom: -1.25em;
         transition: border 0.25s;
@@ -203,7 +199,7 @@
     }
 
     .skills-button.open .skills-button-title:before {
-        bottom: -1.75em;
+        bottom: -0.75em;
         border-right: 2px solid rgba(0, 0, 0, 0);
         border-bottom: 2px solid rgba(0, 0, 0, 0);
     }
@@ -219,7 +215,7 @@
     }
 
     body.text-light .skills-button.closed .skills-button-title:before {
-        bottom: -0.9em;
+        bottom: -0.5em;
         border-right: 2px solid rgba(255, 255, 255, 1);
         border-bottom: 2px solid rgba(255, 255, 255, 1);
     }
