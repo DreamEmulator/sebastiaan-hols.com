@@ -253,7 +253,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: 30%;
+            background-size: 10%;
             background-position: 50% 80%;
             background-repeat: no-repeat;
             background-image: url("/img/frontend/paintings/loading.gif");

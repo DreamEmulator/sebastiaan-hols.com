@@ -8,15 +8,15 @@
     @endif
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="row justify-content-center">
+            <div class="row col-lg-12">
+                <div class="row col-lg-12 justify-content-center">
                     <div class="col-lg-12 text-center">
                         <h3>Photography</h3>
                         <h5>A selection of my favorite photographs</h5>
                     </div>
                 </div>
 
-                <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
+                <div class="col-lg-8 card my-4 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">This is a showcase of my photography. Most of the pictures here are
@@ -39,7 +39,7 @@
                 </div>
 
                 {{--Skill.vue + submit form : Add the skills model to the route--}}
-                <skills @auth:prod="true" @endauth :skill_name="'photography'"
+                <skills class="col-lg-4" @auth:prod="true" @endauth :skill_name="'photography'"
                         :saved_skills="{{$skills->json}}"></skills>
                 <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}

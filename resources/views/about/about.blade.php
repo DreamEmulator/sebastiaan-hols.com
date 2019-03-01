@@ -55,29 +55,17 @@
 
         @foreach($posts as $post)
             <div class="row featurette">
-                @if($loop->iteration % 2 == 0)
-                    <div class="col-md-7">
-                        <h3 class="featurette-heading">{{$post->title}}</h3>
-                        <span class="text-muted">{{$post->subtitle}}</span>
-                        <p class="lead">{{$post->story}}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <img class="featurette-image img-fluid mx-auto"
-                             src="{{$post->location}}" alt="{{$post->subtitle}}">
-                    </div>
-                @else
                     <hr class="featurette-divider">
                     <div class="col-md-5">
-                        <img class="featurette-image img-fluid mx-auto"
-                             src="{{$post->location}}" alt="{{$post->subtitle}}">
+                        <img class="img-fluid float-right mb-4"
+                             src="{{$post->location}}" alt="{{$post->subtitle}}"
+                        style="border-radius: 15px; border: solid #fff 5px; max-height: 200px">
                     </div>
                     <div class="col-md-7">
                         <h3 class="featurette-heading">{{$post->title}}</h3>
                         <span class="text-muted">{{$post->subtitle}}</span>
                         <p class="lead">{{$post->story}}</p>
                     </div>
-                @endif
-
                 @auth
 
                     <div class="col-md-12">

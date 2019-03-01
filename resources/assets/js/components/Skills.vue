@@ -1,5 +1,5 @@
 <template>
-    <div class="card my-5">
+    <div v-bind:class="{show_list: show_list, hide_list: !show_list}"class="card my-4 rounded">
 
         <div :class="[skillsButton]" v-on:click="show_list = !show_list; load_json()">
             <div class="card-title text-center">
@@ -12,7 +12,7 @@
                 <button v-if="prod == true && show_list == true" v-on:click="auth = !auth; previewing = !previewing; load_json()"
                         class="btn-primary w-100">Preview
                 </button>
-                <ul v-if="show_list" class="list-group list-group-flush list-border">
+                <ul class="list-group list-group-flush list-border">
 
                     <li v-for="(value, key, index) in skills" v-on:click="show_text(key + '_text', $event)"
                         v-if="key.indexOf('_text') == -1" :class="skill">
@@ -77,6 +77,36 @@
 </template>
 
 <style>
+
+    .hide_list {
+        max-height: 200px;
+        overflow: hidden;
+    }
+
+    .text-dark  .hide_list:after {
+                    color: #000;
+                    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1) 25%);
+                }
+
+    .text-light .hide_list:after {
+                     color: #FFF;
+                     background: linear-gradient(to bottom, rgba(40,40,40,0), rgba(40,40,40,1) 25%);
+                 }
+
+    .text-dark .hide_list:after {
+                    color: #000;
+                    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(250,244,237,1) 25%);
+                }
+
+    .text-light .hide_list:after {
+                     color: #FFF;
+                     background: linear-gradient(to bottom, rgba(40,40,40,0), rgba(0,0,0,1) 25%);
+                 }
+
+    .show_list {
+        max-height: none;
+    }
+
     .skill-slider {
         background: linear-gradient(to right, #b7deed 0%, #21b4e2 50%, #b7deed 100%);
         width: 0%;
@@ -143,18 +173,12 @@
     }
 
     .skills-button {
-        border: 0.05em solid #b9b9b9;
-        transition: border 0.5s 1s;
+        border: none;
+        display: inline-block;
     }
 
     .skills-button.open {
-        transition: border 0s;
-        border-bottom: none;
-    }
 
-    .list-border {
-        border: 0.05em solid #b9b9b9;
-        border-top: none;
     }
 
     .skills-button-title {
@@ -268,9 +292,9 @@
             },
             skillsButton: function () {
                 if (this.show_list) {
-                    return "card skills-button open";
+                    return "card skills-button open rounded";
                 } else {
-                    return "card skills-button closed";
+                    return "card skills-button closed rounded";
                 }
             }
         },
@@ -320,6 +344,7 @@
                 this.$forceUpdate();
             },
             show_text: function (text, event) {
+                if (!this.show_list){this.show_list = !this.show_list};
                 $($('.skill')[$(event.target).index()]).toggleClass('open');
                 $('.skill .show-skill-description').text('show');
                 $('.skill.open .show-skill-description').text('hide');

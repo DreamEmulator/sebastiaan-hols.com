@@ -54,8 +54,7 @@ textarea {
 
 
 .hide-text {
-  max-height: 20000px;
-  transition: max-height 1s;
+  max-height: none;
 
   .text-dark &.intro.hidden:after {
     color: #000;
@@ -93,6 +92,5 @@ textarea {
     width: 100%;
     left: 0;
     bottom: 0;
-
   }
 }

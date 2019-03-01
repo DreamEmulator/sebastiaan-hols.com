@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="row col-lg-12 justify-content-center">
 
                 <a href="https://github.com/DreamEmulator" target="_blank">
                     <svg class="bg-light rounded-circle git-logo" height="40" width="40"
@@ -12,14 +12,14 @@
                     </svg>
                 </a>
 
-                <div class="row justify-content-center mt-3">
+                <div class="row col-lg-12 justify-content-center mt-3">
                     <div class="col-lg-12 text-center">
                         <h3>Coding</h3>
                         <h5>Exciting examples and interesting insights</h5>
                     </div>
                 </div>
 
-                <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
+                <div class="col-lg-8 card my-4 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">This website is my digital portfolio and at the same time an example of my
@@ -46,7 +46,7 @@
                 </div>
 
                 {{--Skill.vue + submit form : Add the skills model to the route--}}
-                <skills @auth:prod="true" @endauth :skill_name="'coding'" :saved_skills="{{$skills->json}}"></skills>
+                <skills class="col-lg-4" @auth:prod="true" @endauth :skill_name="'coding'" :saved_skills="{{$skills->json}}"></skills>
                 <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -92,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+                    @auth
                     <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = 'https://sebastiaan-hols.com/clock'">
                         <img class="card-img-top"
@@ -108,6 +109,7 @@
                             </div>
                         </div>
                     </div>
+                    @endauth
                     <div class="card mb-4 box-shadow d-inline-block w-100"
                          onclick="location.href = 'https://filmbieb.nl'">
                         <div class="embed-responsive embed-responsive-16by9">
