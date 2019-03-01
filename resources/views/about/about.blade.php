@@ -15,7 +15,7 @@
         </div>
 
         <div class="row">
-            <div class="card-columns col-lg-12 d-flex align-items-stretch" style="column-count: 4">
+            <div class="card-columns col-lg-12">
                 <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
                     <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
                          class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
