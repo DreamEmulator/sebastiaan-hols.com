@@ -94,7 +94,7 @@
                          src="{{$post->location}}" alt="{{$post->subtitle}}"
                          style="border-radius: 15px; border: solid #fff 5px; max-height: 200px">
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 mt-3">
                     <h3 class="featurette-heading">{{$post->title}}</h3>
                     <span class="text-muted">{{$post->subtitle}}</span>
                     <p class="lead">{{$post->story}}</p>
