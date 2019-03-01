@@ -16,28 +16,28 @@
 
         <div class="row">
             <div class="card-columns col-lg-12 d-flex align-items-stretch" style="column-count: 4">
-                <div class="card d-inline-block m-2 pt-2 w-100 text-center" style="border-radius: 15px">
+                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
                     <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
                          class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
                     <div class="card-body"><h4 class="card-title">Certified Java & App Developer</h4>
                         <p class="card-text">Open University</p>
                     </div>
                 </div>
-                <div class="card d-inline-block m-2 pt-2 w-100 text-center" style="border-radius: 15px">
+                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
                     <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
                          class="card-img-top" style="max-height: 150px; max-width: 150px">
                     <div class="card-body"><h4 class="card-title">Master of Arts</h4>
                         <p class="card-text">Erasmus University</p>
                     </div>
                 </div>
-                <div class="card d-inline-block m-2 pt-2 w-100 text-center" style="border-radius: 15px">
+                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
                     <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
                          class="card-img-top" style="max-height: 150px; max-width: 150px">
                     <div class="card-body"><h4 class="card-title">Graphic Design & Web Development</h4>
                         <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                     </div>
                 </div>
-                <div class="card d-inline-block m-2 pt-2 w-100 text-center" style="border-radius: 15px">
+                <div class="card d-inline-block mt-4 mx-2 pt-2 w-100 text-center" style="border-radius: 15px">
                     <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
                          class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px">
                     <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
@@ -87,7 +87,7 @@
         @endauth
 
         @foreach($posts as $post)
-            <div class="row featurette mt-4">
+            <div class="row featurette mt-3">
                 <hr class="featurette-divider">
                 <div class="col-md-5">
                     <img class="img-fluid float-right mb-4"
