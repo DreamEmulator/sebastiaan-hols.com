@@ -20,7 +20,7 @@
                 <h6 class="text-muted">A collection of public domain artworks in hi-res with a magnifying glass</h6>
             </div>
         </div>
-        <div class="card my-4 intro hide-text hidden" onclick="this.classList.remove('hidden')">
+        <div class="card rounded-card my-4 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Intro</h4>
                 <p class="card-text">Here we have a collection of public domain art works that I find particularly

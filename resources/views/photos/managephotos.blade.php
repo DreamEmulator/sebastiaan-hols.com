@@ -14,7 +14,7 @@
 
                     @foreach($photos as $photo)
                         <div class="col-lg-6 mt-2 mb-2">
-                            <div class="card">
+                            <div class="card rounded-card">
                                 <img class="card-img-top" src="{{$photo->location}}">
                                 <div class="card-body">
                                     <form id="update_photo_{{$photo['id']}}" action="{{action('PhotoController@update', $photo['id'])}}"  method="post">

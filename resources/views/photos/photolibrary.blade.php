@@ -8,14 +8,16 @@
     @endif
     <div class="container">
         <div class="row">
-                <div class="col-lg-12 justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <h3>Photography</h3>
-                        <h5>A selection of my favorite photographs</h5>
-                    </div>
+            <div class="col-lg-12 justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h3>Photography</h3>
+                    <h5>A selection of my favorite photographs</h5>
                 </div>
+            </div>
 
-                <div class="col-lg-8 card rounded-card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+            <div class="col-lg-8">
+                <div class="card rounded-card mt-2 intro hide-text hidden"
+                     onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">This is a showcase of my photography. Most of the pictures here are
@@ -36,10 +38,13 @@
                             onload callback.</p>
                     </div>
                 </div>
-
-                {{--Skill.vue + submit form : Add the skills model to the route--}}
-                <skills class="col-lg-4" @auth:prod="true" @endauth :skill_name="'photography'"
+            </div>
+            {{--Skill.vue + submit form : Add the skills model to the route--}}
+            <div class="col-lg-4">
+                <skills @auth:prod="true" @endauth :skill_name="'photography'"
                         :saved_skills="{{$skills->json}}"></skills>
+            </div>
+            @auth
                 <form class="card-text" action="{{url('skills')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -48,10 +53,12 @@
                     </div>
                     <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
                 </form>
-                {{-- end --}}
+            @endauth
+            {{-- end --}}
 
-                @auth
-                    <div class="col-lg-12 card mb-4">
+            @auth
+                <div class="col-lg-12">
+                    <div class="card my-2 rounded-card">
                         <div class="card-body">
                             <h5 class="card-title">Upload a new photo</h5>
                             <form class="card-text" action="{{url('photos')}}" method="post"
@@ -74,10 +81,11 @@
                             </form>
                         </div>
                     </div>
-                @endauth
-
+                </div>
+            @endauth
+            <div class="col-lg-12">
                 <photo-library :photos="{{$photos}}"></photo-library>
-
+            </div>
         </div>
     </div>
 

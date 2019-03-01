@@ -13,7 +13,7 @@
                 <div class="row">
                     @foreach($musics as $music)
                         <div class="col-lg-6 mt-2 mb-2">
-                            <div class="card">
+                            <div class="card rounded-card">
                                 <img class="card-img-top" src="{{$music->img_location}}">
                                 <div class="card-body">
                                     <form id="update_music_{{$music['id']}}" action="{{action('MusicController@update', $music['id'])}}"  method="post">

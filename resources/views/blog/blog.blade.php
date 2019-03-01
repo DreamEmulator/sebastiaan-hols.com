@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="card my-4 intro-text hidden" onclick="this.classList.remove('hidden')">
+        <div class="card my-4 rounded-card intro-text hidden" onclick="this.classList.remove('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Intro</h4>
                 <p class="card-text">This blog is meant as kind of running insight into the things I learn and create as
@@ -34,7 +34,7 @@
         </div>
 
         @auth
-            <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4">
+            <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4 rounded-card">
                 <h2>New blog...</h2>
                 <form class="card-text" action="{{url('blog')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -69,23 +69,23 @@
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
                             <span class="text-muted">{{$blog->subtitle}}</span>
-                            <p class="lead body hide-text hidden" onclick="this.classList.remove('hidden')">{{$blog->story}}</p>
+                            <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
                             <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                         <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto"
+                            <img class="featurette-image img-fluid mx-auto rounded-card"
                                  src="{{$blog->location}}" alt="{{$blog->subtitle}}">
                         </div>
                     @else
                         <hr class="featurette-divider">
                         <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto"
+                            <img class="featurette-image img-fluid mx-auto rounded-card"
                                  src="{{$blog->location}}" alt="{{$blog->subtitle}}">
                         </div>
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
                             <span class="text-muted">{{$blog->subtitle}}</span>
-                            <p class="lead body hide-text hidden" onclick="this.classList.remove('hidden')">{{$blog->story}}</p>
+                            <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
                             <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                     @endif
@@ -93,7 +93,7 @@
             </div>
 
             @auth
-                <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4">
+                <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4 rounded-card">
                     <h2>Edit blog...</h2>
                     <form class="card-text" action="{{action('BlogController@update', $blog['id'])}}" method="post"
                           enctype="multipart/form-data">

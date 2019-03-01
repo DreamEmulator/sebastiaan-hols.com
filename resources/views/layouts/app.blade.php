@@ -108,7 +108,7 @@
                                 <a class="dropdown-item text-{{session('contrast')}}"
                                    href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('manage_photos')}}">{{ __('Edit Photo') }}</a>
+                                   href="{{route('manage_photos')}}">{{ __('Edit Photo\'s') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
