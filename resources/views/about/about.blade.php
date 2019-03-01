@@ -19,7 +19,8 @@
         <div class="card-columns col-lg-12">
             <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px">
                 <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
-                     class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
+                     class="card-img-top rounded-circle"
+                     style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
                 <div class="card-body"><h4 class="card-title">Java & App Development Certification</h4>
                     <p class="card-text">Open University</p>
                 </div>
@@ -89,37 +90,39 @@
             </div>
         @endauth
 
-        @foreach($posts as $post)
-            <div class="row featurette mt-3">
-                <hr class="featurette-divider">
-                <div class="col-md-5">
-                    <img class="img-fluid float-right mb-4"
-                         src="{{$post->location}}" alt="{{$post->subtitle}}"
-                         style="border-radius: 15px; border: solid #fff 5px; max-height: 200px">
-                </div>
-                <div class="col-md-7 mt-3">
-                    <h3 class="featurette-heading">{{$post->title}}</h3>
-                    <span class="text-muted">{{$post->subtitle}}</span>
-                    <p class="lead">{{$post->story}}</p>
-                </div>
-                @auth
-
-                    <div class="col-md-12">
-                        <form id="delete_post_{{$post['id']}}"
-                              action="{{action('PostController@destroy', $post['id'])}}"
-                              method="post">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" style="display: none"></button>
-
-
-                            <button class="btn btn-danger mt-2" type="submit">Delete</button>
-                        </form>
+        <div class="col-lg-12">
+            @foreach($posts as $post)
+                <div class="row featurette mt-3">
+                    <hr class="featurette-divider">
+                    <div class="col-md-5">
+                        <img class="img-fluid float-right mb-4"
+                             src="{{$post->location}}" alt="{{$post->subtitle}}"
+                             style="border-radius: 15px; border: solid #fff 5px; max-height: 200px">
                     </div>
-                @endauth
+                    <div class="col-md-7 mt-3">
+                        <h3 class="featurette-heading">{{$post->title}}</h3>
+                        <span class="text-muted">{{$post->subtitle}}</span>
+                        <p class="lead">{{$post->story}}</p>
+                    </div>
+                    @auth
 
-            </div>
-        @endforeach
+                        <div class="col-md-12">
+                            <form id="delete_post_{{$post['id']}}"
+                                  action="{{action('PostController@destroy', $post['id'])}}"
+                                  method="post">
+                                @csrf
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button type="submit" style="display: none"></button>
+
+
+                                <button class="btn btn-danger mt-2" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    @endauth
+
+                </div>
+            @endforeach
+        </div>
     </div>
 
 
