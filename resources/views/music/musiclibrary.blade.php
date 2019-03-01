@@ -8,8 +8,8 @@
                 <h5>Stuff that sounds good</h5>
             </div>
 
-            <div class="col-lg-8">
-                <div class="card rounded-card mt-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
+            <div class="col-lg-12">
+                <div class="card rounded-card my-2 intro hide-text hidden" onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
                         <h4 class="card-title">Intro</h4>
                         <p class="card-text">Here you can find a DJ mix set I made and a bunch of my favorite albums. I
@@ -28,26 +28,27 @@
                             chance they will have what you are looking for if you can't find it anywhere else...</p>
                     </div>
                 </div>
-            </div>
+            {{--</div>--}}
             {{--Skill.vue + submit form : Add the skills model to the route--}}
-            <div class="col-lg-4">
-                <skills @auth:prod="true" @endauth :skill_name="'music'"
-                        :saved_skills="{{$skills->json}}"></skills>
-            </div>
-            @auth
-                <form class="card-text rounded-card" action="{{url('skills')}}" method="post"
-                      enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <input type="text" style="display: none" class="form-control" id="skills_json"
-                               name="skills_json">
-                    </div>
-                    <button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>
-                </form>
-            @endauth
+            {{--<div class="col-lg-4">--}}
+                {{--<skills @auth:prod="true" @endauth :skill_name="'music'"--}}
+                        {{--:saved_skills="{{$skills->json}}"></skills>--}}
+            {{--</div>--}}
+            {{--@auth--}}
+                {{--<form class="card-text rounded-card" action="{{url('skills')}}" method="post"--}}
+                      {{--enctype="multipart/form-data">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--<div class="form-group">--}}
+                        {{--<input type="text" style="display: none" class="form-control" id="skills_json"--}}
+                               {{--name="skills_json">--}}
+                    {{--</div>--}}
+                    {{--<button id="submit_skills" style="display: none" type="submit" class="btn btn-primary"></button>--}}
+                {{--</form>--}}
+            {{--@endauth--}}
             {{-- end --}}
 
-            <div class="col-lg-12">
+            {{--<div class="col-lg-12">--}}
+
                 <h3>Rezi</h3>
                 <p class="w-30">This mix combines my photography with the tracks I felt connected well to the rough and
                     rugged feeling of urban excitement you find everywhere in Rotterdam.</p>
