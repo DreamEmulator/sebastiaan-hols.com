@@ -44,6 +44,7 @@
     </script>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/navbar.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"
             integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
@@ -59,7 +60,7 @@
 
 </head>
 <body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
-<nav class="navbar navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-lg mb-4 border-0">
+<nav class="navbar navbar-custom navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-lg mb-4 border-0">
     <div class="container">
         <a class="navbar-brand border-0" href="{{ url('/') }}">
             <i class="fas fa-anchor"></i>

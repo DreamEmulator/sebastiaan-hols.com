@@ -2,6 +2,35 @@ body.text-dark {
   background-color: #fbf4ec;
 }
 
+.navbar-custom {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+  margin: 0 1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: padding-bottom 0.5s, padding-top 0.5s;
+}
+
+.navbar-custom.scrolled {
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: padding-bottom 0.5s 0s, padding-top 0.5s 0.15s;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-brand {
+  margin-right: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .tidal-icon {
   width: 2em;
   height: 2em;
