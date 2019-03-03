@@ -74,24 +74,11 @@
             <ul class="navbar-nav ml-auto align-content-center align-items-center">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('BlogController@index')}}">{{ __('Dev Blog') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('PaintingsController@index')}}">{{ __('Art Collection') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{route('coding')}}">{{ __('Coding') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{route('about')}}">{{ __('About') }}</a></li>
-                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{route('login')}}">{{ __('Login') }}</a></li>
                     <li>
                         <a class="border-0 nav-link text-{{session('contrast')}}" href="javascript:;"
                            onclick="event.preventDefault();document.getElementById('change_dream_theme').submit();"
                            title="Change the theme">
+                            {{--<i class="far fa-lightbulb"></i>--}}
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 299.994 299.994" style="height: 25px; width: 25px; background: #fff;    border-radius: 100%;
@@ -118,6 +105,18 @@
                             <input name="dream_theme" type="hidden" value="{{$change_theme}}">
                         </form>
                     </li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('BlogController@index')}}">{{ __('Blog') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('PaintingsController@index')}}">{{ __('Art Collection') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           href="{{route('about')}}">{{ __('About') }}</a></li>
                 @endguest
                 @auth
                     @if (auth()->user()->isAdmin())
@@ -170,8 +169,9 @@
                     </form>
                 @endauth
                 <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                       href="{{'mailto:s.hols@icloud.com?Subject=Hello%20there'}}" target="_top"><i
-                                class="fas fa-envelope"></i></a></li>
+                       href="mailto:s.hols@icloud.com?subject=Hey there" target="_top"><i class="fas fa-envelope"></i></a></li>
+                <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                       href="{{route('login')}}">{{ __('Login') }}</a></li>
             </ul>
         </div>
     </div>

@@ -68,7 +68,7 @@
             {{-- end --}}
 
             <div class="col-lg-12 mt-2">
-                <div class="card-columns" style="columns:2">
+                <div class="card-columns">
 
                     <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
                         <div class="embed-responsive embed-responsive-16by9">

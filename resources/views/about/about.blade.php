@@ -11,6 +11,7 @@
                      alt="Generic placeholder image" width="140" height="140">
                 <h3>Sebastiaan Hols</h3>
                 <h5>Designer + Developer</h5>
+                <a href="https://www.linkedin.com/in/sebastiaan-hols/"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="col-lg-12 mt-4">
@@ -21,7 +22,7 @@
                 <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
                      class="card-img-top rounded-circle"
                      style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
-                <div class="card-body"><h4 class="card-title">Java & App Development Certification</h4>
+                <div class="card-body"><h4 class="card-title">Java & App Developer Certification</h4>
                     <p class="card-text">Open University</p>
                 </div>
             </div>
@@ -35,7 +36,7 @@
             <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
                      class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
-                <div class="card-body"><h4 class="card-title">Graphic & Web Design Certification</h4>
+                <div class="card-body"><h4 class="card-title">Web & Graphic Design Certification</h4>
                     <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                 </div>
             </div>
