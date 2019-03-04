@@ -106,17 +106,18 @@
                         </form>
                     </li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('BlogController@index')}}">{{ __('Blog') }}</a></li>
+                           onclick="location.href = '{{action('BlogController@index')}}'">{{ __('Blog') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a></li>
+                           onclick="location.href = '{{action('PhotoController@index')}}'">{{ __('Photo\'s') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('PaintingsController@index')}}">{{ __('Art Collection') }}</a></li>
+                           onclick="location.href = '{{action('PaintingsController@index')}}'">{{ __('Art Collection') }}</a>
+                    </li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{action('MusicController@index')}}">{{ __('Music') }}</a></li>
+                           onclick="location.href = '{{action('MusicController@index')}}'">{{ __('Music') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                           onclick="location.href = '{{route('coding')}}'">{{ __('Coding') }}</a></li>
                     <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                           href="{{route('about')}}">{{ __('About') }}</a></li>
+                           onclick="location.href = '{{route('about')}}'">{{ __('About') }}</a></li>
                 @endguest
                 @auth
                     @if (auth()->user()->isAdmin())
@@ -126,9 +127,9 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Photos</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{action('PhotoController@index')}}">{{ __('Photo\'s') }}</a>
+                                   onclick="location.href = '{{action('PhotoController@index')}}'">{{ __('Photo\'s') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('manage_photos')}}">{{ __('Edit Photo\'s') }}</a>
+                                   onclick="location.href = '{{route('manage_photos')}}'">{{ __('Edit Photo\'s') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -137,11 +138,11 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Music</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{action('MusicController@index')}}">{{ __('Music') }}</a>
+                                   onclick="location.href = '{{action('MusicController@index')}}'">{{ __('Music') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('add_music')}}">{{ __('Add Music') }}</a>
+                                   onclick="location.href = '{{route('add_music')}}'">{{ __('Add Music') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('manage_music')}}">{{ __('Edit Music') }}</a>
+                                   onclick="location.href = '{{route('manage_music')}}'">{{ __('Edit Music') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -150,15 +151,15 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register Users</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('register')}}">{{ __('Register User') }}</a>
+                                   onclick="location.href = '{{route('register')}}'">{{ __('Register User') }}</a>
                                 <a class="dropdown-item text-{{session('contrast')}}"
-                                   href="{{route('manage')}}">{{ __('Manage Users') }}</a>
+                                   onclick="location.href = '{{route('manage')}}'">{{ __('Manage Users') }}</a>
                             </div>
                         </li>
                         <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                               href="{{route('coding')}}">{{ __('Coding') }}</a></li>
+                               onclick="location.href = '{{route('coding')}}'">{{ __('Coding') }}</a></li>
                         <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                               href="{{route('about')}}">{{ __('About') }}</a></li>
+                               onclick="location.href = '{{route('about')}}'">{{ __('About') }}</a></li>
                     @endif
                     <a class="border-0 nav-link text-{{session('contrast')}}" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -169,9 +170,10 @@
                     </form>
                 @endauth
                 <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                       href="mailto:s.hols@icloud.com?subject=Hey there" target="_top"><i class="fas fa-envelope"></i></a></li>
+                       href="mailto:s.hols@icloud.com?subject=Hey there" target="_top"><i
+                                class="fas fa-envelope"></i></a></li>
                 <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                       href="{{route('login')}}">{{ __('Login') }}</a></li>
+                       onclick="location.href = '{{route('login')}}'">{{ __('Login') }}</a></li>
             </ul>
         </div>
     </div>
