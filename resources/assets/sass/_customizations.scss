@@ -13,6 +13,27 @@ body.text-dark {
   transition: padding-bottom 0.5s, padding-top 0.5s;
 }
 
+.rainborder {
+  $border: 5px;
+  color: #FFF;
+  background: #000;
+  background-clip: padding-box; /* !importanté */
+  border: solid $border transparent;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border; /* !importanté */
+    border-radius: inherit;
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet, pink);
+  }
+}
+
 .navbar-custom.scrolled {
   padding-top: 0;
   padding-bottom: 0;
