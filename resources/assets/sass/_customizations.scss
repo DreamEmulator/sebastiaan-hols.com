@@ -14,11 +14,17 @@ body.text-dark {
 }
 
 .rainborder {
-  $border: 5px;
+  box-sizing: border-box;
+  position: relative;
+  $border: 2px;
   color: #FFF;
   background: #000;
   background-clip: padding-box; /* !importanté */
   border: solid $border transparent;
+  border-radius: 15px;
+  margin: 0 auto;
+  position: relative;
+  display: inherit;
 
   &:before {
     content: '';
@@ -30,8 +36,12 @@ body.text-dark {
     z-index: -1;
     margin: -$border; /* !importanté */
     border-radius: inherit;
-    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet, pink);
+    background: linear-gradient(160deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
   }
+}
+
+.btn.rainborder:focus {
+  box-shadow: none;
 }
 
 .navbar-custom.scrolled {

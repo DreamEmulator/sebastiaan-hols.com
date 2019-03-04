@@ -2,12 +2,11 @@
 
 <template>
     <div ref="magnificationContainer" class="vue-magnifier-container">
-        <hr class="w-100">
         <slot></slot>
-        <h3> {{title}}</h3>
+        <h3 class="mt-4"> {{title}}</h3>
         <h4> {{painter}}</h4>
         <div class="loading" v-if="loading"></div>
-        <span ref="magnificationElement" class="preview" v-on:click="moveMagnifier"
+        <span ref="magnificationElement" class="preview rounded-card" v-on:click="moveMagnifier"
               v-bind:style="{height: height + 'px', width: width, backgroundImage:'url(' + src + ')'}">
             <span ref="glass" class="magnifying-glass"
                 v-bind:style="{backgroundColor: backgroundColor, backgroundImage: 'url(' + srcLarge + ')', backgroundPosition: backgroundPos, left: cursorX + 'px', top: cursorY + 'px'}"></span>
@@ -254,7 +253,7 @@
             width: 100%;
             height: 100%;
             background-size: 10%;
-            background-position: 50% 80%;
+            background-position: 50% 50%;
             background-repeat: no-repeat;
             background-image: url("/img/frontend/paintings/loading.gif");
         }
@@ -266,10 +265,10 @@
                 size: cover;
                 position: 50% 50%;
             }
-            border-top: 2px solid #d2d2d2;
-            border-left: 2px solid #b9b9b9;
-            border-bottom: 2px solid #4e4d4d;
-            border-right: 2px solid #8a8a8a;
+            /*border-top: 2px solid #d2d2d2;*/
+            /*border-left: 2px solid #b9b9b9;*/
+            /*border-bottom: 2px solid #4e4d4d;*/
+            /*border-right: 2px solid #8a8a8a;*/
             display: block;
             clear: both;
             margin: 0 auto;
