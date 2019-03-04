@@ -68,9 +68,8 @@
                     @if($loop->iteration % 2 == 0)
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
-                            <span class="text-muted">{{$blog->subtitle}}</span>
+                            <h5 class="text-muted font-italic">- {{$blog->subtitle}} -</h5>
                             <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
-                            <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                         <div class="col-md-5">
                             <img class="featurette-image img-fluid mx-auto rounded-card"
@@ -84,9 +83,8 @@
                         </div>
                         <div class="col-md-7">
                             <h3 class="featurette-heading">{{$blog->title}}</h3>
-                            <span class="text-muted">{{$blog->subtitle}}</span>
+                            <h5 class="text-muted font-italic">- {{$blog->subtitle}} -</h5>
                             <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
-                            <p class="text-muted">{{$blog->created_at}}</p>
                         </div>
                     @endif
                 @endguest

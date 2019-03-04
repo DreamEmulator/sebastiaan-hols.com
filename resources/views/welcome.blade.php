@@ -21,7 +21,7 @@
                                  src="https://images.unsplash.com/photo-1478641300939-0ec5188d3802?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6abd9d9eb30d2edda1d5bd076bba0a78&auto=format&fit=crop&w=2552&q=80"
                                  alt="Card rounded-card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">Dev Blog</h4>
+                                <h4 class="card-title">Blog</h4>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Read up
@@ -116,7 +116,7 @@
                                  src="{{asset('img/frontend/thumbs/about_thumb.jpg')}}"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">About me</h4>
+                                <h4 class="card-title">About</h4>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">
