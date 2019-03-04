@@ -4,17 +4,17 @@
 @endsection
 @section('content')
     <main role="main">
-        <div class="album py-5">
+        <div class="album py-2">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center mb-4">
+                    <div class="col-lg-12 text-center mb-3">
                         <h3>Digital portfolio</h3>
                         <h5 id="click-discover">Discover my skills and interests</h5>
                         <h6 class="text-muted">Built from scratch
                             and constantly updated</h6>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{action('BlogController@index')}}'">
                             <img class="card-img-top"
@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{action('PhotoController@index')}}'">
                             <img class="card-img-top"
@@ -52,7 +52,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{route('coding')}}'">
                             <img class="card-img-top"
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{action('PaintingsController@index')}}'">
                             <img class="card-img-top"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{action('MusicController@index')}}'"
                              style="cursor: pointer">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card rounded-card mb-4 box-shadow"
                              onclick="location.href = '{{route('about')}}'"
                              style="cursor: pointer">
