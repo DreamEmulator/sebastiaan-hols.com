@@ -23,10 +23,20 @@ a, button {
   transition: padding-bottom 0.5s, padding-top 0.5s;
 }
 
+@keyframes rotateBG {
+  from {
+    background: linear-gradient(0deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+  }
+
+  to {
+    background: linear-gradient(360deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+  }
+}
+
 .rainborder {
   box-sizing: border-box;
   position: relative;
-  $border: 2px;
+  $border: 1px;
   color: #FFF;
   background: #000;
   background-clip: padding-box; /* !importanté */
@@ -47,6 +57,7 @@ a, button {
     margin: -$border; /* !importanté */
     border-radius: inherit;
     background: linear-gradient(160deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+    animation: rotateBG 1s linear 0s infinite;
   }
 }
 
