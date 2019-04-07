@@ -240,10 +240,10 @@
     .vue-magnifier-container {
         position: relative;
         z-index: 1;
-        min-height: 200px;
+        min-height: 300px;
 
         &.scale {
-            max-height: 200px;
+            max-height: 300px;
         }
 
         .loading {

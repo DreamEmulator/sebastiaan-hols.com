@@ -57,7 +57,7 @@
     <link id="dream_theme" href="{{ asset('css/' . $dream_theme .'_dream.css') }}" rel="stylesheet">
 
     @yield('extra_style')
-
+{{--    {{$daylight}}--}}
 </head>
 <body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
 <nav class="navbar navbar-custom navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-lg mb-3 border-0">

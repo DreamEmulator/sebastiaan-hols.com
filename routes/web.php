@@ -39,7 +39,6 @@ Auth::routes();
 
 Route::post('/dream_theme', 'ThemeController@changeTheme')->name('change_theme');
 
-
 Route::get('/', function () {
     return view('welcome');
 });

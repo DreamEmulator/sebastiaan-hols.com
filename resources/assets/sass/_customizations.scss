@@ -12,6 +12,14 @@ a, button {
   cursor: pointer;
 }
 
+.explorer-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
 .navbar-custom {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -24,12 +32,11 @@ a, button {
 }
 
 @keyframes rotateBG {
-  from {
-    background: linear-gradient(0deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
-  }
 
-  to {
-    background: linear-gradient(360deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+  @for $i from 1 through 100 {
+    #{$i}% {
+      background: linear-gradient(#{$i*3.6}deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+    }
   }
 }
 
@@ -46,6 +53,10 @@ a, button {
   position: relative;
   display: inherit;
 
+  &:hover {
+    color: #fff;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -56,8 +67,8 @@ a, button {
     z-index: -1;
     margin: -$border; /* !importanté */
     border-radius: inherit;
-    background: linear-gradient(160deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
-    animation: rotateBG 1s linear 0s infinite;
+    //background: linear-gradient(160deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
+    animation: rotateBG 10s ease-in-out 0s infinite;
   }
 }
 

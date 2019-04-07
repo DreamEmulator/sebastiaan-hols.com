@@ -63,30 +63,22 @@
 
         @foreach($blogs as $blog)
             <hr class="w-100">
-            <div class="row featurette mt-4">
+            <div class="row featurette mt-4 @if($loop->iteration % 2 == 0) flex-row-reverse @endif">
                 @guest
-                    @if($loop->iteration % 2 == 0)
-                        <div class="col-md-7">
-                            <h3 class="featurette-heading">{{$blog->title}}</h3>
-                            <h5 class="text-muted font-italic">- {{$blog->subtitle}} -</h5>
-                            <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
+
+                        <div class="blog-text col-md-7">
+                            <h4 class="featurette-heading">{{$blog->title}}</h4>
+
+                            <h5 class="text-muted d-inline">{{explode(" ",$blog->created_at)[0]}} </h5>
+                            <h5 class="font-italic d-inline">- {{$blog->subtitle}} -</h5>
+
+                            <p class="lead body hide-text hidden"
+                               onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
                         </div>
                         <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto rounded-card"
+                            <img class="blog-img featurette-image img-fluid mx-auto rounded-card"
                                  src="{{$blog->location}}" alt="{{$blog->subtitle}}">
                         </div>
-                    @else
-                        <hr class="featurette-divider">
-                        <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto rounded-card"
-                                 src="{{$blog->location}}" alt="{{$blog->subtitle}}">
-                        </div>
-                        <div class="col-md-7">
-                            <h3 class="featurette-heading">{{$blog->title}}</h3>
-                            <h5 class="text-muted font-italic">- {{$blog->subtitle}} -</h5>
-                            <p class="lead body hide-text hidden" onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
-                        </div>
-                    @endif
                 @endguest
             </div>
 
@@ -132,5 +124,15 @@
         @endforeach
     </div>
 
+    <script>
+{{--        Align images and text --}}
+        window.onload=() => {
+            $.each($(".blog-img"), (index, value) => {
+                $($(".blog-text .hide-text")[index]).css({"max-height": value.offsetHeight - 50})
+            });
+        }
 
+    </script>
 @endsection
+
+
