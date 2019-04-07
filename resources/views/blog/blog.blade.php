@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="card my-4 rounded-card intro-text hidden" onclick="this.classList.remove('hidden')">
+        <div class="card my-4 rounded-card intro hide-text hidden" onclick="this.classList.toggle('hidden')">
             <div class="card-body">
                 <h4 class="card-title">Intro</h4>
                 <p class="card-text">This blog is meant as kind of running insight into the things I learn and create as
@@ -72,7 +72,7 @@
                         <h5 class="text-muted d-inline">{{explode(" ",$blog->created_at)[0]}} </h5>
                         <h5 class="font-italic d-inline">- {{$blog->subtitle}} -</h5>
 
-                        <p class="lead body hide-text hidden">{{$blog->story}}</p>
+                        <p class="lead body hide-text linedUp">{{$blog->story}}</p>
                     </div>
                     <div class="col-md-5">
                         <img class="blog-img featurette-image img-fluid mx-auto rounded-card"
@@ -113,7 +113,7 @@
                           action="{{action('BlogController@destroy', $blog['id'])}}"
                           method="post">
                         @csrf
-                        <input name="_method" type="hidden" value="DELETE">
+                        <input name="_method" type="linedUp" value="DELETE">
                         <button class="btn btn-danger mt-2" type="submit">Delete</button>
                     </form>
                 </div>
@@ -126,14 +126,14 @@
         {{--        Align images and text --}}
 
         function lineUp() {
-            if ($(event.target).hasClass("hidden")){
+            if ($(event.target).hasClass("linedUp")){
                 $(event.target).css({"height":""});
             } else {
                 console.log($(event.target).data("height").height);
                 $(event.target).css({"height":$(event.target).data("height").height});
             }
 
-            $(event.target).toggleClass("hidden");
+            $(event.target).toggleClass("linedUp");
         }
 
         window.onload = () => {
@@ -147,7 +147,7 @@
         }
 
         window.onresize = () => {
-            $(".blog-text .hide-text").addClass("hidden");
+            $(".blog-text .hide-text").addClass("linedUp");
             $.each($(".blog-img"), (index, value) => {
                 $($(".blog-text .hide-text")[index]).css({"height": value.offsetHeight - 50})
                 $($(".blog-text .hide-text")[index]).data("height",{"height": value.offsetHeight - 50})
