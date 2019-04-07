@@ -81,7 +81,6 @@
                         </div>
                 @endguest
             </div>
-
             @auth
                 <div class="col-md-12 mb-4 bg-{{$dream_theme}} p-4 rounded-card">
                     <h2>Edit blog...</h2>
