@@ -66,19 +66,18 @@
             <div class="row featurette mt-4 @if($loop->iteration % 2 == 0) flex-row-reverse @endif">
                 @guest
 
-                        <div class="blog-text col-md-7">
-                            <h4 class="featurette-heading">{{$blog->title}}</h4>
+                    <div class="blog-text col-md-7">
+                        <h4 class="featurette-heading">{{$blog->title}}</h4>
 
-                            <h5 class="text-muted d-inline">{{explode(" ",$blog->created_at)[0]}} </h5>
-                            <h5 class="font-italic d-inline">- {{$blog->subtitle}} -</h5>
+                        <h5 class="text-muted d-inline">{{explode(" ",$blog->created_at)[0]}} </h5>
+                        <h5 class="font-italic d-inline">- {{$blog->subtitle}} -</h5>
 
-                            <p class="lead body hide-text hidden"
-                               onclick="this.classList.toggle('hidden')">{{$blog->story}}</p>
-                        </div>
-                        <div class="col-md-5">
-                            <img class="blog-img featurette-image img-fluid mx-auto rounded-card"
-                                 src="{{$blog->location}}" alt="{{$blog->subtitle}}">
-                        </div>
+                        <p class="lead body hide-text hidden">{{$blog->story}}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="blog-img featurette-image img-fluid mx-auto rounded-card"
+                             src="{{$blog->location}}" alt="{{$blog->subtitle}}">
+                    </div>
                 @endguest
             </div>
             @auth
@@ -124,13 +123,36 @@
     </div>
 
     <script>
-{{--        Align images and text --}}
-        window.onload=() => {
+        {{--        Align images and text --}}
+
+        function lineUp() {
+            if ($(event.target).hasClass("hidden")){
+                $(event.target).css({"height":""});
+            } else {
+                console.log($(event.target).data("height").height);
+                $(event.target).css({"height":$(event.target).data("height").height});
+            }
+
+            $(event.target).toggleClass("hidden");
+        }
+
+        window.onload = () => {
+            $(".blog-text .hide-text").on("click", function (event) {
+                lineUp(event)
+            });
             $.each($(".blog-img"), (index, value) => {
-                $($(".blog-text .hide-text")[index]).css({"max-height": value.offsetHeight - 50})
+                $($(".blog-text .hide-text")[index]).css({"height": value.offsetHeight - 50})
+                $($(".blog-text .hide-text")[index]).data("height",{"height": value.offsetHeight - 50})
             });
         }
 
+        window.onresize = () => {
+            $(".blog-text .hide-text").addClass("hidden");
+            $.each($(".blog-img"), (index, value) => {
+                $($(".blog-text .hide-text")[index]).css({"height": value.offsetHeight - 50})
+                $($(".blog-text .hide-text")[index]).data("height",{"height": value.offsetHeight - 50})
+            });
+        }
     </script>
 @endsection
 
