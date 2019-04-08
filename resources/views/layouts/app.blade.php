@@ -50,14 +50,15 @@
             integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
             crossorigin="anonymous"></script>
     <!-- Styles -->
+    <meta name="daylight" content="{{session('dream_theme')}}">
     @php
-        if (session('dream_theme') !== null){$dream_theme = session('dream_theme');} else {$dream_theme = 'light';}
-        if ($dream_theme == 'dark'){$change_theme = 'light';} else {$change_theme = 'dark';}
+            if (session('dream_theme') !== null){$dream_theme = session('dream_theme');} else {$dream_theme = 'light';}
+            if ($dream_theme == 'dark'){$change_theme = 'light';} else {$change_theme = 'dark';}
     @endphp
     <link id="dream_theme" href="{{ asset('css/' . $dream_theme .'_dream.css') }}" rel="stylesheet">
 
     @yield('extra_style')
-{{--    {{$daylight}}--}}
+
 </head>
 <body class="text-{{session('contrast') ? session('contrast') : 'dark'}}">
 <nav class="navbar navbar-custom navbar-{{$dream_theme}} bg-{{$dream_theme}} text-{{session('contrast')}} navbar-expand-lg mb-3 border-0">
@@ -172,8 +173,10 @@
                 <li><a class="border-0 nav-link text-{{session('contrast')}}"
                        href="mailto:s.hols@icloud.com?subject=Hey there" target="_top"><i
                                 class="fas fa-envelope"></i></a></li>
-                <li><a class="border-0 nav-link text-{{session('contrast')}}"
-                       onclick="location.href = '{{route('login')}}'">{{ __('Login') }}</a></li>
+                @guest
+                    <li><a class="border-0 nav-link text-{{session('contrast')}}"
+                           onclick="location.href = '{{route('login')}}'">{{ __('Login') }}</a></li>
+                @endguest
             </ul>
         </div>
     </div>

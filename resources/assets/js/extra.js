@@ -1,3 +1,17 @@
+//Auto-Dark mode
+async function lookOutside() {
+    const location = await (await fetch('https://ipapi.co//json/')).json();
+    const time = await (await fetch(`https://api.sunrise-sunset.org/json?lat=${location.latitude}&lng=${location.longitude}&formatted=0`)).json();
+    return Date.now() > Date.parse(time.results.sunrise) && Date.now() < Date.parse(time.results.sunset);
+}
+
+lookOutside().then(lightOutside => {
+    console.log(lightOutside)
+    if (!lightOutside && document.querySelector("meta[name=daylight]").getAttribute("content").length == 0){
+        document.getElementById('change_dream_theme').submit();
+    }
+});
+
 //Click to discover
 window.onload = () => {
 
@@ -29,14 +43,13 @@ window.onload = () => {
                     item.children[0].style = "filter: saturate(1.15); transition: 1s;";
                 }
 
-                setTimeout(()=>{
+                setTimeout(() => {
                     item.style = "transform: scale(1); filter: blur(0px) saturate(1); transition: 1s;";
-                },3000);
+                }, 3000);
 
             });
 
         });
 
     });
-
 };
