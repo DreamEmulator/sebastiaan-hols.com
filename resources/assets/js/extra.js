@@ -1,16 +1,17 @@
 //Auto-Dark mode
-async function lookOutside() {
-    const location = await (await fetch('https://ipapi.co//json/')).json();
-    const time = await (await fetch(`https://api.sunrise-sunset.org/json?lat=${location.latitude}&lng=${location.longitude}&formatted=0`)).json();
-    return Date.now() > Date.parse(time.results.sunrise) && Date.now() < Date.parse(time.results.sunset);
-}
+// async function lookOutside() {
+//     const location = await (await fetch('https://ipapi.co/json/')).json();
+//     const time = await (await fetch(`https://api.sunrise-sunset.org/json?lat=${location.latitude}&lng=${location.longitude}&formatted=0`)).json();
+//
+//     return await new Date().toUTCString() > Date.parse(time.results.sunrise) && new Date().toUTCString() < Date.parse(time.results.sunset);
+// }
+//
+// lookOutside().then(lightOutside => {
+//     if (!lightOutside && document.querySelector("meta[name=daylight]").getAttribute("content").length == 0){
+//         document.getElementById('change_dream_theme').submit();
+//     }
+// });
 
-lookOutside().then(lightOutside => {
-    console.log(lightOutside)
-    if (!lightOutside && document.querySelector("meta[name=daylight]").getAttribute("content").length == 0){
-        document.getElementById('change_dream_theme').submit();
-    }
-});
 
 //Click to discover
 window.onload = () => {

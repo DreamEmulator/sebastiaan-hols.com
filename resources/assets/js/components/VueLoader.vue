@@ -1,7 +1,10 @@
 <template>
     <div class="loading-target">
-        <vue-magnifier ref="magnifier" v-if="index < load" v-for="(painting,index) in paintings" v-bind:src="painting.location" v-bind:src-large="painting.location" :painter="painting.subtitle" :title="painting.title" :key="painting.id" :index="painting.id"></vue-magnifier>
-        <button v-if="load !== paintings.length" class="mt-2 px-4 btn rainborder" v-on:click="load_extra">More art!</button>
+        <vue-magnifier ref="magnifier" v-if="index < load" v-for="(painting,index) in paintings"
+                       v-bind:src="painting.location" v-bind:src-large="painting.location" :painter="painting.subtitle"
+                       :title="painting.title" :key="painting.id" :index="painting.id"></vue-magnifier>
+        <button v-if="load !== paintings.length" class="mt-2 px-4 btn rainborder" v-on:click="load_extra">More art!
+        </button>
     </div>
 </template>
 
@@ -13,7 +16,7 @@
         components: {
             VueMagnifier
         },
-        data: function(){
+        data: function () {
             return {
                 paintings: 0,
                 load: 1,
@@ -21,17 +24,13 @@
             }
         },
         methods: {
-            load_extra: function(){
+            load_extra: function () {
                 this.load++;
-                $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow")
+                $("html, body").animate({scrollTop: document.body.scrollHeight}, "slow")
             }
         },
-        mounted: function() {
+        mounted: function () {
             axios.get('/load_paintings').then(response => (this.paintings = response.data));
         }
     }
 </script>
-
-<style scoped>
-
-</style>

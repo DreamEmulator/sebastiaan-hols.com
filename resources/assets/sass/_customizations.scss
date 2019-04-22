@@ -1,13 +1,3 @@
-body {
-  nav {
-    transition: background-color 2s 1s;
-  }
-  transition: background-color 2s 1s;
-  h1, h2, h3, h4, h5, p, span, a, a:hover, b {
-    transition: color 2s 1s;
-  }
-}
-
 body.text-dark {
   background-color: #fbf4ec;
 }
@@ -16,6 +6,7 @@ body.text-light {
   h1, h2, h3, h4, h5, p, span, a, a:hover, b {
     color: #fff !important;
   }
+  transition: background-color 2s;
 }
 
 a, button {
@@ -42,7 +33,6 @@ a, button {
 }
 
 @keyframes rotateBG {
-
   @for $i from 1 through 100 {
     #{$i}% {
       background: linear-gradient(#{$i*3.6}deg, orange, yellow, green, cyan, orange, yellow, violet, pink, orange, yellow, violet);
