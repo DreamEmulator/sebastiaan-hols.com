@@ -43,6 +43,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/reactor', function () {
+        include public_path().'/js/reactor/index.html';
+});
+
+
 Route::get('/clock', function () {
     return view('coding.clock');
 });
