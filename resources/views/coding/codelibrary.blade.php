@@ -70,6 +70,27 @@
             <div class="col-lg-12 mt-2">
                 <div class="card-columns">
 
+                    <a href="https://lnkd.in/e_DGqb8" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/lust_for_life.png')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Lust for Life</h4>
+                                <p class="card-text">An app with Image Recognition for the Fotomuseum in Rotterdam that
+                                    combined react-native and image recognition to quickly recognize images and unlock
+                                    the stories behind the photographs.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Bezing het leven
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
                     <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe width="560" height="315"
@@ -79,29 +100,11 @@
                         <div class="card-body">
                             <h4 class="card-title">Xerte Tracking</h4>
                             <p class="card-text">A tracking plugin I built for an open source education platform. This
-                                project got me to get properly to grips woth GET, POST and Ajax. Also introduced me too
+                                project got me to get properly to grips with GET, POST and Ajax. Also introduced me too
                                 the great chart.js library.</p>
                         </div>
                     </div>
-                    <a href="{{route('keepy-uppy')}}" target="_blank">
-                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
-                            <img class="card-img-top"
-                                 src="{{asset('/img/frontend/coding/keepy_uppy.png')}}"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Keepy Uppy</h4>
-                                <p class="card-text">A small interactive game I came up with to illustrate the
-                                    possibility
-                                    of combining the VueJS framework with the PopMotion.io animation library.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+
                     <a href="https://muziekweb.nl/Intros" target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
                             <img class="card-img-top"
@@ -160,6 +163,25 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Discover Movies
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{{route('keepy-uppy')}}" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/keepy_uppy.png')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Keepy Uppy</h4>
+                                <p class="card-text">A small interactive game I came up with to illustrate the
+                                    possibility
+                                    of combining the VueJS framework with the PopMotion.io animation library.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
                                         </button>
                                     </div>
                                 </div>
