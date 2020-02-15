@@ -9,9 +9,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center mb-3">
                         <h3>Digital portfolio</h3>
-                        <h5 id="click-discover">Discover my skills and interests</h5>
-                        <h6 class="text-muted">Built from scratch
-                            and constantly updated</h6>
+                        <h5 id="click-discover">Skills and interests</h5>
+                        <h6 class="text-muted">Sebastiaan Hols</h6>
                     </div>
 
                     <div class="col-lg-4 col-md-6">

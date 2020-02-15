@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-12 text-center justify-content-center mt-3">
                 <h3>Coding</h3>
-                <h5>Exciting examples and interesting insights</h5>
+                <h5>Examples and insights</h5>
             </div>
 
             <div class="col-lg-8">

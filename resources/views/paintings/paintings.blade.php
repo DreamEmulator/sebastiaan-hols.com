@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <h3>Art collection</h3>
-                <h5>Dive into the divine</h5>
+                <h5>Get a close up</h5>
                 <h6 class="text-muted">A collection of public domain artworks in hi-res with a magnifying glass</h6>
             </div>
         </div>
