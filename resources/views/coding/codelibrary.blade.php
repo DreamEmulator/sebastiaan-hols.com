@@ -45,8 +45,7 @@
                         <p>Besides from this site itself you can also click below to see a few examples of projects I
                             have developed or contributed to, some of them are not accessible to the public so a
                             screencapture has had to suffice. Also above there is a link to GitHub to see a few things I
-                            am
-                            currently working on, along with the code for the application you are in right now...</p>
+                            am currently working on, along with the code for the application you are in right now...</p>
                     </div>
                 </div>
             </div>
@@ -91,6 +90,46 @@
                         </div>
                     </a>
 
+                    <a href="https://apps.apple.com/us/app/tegoed-checker/id1495624582" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/tegoed_checker.png')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Tegoed Checker</h4>
+                                <p class="card-text">An app for the Municipality of Rotterdam. The Tegoed Checker
+                                    (Balance checker) allows people to quickly scan their Rotterdam card an check how
+                                    much balance is still left on it. (Android & iOS)
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Bekijk snel en simpel uw tegoed
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://play.google.com/store/apps/details?id=com.dordtpas&hl=en_GB" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/dordtpas_app.png')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Dordtpas App</h4>
+                                <p class="card-text">An fun new way to discover Dordrecht. The Dordtpas is the city card of Dordrecht and the funnest way to find, favorite and discover (Android & iOS)
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Ontdek Dordt!
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
                     <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe width="560" height="315"
@@ -104,6 +143,24 @@
                                 the great chart.js library.</p>
                         </div>
                     </div>
+
+                    <a href="https://www.kinderdijk.com/activities/kinderdijk-app/" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/kinderdijk.png')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Kinderdijk App</h4>
+                                <p class="card-text">An audio tour app for a UNESCO World Heritage site that receives thousands of visitors per year. I helped build a location based video experience that shows you how the site looks in different times.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Deep dive into Kinderdijk
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
 
                     <a href="https://muziekweb.nl/Intros" target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
