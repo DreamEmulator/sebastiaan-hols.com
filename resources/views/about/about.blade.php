@@ -10,7 +10,14 @@
                 <img class="rounded-circle mb-4" src="{{asset('/img/frontend/about/profile_pic.JPG')}}"
                      alt="Generic placeholder image" width="140" height="140">
                 <h3>Sebastiaan Hols</h3>
-                <h5>Designer + Developer</h5>
+                <h5>Developer + Photographer</h5>
+                <a href="https://github.com/DreamEmulator" target="_blank">
+                    <svg class="bg-light rounded-circle git-logo" height="40" width="40"
+                         class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
                 <a href="https://www.linkedin.com/in/sebastiaan-hols/"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
@@ -18,7 +25,7 @@
             <h4>Education</h4>
         </div>
         <div class="card-columns col-lg-12">
-            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px">
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px">
                 <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
                      class="card-img-top rounded-circle"
                      style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
@@ -26,21 +33,21 @@
                     <p class="card-text">Open University</p>
                 </div>
             </div>
-            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
                      class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
                 <div class="card-body"><h4 class="card-title">Master of Arts</h4>
                     <p class="card-text">Erasmus University</p>
                 </div>
             </div>
-            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
                      class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
                 <div class="card-body"><h4 class="card-title">Web & Graphic Design Certification</h4>
                     <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                 </div>
             </div>
-            <div class="card d-inline-block pt-2 w-100 text-center" style="border-radius: 15px;">
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
                      class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px;">
                 <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
@@ -114,8 +121,6 @@
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button type="submit" style="display: none"></button>
-
-
                                 <button class="btn btn-danger mt-2" type="submit">Delete</button>
                             </form>
                         </div>
