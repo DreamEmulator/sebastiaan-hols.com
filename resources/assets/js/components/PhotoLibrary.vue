@@ -4,7 +4,8 @@
 
         <div class="card-columns col-lg-12">
             <div v-for="image, imageIndex in image_data" class="card rounded-card d-inline-block mt-2 mb-2 w-100">
-                <img class=" card-img-top"
+                <img class="card-img-top"
+                     loading="lazy"
                      @click="index = imageIndex"
                      :src="image.location"
                 >
