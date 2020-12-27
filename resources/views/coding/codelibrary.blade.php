@@ -90,6 +90,26 @@
                         </div>
                     </a>
 
+                    <a href="https://dream-emulator.net" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/dream_emulator.jpg')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Dream-Emulator</h4>
+                                <p class="card-text">A side project in which I'm trying to combine music and photography in a new way.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">An experiment in
+                                            Interaction
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
                     <a href="https://apps.apple.com/us/app/tegoed-checker/id1495624582" target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
                             <img class="card-img-top"
@@ -103,7 +123,8 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Bekijk snel en simpel uw tegoed
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Bekijk snel en
+                                            simpel uw tegoed
                                         </button>
                                     </div>
                                 </div>
@@ -118,7 +139,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Dordtpas App</h4>
-                                <p class="card-text">An fun new way to discover Dordrecht. The Dordtpas is the city card of Dordrecht and the funnest way to find, favorite and discover (Android & iOS)
+                                <p class="card-text">An fun new way to discover Dordrecht. The Dordtpas is the city card
+                                    of Dordrecht and the funnest way to find, favorite and discover (Android & iOS)
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
@@ -151,10 +173,13 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Kinderdijk App</h4>
-                                <p class="card-text">An audio tour app for a UNESCO World Heritage site that receives thousands of visitors per year. I helped build a location based video experience that shows you how the site looks in different times.</p>
+                                <p class="card-text">An audio tour app for a UNESCO World Heritage site that receives
+                                    thousands of visitors per year. I helped build a location based video experience
+                                    that shows you how the site looks in different times.</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Deep dive into Kinderdijk
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Deep dive into
+                                            Kinderdijk
                                         </button>
                                     </div>
                                 </div>
@@ -181,28 +206,28 @@
                             </div>
                         </div>
                     </a>
-                    @auth
-                        <a href="/clock">
-                            <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
-                                <img class="card-img-top"
-                                     src="{{asset('/img/frontend/coding/nomos_metro.jpg')}}"
-                                     alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Vue Clock</h4>
-                                    <p class="card-text">An interesting exercise in making radial patterns in
-                                        Illustrator
-                                        and
-                                        juggling time with the Date object in JS.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Got the time?
-                                            </button>
-                                        </div>
+
+                    <a href="/clock">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/nomos_metro.jpg')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Vue Clock</h4>
+                                <p class="card-text">An interesting exercise in making radial patterns in
+                                    Illustrator
+                                    and
+                                    juggling time with the Date object in JS.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Got the time?
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    @endauth
+                        </div>
+                    </a>
+
                     <a href="https://filmbieb.nl" target="_blank">
                         <div class="card mb-4 rounded-card box-shadow d-inline-block w-100">
                             <div class="embed-responsive embed-responsive-16by9">
@@ -226,6 +251,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="{{route('keepy-uppy')}}" target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
                             <img class="card-img-top"
@@ -245,6 +271,7 @@
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
         </div>
