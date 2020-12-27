@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <gallery :images="locations" :index="index" @close="index = null; galleryOpen = false; playGallery=false;" ref="blueImpGallery"></gallery>
+    <gallery :images="locations" :index="index" @close="index = null; galleryOpen = false; galleryPlaying=false;" ref="blueImpGallery"></gallery>
 
     <div class="card-columns col-lg-12">
       <div v-for="(image, imageIndex) in image_data" class="card rounded-card d-inline-block mt-2 mb-2 w-100">
