@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <gallery :images="locations" :index="index" @close="index = null; galleryOpen = false" ref="blueImpGallery"></gallery>
+    <gallery :images="locations" :index="index" @close="index = null; galleryOpen = false; playGallery=false;" ref="blueImpGallery"></gallery>
 
     <div class="card-columns col-lg-12">
       <div v-for="(image, imageIndex) in image_data" class="card rounded-card d-inline-block mt-2 mb-2 w-100">
@@ -58,6 +58,8 @@ export default {
   z-index: 1000000;
   color: rgba(255, 255, 255, 0.5);
   background: transparent;
+  outline: 0;
+  user-select: none;
 }
 
 #blueimp-gallery .next, #blueimp-gallery .prev {
