@@ -218,3 +218,10 @@ textarea {
     column-count: 1;
   }
 }
+
+#welcome-cards {
+  img {
+    max-height: 200px;
+    object-fit: cover;
+  }
+}

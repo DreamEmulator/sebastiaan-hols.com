@@ -25,27 +25,9 @@
                 <div class="card rounded-card my-2 intro hide-text hidden"
                      onclick="this.classList.toggle('hidden')">
                     <div class="card-body">
-                        <h4 class="card-title">Intro</h4>
-                        <p class="card-text">This website is my digital portfolio and at the same time an example of my
-                            skills as a developer. It has been built in Laravel specifically to be able to define API's
-                            for passing JSON to Vue JS. This combined with the proper authentication techniques deployed
-                            by
-                            Laravel makes it easy for me to change and update the pages through a CMS structure that can
-                            work on a single page depending on your authentication status. The skills below for instance
-                            can be clicked and opened to reveal extra info to a user, but
-                            after being logged in the can accommodate an interactive preview layer that allows you to
-                            drag and update the content.</p>
-                        <p>As I have become more adept at deploying MVC setups in various languages, I have greatly come
-                            to appreciate the modularity and cleanliness of the code it yields. At first it may seem
-                            daunting to code a CMS like the one I built for this page, but as you delve deeper and
-                            deeper and develop more code you really start to realize the brilliance and clairvoyance of
-                            the people that make these frameworks. From Ruby on Rails to Spring to Laravel to Django,
-                            simply browsing their file and folder structure on GitHub can give you great insights into
-                            the solutions that experts have solved for us.</p>
-                        <p>Besides from this site itself you can also click below to see a few examples of projects I
-                            have developed or contributed to, some of them are not accessible to the public so a
-                            screencapture has had to suffice. Also above there is a link to GitHub to see a few things I
-                            am currently working on, along with the code for the application you are in right now...</p>
+                        <h4 class="card-title">Work</h4>
+                        <p class="card-text">
+                        <p>Most of the time I am developing apps in React-Native, but I also enjoy developing iOS apps with Swift, because it's easier to use lower level frameworks like AVAudioEngine. I like to make software that feels natural. I'm lucky to work professionally with so really great designers and I always aim to bring their conciseness and clarity into the (TypeScript) code. Up above there is a link to GitHub if you want to see what I am (publicly) busy with right now...</p>
                     </div>
                 </div>
             </div>
@@ -69,14 +51,14 @@
             <div class="col-lg-12 mt-2">
                 <div class="card-columns">
 
-                    <a href="https://lnkd.in/e_DGqb8" target="_blank">
+                    <a href="https://www.emerce.nl/wire/in10-wint-gold-lovie-award-publieksprijs-digitale-museumervaring-ed-der-elsken" target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
                             <img class="card-img-top"
                                  src="{{asset('/img/frontend/coding/lust_for_life.png')}}"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Lust for Life</h4>
-                                <p class="card-text">An app with Image Recognition for the Fotomuseum in Rotterdam that
+                                <p class="card-text">An award winning app with Image Recognition for the Fotomuseum in Rotterdam that
                                     combined react-native and image recognition to quickly recognize images and unlock
                                     the stories behind the photographs.
                                 </p>
