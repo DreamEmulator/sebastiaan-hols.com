@@ -27,7 +27,12 @@
                     <div class="card-body">
                         <h4 class="card-title">Work</h4>
                         <p class="card-text">
-                        <p>Most of the time I am developing apps in React-Native, but I also enjoy developing iOS apps with Swift, because it's easier to use lower level frameworks like AVAudioEngine. I like to make software that feels natural. I'm lucky to work professionally with so really great designers and I always aim to bring their conciseness and clarity into the (TypeScript) code. Up above there is a link to GitHub if you want to see what I am (publicly) busy with right now...</p>
+                        <p>Most of the time I am developing apps in React-Native, but I also enjoy developing iOS apps
+                            with Swift, because it's easier to use lower level frameworks like AVAudioEngine. I like to
+                            make software that feels natural. I'm lucky to work professionally with so really great
+                            designers and I always aim to bring their conciseness and clarity into the (TypeScript)
+                            code. Up above there is a link to GitHub if you want to see what I am (publicly) busy with
+                            right now...</p>
                     </div>
                 </div>
             </div>
@@ -51,14 +56,16 @@
             <div class="col-lg-12 mt-2">
                 <div class="card-columns">
 
-                    <a href="https://www.emerce.nl/wire/in10-wint-gold-lovie-award-publieksprijs-digitale-museumervaring-ed-der-elsken" target="_blank">
+                    <a href="https://www.emerce.nl/wire/in10-wint-gold-lovie-award-publieksprijs-digitale-museumervaring-ed-der-elsken"
+                       target="_blank">
                         <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
                             <img class="card-img-top"
                                  src="{{asset('/img/frontend/coding/lust_for_life.png')}}"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Lust for Life</h4>
-                                <p class="card-text">An award winning app with Image Recognition for the Fotomuseum in Rotterdam that
+                                <p class="card-text">An award winning app with Image Recognition for the Fotomuseum in
+                                    Rotterdam that
                                     combined react-native and image recognition to quickly recognize images and unlock
                                     the stories behind the photographs.
                                 </p>
@@ -79,7 +86,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Dream-Emulator</h4>
-                                <p class="card-text">A side project in which I'm trying to combine music and photography in a new way.
+                                <p class="card-text">A side project in which I'm trying to combine music and photography
+                                    in a new way.
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
@@ -107,6 +115,26 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Bekijk snel en
                                             simpel uw tegoed
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="http://dream-house-3d.netlify.app" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/dream_house_3d.jpg')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Dream-House 3D</h4>
+                                <p class="card-text">This is a pet project to learn 3D modeling by combining ThreeJS,
+                                    React and Blender</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Blender X ThreeJS
+                                            X React
                                         </button>
                                     </div>
                                 </div>
@@ -242,7 +270,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">Keepy Uppy</h4>
                                 <p class="card-text">A small interactive game I came up with to illustrate the
-                                    possibility of combining the VueJS framework with the PopMotion.io animation library.</p>
+                                    possibility of combining the VueJS framework with the PopMotion.io animation
+                                    library.</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
@@ -260,7 +289,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Gelrepas App</h4>
-                                <p class="card-text">Quick and easy access to your Gelrepas. The app is written in TypeScript and React Native for Android & iOS
+                                <p class="card-text">Quick and easy access to your Gelrepas. The app is written in
+                                    TypeScript and React Native for Android & iOS
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
