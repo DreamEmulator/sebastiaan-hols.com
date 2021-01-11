@@ -242,11 +242,29 @@
                             <div class="card-body">
                                 <h4 class="card-title">Keepy Uppy</h4>
                                 <p class="card-text">A small interactive game I came up with to illustrate the
-                                    possibility
-                                    of combining the VueJS framework with the PopMotion.io animation library.</p>
+                                    possibility of combining the VueJS framework with the PopMotion.io animation library.</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Play ball
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.gelrepas.nl" target="_blank">
+                        <div class="card rounded-card mb-4 box-shadow d-inline-block w-100">
+                            <img class="card-img-top"
+                                 src="{{asset('/img/frontend/coding/gelrepas_app.jpg')}}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Gelrepas App</h4>
+                                <p class="card-text">Quick and easy access to your Gelrepas. The app is written in TypeScript and React Native for Android & iOS
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Op pad met je pas
                                         </button>
                                     </div>
                                 </div>
