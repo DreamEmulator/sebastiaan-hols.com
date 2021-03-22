@@ -25,14 +25,6 @@
             <h4>Education</h4>
         </div>
         <div class="card-columns col-lg-12">
-            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px">
-                <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
-                     class="card-img-top rounded-circle"
-                     style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
-                <div class="card-body"><h4 class="card-title">Java & App Developer Certification</h4>
-                    <p class="card-text">Open University</p>
-                </div>
-            </div>
             <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/eur.jpg')}}"
                      class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
@@ -41,17 +33,25 @@
                 </div>
             </div>
             <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
-                <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
-                     class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
-                <div class="card-body"><h4 class="card-title">Web & Graphic Design Certification</h4>
-                    <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
-                </div>
-            </div>
-            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
                 <img src="{{asset('/img/frontend/about/education_logos/uu.png')}}"
                      class="card-img-top rounded-circle" style="max-height: 150px; max-width: 150px;">
                 <div class="card-body"><h4 class="card-title">Bachelor of Arts</h4>
                     <p class="card-text">University College Utrecht</p>
+                </div>
+            </div>
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px">
+                <img src="{{asset('/img/frontend/about/education_logos/ou.png')}}"
+                     class="card-img-top rounded-circle"
+                     style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
+                <div class="card-body"><h4 class="card-title">Java & App Developer Course</h4>
+                    <p class="card-text">Open University</p>
+                </div>
+            </div>
+            <div class="card d-inline-block pt-4 w-100 text-center" style="border-radius: 15px;">
+                <img src="{{asset('/img/frontend/about/education_logos/glr.jpg')}}"
+                     class="card-img-top" style="max-height: 150px; max-width: 150px; border: 5px solid #fff">
+                <div class="card-body"><h4 class="card-title">Web & Graphic Design Course</h4>
+                    <p class="card-text">Grafisch Lyceum Rotterdam - Media College</p>
                 </div>
             </div>
         </div>

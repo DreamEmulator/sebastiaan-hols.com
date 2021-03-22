@@ -27,9 +27,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Work</h4>
                         <p class="card-text">
-                        <p>Most of the time I am developing apps in React-Native, but I also enjoy developing iOS apps with Swift, because it's easier to use lower level frameworks like AVAudioEngine. I like to make software that feels natural. I'm lucky to work professionally with really great
-                            designers and I always aim to bring their clarity into the
-                            code. Up above there is a link to GitHub if you want to see what I am up to</p>
+                        <p>Most of the time I am developing apps in React-Native, but I also enjoy developing iOS apps with Swift, because it's easier to use lower level frameworks like AVAudioEngine. I like to make software that feels natural. I'm lucky to work professionally with really great designers and I always aim to bring their clarity into the code. Up above there is a link to GitHub if you want to see what I am up to.</p>
                     </div>
                 </div>
             </div>
